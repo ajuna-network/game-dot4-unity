@@ -9,21 +9,8 @@ namespace MainMenu.Achievements.UI
     {
         public Button backBtn;
 
-       //public ICollection<AddressableAssetEntry> testList;
-
-
-        void Start()
-        {
-           //  Achievements.test.Settings.groups.Find(TokenSkins);
-           //  
-           //  testList =  Achievements.test.entries;
-           //
-           // foreach (var VARIABLE in testList)
-           // {
-           //     print(VARIABLE.address);
-           // }
-            
+     
            
-        }
+        
     }
 }
