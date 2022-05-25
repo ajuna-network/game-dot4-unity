@@ -1,7 +1,9 @@
 using System;
+using System.Collections;
 using System.Threading.Tasks;
 using _StateMachine;
 using MainMenu.Searching.UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace MainMenu.Searching
@@ -17,7 +19,7 @@ namespace MainMenu.Searching
             StateUI.ShowUI();
             StateUI.cancelBtn.onClick.AddListener(OnBackClicked);
 
-            Searching();
+            StateUI.StartCoroutine("Searching");
         }
 
         public override void Exit()
@@ -26,26 +28,7 @@ namespace MainMenu.Searching
             StateUI.cancelBtn.onClick.RemoveListener(OnBackClicked);
         }
 
-        async void Searching()
-        {
-            StateUI.searchingText.text = "searching for a game";
-            await Task.Delay(TimeSpan.FromSeconds(2));
-
-            MatchFound();
-        }
-        async void MatchFound()
-        {
-            StateUI.searchingText.text = "match found";
-            await Task.Delay(TimeSpan.FromSeconds(1));
-            
-            Joining();
-        }
-        async void Joining()
-        {
-            StateUI.searchingText.text = "joining";
-            await Task.Delay(TimeSpan.FromSeconds(1));
-            JoinMatch();
-        }
+       
 
 
         #region Conditions
