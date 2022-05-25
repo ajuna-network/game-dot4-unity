@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MainMenu.Authentication
+namespace Init.Authentication
 {
     [Serializable]
     public static class Authentication 

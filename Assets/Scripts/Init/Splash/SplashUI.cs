@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MainMenu.Splash
+namespace Init.Splash
 {
     public class SplashUI : UICanvas
     {

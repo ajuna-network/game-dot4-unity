@@ -1,12 +1,11 @@
 ﻿using _StateMachine;
 using MainMenu.Achievements.UI;
-using MainMenu.Authentication;
 using MainMenu.Faucet.UI;
+using MainMenu.Landing;
 using MainMenu.Landing.UI;
 using MainMenu.Leaderboard.UI;
 using MainMenu.Searching.UI;
 using MainMenu.Setup.UI;
-using MainMenu.Splash;
 using UnityEngine;
 
 namespace MainMenu
@@ -14,8 +13,8 @@ namespace MainMenu
     public class MainMenuManager : StateMachine
     {
     
-        public SplashUI splashUI;
-        public AuthenticationUI authenticationUI;
+      //  public SplashUI splashUI;
+      //  public AuthenticationUI authenticationUI;
         public LandingUI landingUI;
         public FaucetUI faucetUI;
         public AchievementsUI achievementsUI;
@@ -29,12 +28,13 @@ namespace MainMenu
         {
             Screen.orientation = ScreenOrientation.Portrait;
         }
-
-        void Start()
+        
+        private void Start()
         {
-            CurrentState = new SplashState(this, splashUI);        
-            // UpdateState(State.SplashState);
+            CurrentState = new LandingState(this, landingUI);
         }
+
+
 
 
         #region SPLASH STATE

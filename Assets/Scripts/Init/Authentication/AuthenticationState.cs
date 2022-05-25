@@ -1,12 +1,13 @@
 ﻿using _StateMachine;
 using MainMenu.Landing;
+using UnityEngine.SceneManagement;
 
 
-namespace MainMenu.Authentication
+namespace Init.Authentication
 {
-    public class AuthenticationState : State<MainMenuManager, AuthenticationUI>
+    public class AuthenticationState : State<InitManager, AuthenticationUI>
     {
-        public AuthenticationState(MainMenuManager stateMachine, AuthenticationUI ui) : base(stateMachine, ui)
+        public AuthenticationState(InitManager stateMachine, AuthenticationUI ui) : base(stateMachine, ui)
         {
         }
         
@@ -42,7 +43,8 @@ namespace MainMenu.Authentication
             
             if (Authentication.IsAuthenticated)
             {
-                StateMachine.CurrentState = new LandingState(StateMachine,StateMachine.landingUI);
+                SceneManager.LoadScene("MainMenu");
+                //  StateMachine.CurrentState = new LandingState(StateMachine,StateMachine.landingUI);
             }
         }
 

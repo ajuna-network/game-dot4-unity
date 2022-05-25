@@ -1,6 +1,6 @@
 ﻿using UnityEngine.UI;
 
-namespace MainMenu.Authentication
+namespace Init.Authentication
 {
     public class AuthenticationUI : UICanvas
     {

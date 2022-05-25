@@ -42,7 +42,7 @@ MonoBehaviour:
     m_Value: 0
   skipIterations:
     m_OverrideState: 1
-    m_Value: 5
+    m_Value: 0
     min: 0
     max: 16
   dirtTexture:

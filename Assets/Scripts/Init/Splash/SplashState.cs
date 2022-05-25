@@ -1,11 +1,11 @@
 using _StateMachine;
-using MainMenu.Authentication;
+using Init.Authentication;
 
-namespace MainMenu.Splash
+namespace Init.Splash
 {
-    public class SplashState : State<MainMenuManager, SplashUI>
+    public class SplashState : State<InitManager, SplashUI>
     {
-        public SplashState(MainMenuManager stateMachine, SplashUI ui) : base(stateMachine, ui)
+        public SplashState(InitManager stateMachine, SplashUI ui) : base(stateMachine, ui)
         {
         }
 

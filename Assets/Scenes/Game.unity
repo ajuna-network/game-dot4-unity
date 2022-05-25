@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.13296545, g: 0.19145328, b: 0.33962262, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 0ffaa0b7117ba8c47a9d05ae701d4b4d, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 3ad06640e4c9f77499826074b1efc5f0, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -185,7 +185,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 34.50558}
+  m_SizeDelta: {x: 0, y: 34.5}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &38934470
 MonoBehaviour:
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 2
   m_StartAxis: 1
-  m_CellSize: {x: 34.50558, y: 34.50558}
+  m_CellSize: {x: 34.5, y: 34.5}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 10
@@ -1328,7 +1328,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 414.06696, y: 414.06696}
+  m_SizeDelta: {x: 414, y: 414}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191684900
 MonoBehaviour:
@@ -3214,8 +3214,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000019073486, y: 0}
-  m_SizeDelta: {x: -103.51673, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -103.5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &476552147 stripped
 RectTransform:
@@ -5133,7 +5133,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 34.50558, y: 34.50558}
+  m_SizeDelta: {x: 34.5, y: 34.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &802504412
 MonoBehaviour:
