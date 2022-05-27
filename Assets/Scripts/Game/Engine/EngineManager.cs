@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using GameEngine.GravityDot;
 using GameEngine.UnityMock;
 using UnityEngine;
@@ -15,6 +17,8 @@ namespace Game.Engine
         private static int currentGameID;
         // private static int player1ID;
         // private static int player1ID;
+
+        public static event Action<FullState> OnRefresh;
 
 
         public static FullState Fullstate
@@ -36,8 +40,10 @@ namespace Game.Engine
         public static void RefreshFullState()
         {
             Fullstate = gameEngine.FullState(currentGameID);
+
+            OnRefresh?.Invoke(Fullstate);
         }
-        
+
         public static void Tick()
         {
             gameEngine.Tick(currentGameID);
@@ -45,14 +51,14 @@ namespace Game.Engine
         }
 
 
-
         #region SelectionPlacement
 
         public static List<int[]> UpdateSelection(Side side, float row)
         {
-            return MockLogic.GetRay(gameEngine.FullState(currentGameID).Board, side, (int) row, gameEngine.FullState(currentGameID).CurrentPlayer);
-            
-           // return MockLogic.GetRay(Fullstate.Board, side, (int) row, Fullstate.CurrentPlayer);
+            return MockLogic.GetRay(gameEngine.FullState(currentGameID).Board, side, (int) row,
+                gameEngine.FullState(currentGameID).CurrentPlayer);
+
+            // return MockLogic.GetRay(Fullstate.Board, side, (int) row, Fullstate.CurrentPlayer);
         }
 
         public static bool IsValidMove(Side side, float row)
@@ -70,28 +76,32 @@ namespace Game.Engine
         #endregion
 
 
-
         #region Bombs
+
+        public static Vector2 CheckForBombs()
+        {
+            return new Vector2(Fullstate.GroundZero[0], gameEngine.FullState(currentGameID).GroundZero[1]);
+        }
 
         public static bool IsValidBomb(int player, Vector2 pos)
         {
-            var position = new int[]
-            {
-              (int)pos.x,
-              (int)pos.y,
-            };
-            
-            
-            return gameEngine.ValidateBomb(currentGameID,gameEngine.GetPlayerId(player), position);
+            // var position = new int[]
+            // {
+            //   (int)pos.x,
+            //   (int)pos.y,
+            // };
+            //gameEngine.ValidateBomb(currentGameID, gameEngine.GetPlayerId(player), (int)pos.x, (int)pos.y);
+
+
+            return gameEngine.ValidateBomb(currentGameID, gameEngine.GetPlayerId(player), (int) pos.x, (int) pos.y);
         }
-        
+
         public static void PlaceBomb(int player, int[] pos)
         {
-            gameEngine.PlayerBomb(currentGameID,gameEngine.GetPlayerId(player), pos[0], pos[1]);
+            gameEngine.PlayerBomb(currentGameID, gameEngine.GetPlayerId(player), pos[0], pos[1]);
             RefreshFullState();
         }
 
         #endregion
-
     }
 }

@@ -33,24 +33,31 @@ namespace Game.States
             }
 
             StateUI.timer.StartTimer();
+
+
+            //EngineManager.RefreshFullState();
         }
 
         public override void Action()
         {
+            //should transition when player placed 3 bombs
+            // if (EngineManager.Fullstate.GameState != GameState.INITIALIZED || StateMachine.gameBoard.AllBombsPlaced())
+
             if (EngineManager.Fullstate.GameState != GameState.INITIALIZED)
             {
-                Debug.Log("State");
                 StateMachine.CurrentState = new PlayingState(StateMachine, StateMachine.inGameUI);
             }
-            
-           
         }
 
         public override void Exit()
         {
             StateUI.HideUI();
+            StateMachine.gameBoard.boardRaycaster.enabled = false;
             StateUI.timer.StopTimer();
             StateUI.timer.ResetTimer();
+
+            ////////DEBUG
+            // StateMachine.gameBoard.GenerateBoard(EngineManager.gameEngine.FullState(StateMachine.gameId));
         }
 
 
@@ -61,31 +68,22 @@ namespace Game.States
 
 
         //should be on game board
-         void PlaceAIBombs()
+        void PlaceAIBombs()
         {
-            var maxBombs = 3;
-            var waitTime = 1;
+            var waitTimeA = 1;
 
-            while (maxBombs > 0)
+            while (waitTimeA < 30)
             {
-                if (StateMachine.playerAI.GetBombPosAndTime(StateMachine.gameId, out int waitTimeNew,
-                        out int[] position))
+                if (StateMachine.playerAI.GetBombPosAndTime(StateMachine.gameId, out int waitTimeNew, out int[] position))
                 {
-                    waitTime = waitTimeNew > waitTime ? waitTimeNew : waitTime;
+                    //StateMachine.gameBoard.HighlightBombCell(2, new Vector2(position[0], position[1]));
+                    // EngineManager.PlaceBomb(2, position);
 
+                    StateMachine.gameBoard.PlaceBomb(2, new Vector2(position[0], position[1]));
 
-                   // await Task.Delay(TimeSpan.FromSeconds(waitTime));
-
-                    StateMachine.gameBoard.HighlightBombCell(2, new Vector2(position[0], position[1]));
-                    EngineManager.PlaceBomb(2, position);
-
-
-                    maxBombs--;
+                    waitTimeA = waitTimeNew > waitTimeA ? waitTimeNew : waitTimeA;
                 }
             }
-            Debug.Log("All Bombs Placed");
-           
-          
         }
 
 

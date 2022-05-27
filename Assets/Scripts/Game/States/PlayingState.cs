@@ -1,14 +1,11 @@
 using System;
-using System.Collections;
-using System.Linq;
+
 using System.Threading.Tasks;
 using _StateMachine;
 using Ajuna.GenericGameEngine.Enums;
 using Game.Engine;
 using Game.InGame;
 using GameEngine.GravityDot;
-using GameEngine.UnityMock;
-using TMPro;
 using UnityEngine;
 
 namespace Game.States
@@ -30,17 +27,16 @@ namespace Game.States
             StateMachine.gameBoard.PlayIntro();
 
 
-
             StateUI.turnBtn.onClick.AddListener(TurnClicked);
             StartNextTurn(EngineManager.Fullstate.CurrentPlayer);
 
             //state enter and exit would have to be IEnum to wait for anim to play first??
-           
         }
 
         public override void Action()
         {
-            if (EngineManager.Fullstate.GameState == GameState.TIMEOUT || EngineManager.Fullstate.GameState == GameState.FINISHED)
+            if (EngineManager.Fullstate.GameState == GameState.TIMEOUT ||
+                EngineManager.Fullstate.GameState == GameState.FINISHED)
             {
                 StateMachine.CurrentState = new ResultState(StateMachine, StateMachine.resultsUI);
             }
@@ -98,7 +94,7 @@ namespace Game.States
             if (EngineManager.Fullstate.GameState == GameState.RUNNING)
             {
                 StateUI.inputUI.SetActive(false);
-            
+
                 StateUI.SetGameText("Player" + currentPlayer + " Get Ready");
                 StateUI.timer.ResetTimer();
 
@@ -113,13 +109,13 @@ namespace Game.States
         {
             StateUI.ShowUI();
             StateUI.inputUI.SetActive(true);
-           // StateUI.SetGameText("Player" + currentPlayer + " Make your move");
-           StateUI.SetGameText("Make your move");
+            // StateUI.SetGameText("Player" + currentPlayer + " Make your move");
+            StateUI.SetGameText("Make your move");
             StateMachine.gameBoard.SetSelectedSide(Side.North, 0);
             StateMachine.gameBoard.ToggleIndicator(true);
             StateMachine.gameBoard.SpawnSkin(GetCurrentPlayerSkin(EngineManager.Fullstate.CurrentPlayer));
             StateUI.timer.StartTimer();
-            
+
             if (StateMachine.gameSettings.pvAI)
             {
                 AIPlay();
@@ -129,10 +125,11 @@ namespace Game.States
         void TakeTurn(int currentPlayer)
         {
             StateUI.inputUI.SetActive(false);
-           
+
             StateUI.SetGameText("Player" + currentPlayer + " Made His Move");
 
             StateUI.timer.StopTimer();
+
 
             WaitForTokenAnim();
         }
@@ -140,15 +137,24 @@ namespace Game.States
 //should be on gameboard?
         async void WaitForTokenAnim()
         {
+            
+            
+            
+            
+            //move this to game board
+          
+            //gets the bomb pos to sync token movement and detonation
+          
+
             while (StateMachine.gameBoard.AnimateToken())
             {
                 await Task.Yield();
             }
 
-          
+
             StateMachine.gameBoard.ToggleIndicator(false);
             StateMachine.gameBoard.ClearHighlight();
-            EngineManager.MakeMove(StateMachine.gameBoard.selectedSide, StateMachine.gameBoard.selectedRow);
+
 
             await Task.Delay(TimeSpan.FromSeconds(2));
 
@@ -156,10 +162,8 @@ namespace Game.States
         }
 
         #endregion
-        
-        
 
-        
+
         void AIPlay()
         {
             if (StateMachine.playerAI.Play(StateMachine.gameId, out int waitTime, out Side side, out byte column))

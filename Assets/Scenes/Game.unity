@@ -185,7 +185,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 34.5}
+  m_SizeDelta: {x: 0, y: 34.50558}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &38934470
 MonoBehaviour:
@@ -333,6 +333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (71)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &59650306 stripped
@@ -450,6 +454,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (96)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &91990845
@@ -546,6 +554,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (99)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -644,6 +656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &107702207
@@ -740,6 +756,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -843,6 +863,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (53)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &142361238 stripped
@@ -944,6 +968,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (61)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -1169,7 +1197,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 2
   m_StartAxis: 1
-  m_CellSize: {x: 34.5, y: 34.5}
+  m_CellSize: {x: 34.50558, y: 34.50558}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 10
@@ -1273,6 +1301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &185002159 stripped
@@ -1328,7 +1360,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 414, y: 414}
+  m_SizeDelta: {x: 414.06696, y: 414.06696}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191684900
 MonoBehaviour:
@@ -1600,6 +1632,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (70)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &253638670
@@ -1697,6 +1733,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (95)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &263455184
@@ -1793,6 +1833,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -1998,6 +2042,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (73)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &303508301
@@ -2094,6 +2142,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (86)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -2197,6 +2249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (66)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &330790771
@@ -2293,6 +2349,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (84)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -2542,6 +2602,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &421291706
@@ -2639,6 +2703,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (88)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &432737236 stripped
@@ -2715,7 +2783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7734816578333991202, guid: 209253339db84ea4bb91b948f1d10fe9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -117.92653
+      value: -263.23694
       objectReference: {fileID: 0}
     - target: {fileID: 7734816578333991202, guid: 209253339db84ea4bb91b948f1d10fe9, type: 3}
       propertyPath: m_SizeDelta.y
@@ -2851,7 +2919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7734816578333991202, guid: 209253339db84ea4bb91b948f1d10fe9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -76.796524
+      value: -222.10695
       objectReference: {fileID: 0}
     - target: {fileID: 7734816578333991202, guid: 209253339db84ea4bb91b948f1d10fe9, type: 3}
       propertyPath: m_SizeDelta.y
@@ -3012,6 +3080,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (76)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1 &471806460
@@ -3124,10 +3196,10 @@ RectTransform:
   m_Father: {fileID: 486331866}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -247.68869}
+  m_SizeDelta: {x: 158, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &475359346
 MonoBehaviour:
@@ -3174,13 +3246,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475359344}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86710e43de46f6f4bac7c8e50813a599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 3
-  m_AspectRatio: 2
+  m_AspectRatio: 2.5
 --- !u!1 &475373757
 GameObject:
   m_ObjectHideFlags: 0
@@ -3215,7 +3287,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -103.5, y: 0}
+  m_SizeDelta: {x: -103.51674, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &476552147 stripped
 RectTransform:
@@ -3319,7 +3391,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &486331866
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3478,6 +3550,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &503771351 stripped
@@ -3580,6 +3656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &529558509
@@ -3676,6 +3756,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -3789,6 +3873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (65)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &608620165 stripped
@@ -3831,8 +3919,8 @@ RectTransform:
   m_Father: {fileID: 1423929637}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.7, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3983,6 +4071,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (79)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &631462208
@@ -4079,6 +4171,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (78)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -4230,6 +4326,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &687071216
@@ -4339,6 +4439,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (64)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &699909272 stripped
@@ -4441,6 +4545,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (90)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &710192289
@@ -4488,7 +4596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4775,6 +4883,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (87)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &724668828
@@ -4871,6 +4983,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -4989,6 +5105,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (57)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &765678978
@@ -5086,6 +5206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &772845538 stripped
@@ -5133,7 +5257,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 34.5, y: 34.5}
+  m_SizeDelta: {x: 34.50558, y: 34.50558}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &802504412
 MonoBehaviour:
@@ -5326,6 +5450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (98)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &828478850 stripped
@@ -5427,6 +5555,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -5535,6 +5667,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (49)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &869629382 stripped
@@ -5636,6 +5772,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (55)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -5770,6 +5910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (69)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &888447611 stripped
@@ -5872,6 +6016,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &901849864
@@ -5968,6 +6116,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (54)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -6066,6 +6218,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &917134299
@@ -6162,6 +6318,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -6260,84 +6420,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (91)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
---- !u!1 &924150128
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 924150129}
-  - component: {fileID: 924150132}
-  - component: {fileID: 924150131}
-  m_Layer: 5
-  m_Name: Cnv_Timer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &924150129
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924150128}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1320391207}
-  m_Father: {fileID: 1423929637}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.7, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &924150131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924150128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
---- !u!223 &924150132
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924150128}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1001 &944454684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6432,6 +6520,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -6556,6 +6648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &978995337
@@ -6635,7 +6731,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6755,6 +6851,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (89)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1020237108
@@ -6851,6 +6951,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (56)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -6949,6 +7053,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1031452616
@@ -7045,6 +7153,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -7148,6 +7260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (97)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!114 &1035797105 stripped
@@ -7191,13 +7307,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 277149175241972529}
   - {fileID: 1085201692}
   m_Father: {fileID: 1423929637}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.7, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -7355,6 +7470,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1075472243 stripped
@@ -7456,6 +7575,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -7563,6 +7686,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (83)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -7676,6 +7803,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1161389007
@@ -7772,6 +7903,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (67)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -7880,6 +8015,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (59)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1226326832
@@ -7976,6 +8115,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -8079,6 +8222,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1236110998 stripped
@@ -8120,10 +8267,10 @@ RectTransform:
   - {fileID: 1883268462}
   - {fileID: 978995338}
   m_Father: {fileID: 1423929637}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.7, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8279,6 +8426,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (92)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1290478591
@@ -8375,6 +8526,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -8478,43 +8633,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
---- !u!1 &1320391206
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1320391207}
-  m_Layer: 5
-  m_Name: Cnt_Info
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1320391207
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320391206}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 924150129}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.8}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -32, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1320588779 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 853501286412760221, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -8614,6 +8738,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -8717,6 +8845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1372897301
@@ -8760,7 +8892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3642188149144847476, guid: 5d2d33751bd6d514a95bf9206be56b8b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 236.75653
+      value: 382.06696
       objectReference: {fileID: 0}
     - target: {fileID: 3642188149144847476, guid: 5d2d33751bd6d514a95bf9206be56b8b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -8796,7 +8928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3642188149144847476, guid: 5d2d33751bd6d514a95bf9206be56b8b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 134.37827
+      value: 207.03348
       objectReference: {fileID: 0}
     - target: {fileID: 3642188149144847476, guid: 5d2d33751bd6d514a95bf9206be56b8b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8920,6 +9052,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (72)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1386866272
@@ -8940,6 +9076,10 @@ PrefabInstance:
     - target: {fileID: 2425744384382141107, guid: 2deb5ae062d541e40b65936991dc0e3b, type: 3}
       propertyPath: m_AnchorMin.x
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2425744384430583547, guid: 2deb5ae062d541e40b65936991dc0e3b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2425744384629101476, guid: 2deb5ae062d541e40b65936991dc0e3b, type: 3}
       propertyPath: m_Name
@@ -9139,6 +9279,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (75)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1419239302
@@ -9236,6 +9380,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1 &1423929633
@@ -9332,7 +9480,6 @@ RectTransform:
   - {fileID: 1941203397}
   - {fileID: 609187931}
   - {fileID: 1040268890}
-  - {fileID: 924150129}
   - {fileID: 1237475271}
   - {fileID: 1450996241}
   m_Father: {fileID: 0}
@@ -9438,6 +9585,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (93)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1 &1450996236
@@ -9539,6 +9690,7 @@ MonoBehaviour:
   boardCellsContainer: {fileID: 157341598}
   indicatorContainer: {fileID: 475373758}
   boardContainer: {fileID: 191684899}
+  boardRaycaster: {fileID: 1450996237}
   indicatorSlider: {fileID: 38934470}
   animator: {fileID: 1450996242}
   player1Color: {r: 0, g: 0, b: 1, a: 1}
@@ -9562,10 +9714,10 @@ RectTransform:
   m_Children:
   - {fileID: 191684899}
   m_Father: {fileID: 1423929637}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.7, y: 1}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9703,6 +9855,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (82)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1519486010
@@ -9800,6 +9956,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1529707783
@@ -9896,6 +10056,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (94)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -9999,6 +10163,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1553044035
@@ -10096,6 +10264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (77)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1553279009
@@ -10192,6 +10364,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -10301,6 +10477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (74)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1572328984
@@ -10397,6 +10577,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (46)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -10495,6 +10679,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1601810005 stripped
@@ -10582,7 +10770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7734816578333991202, guid: 209253339db84ea4bb91b948f1d10fe9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -104.21654
+      value: -249.52696
       objectReference: {fileID: 0}
     - target: {fileID: 7734816578333991202, guid: 209253339db84ea4bb91b948f1d10fe9, type: 3}
       propertyPath: m_SizeDelta.y
@@ -10743,6 +10931,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (68)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1672346286 stripped
@@ -10845,6 +11037,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1685464475
@@ -10872,11 +11068,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4409343867899580061, guid: 4e02bb4864ffbd34f91ed42e81c584a1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4409343867899580061, guid: 4e02bb4864ffbd34f91ed42e81c584a1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4409343867899580061, guid: 4e02bb4864ffbd34f91ed42e81c584a1, type: 3}
       propertyPath: m_AnchorMin.y
@@ -11161,6 +11357,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1721546311 stripped
@@ -11278,6 +11478,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1766843684 stripped
@@ -11390,6 +11594,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (45)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1775552453 stripped
@@ -11497,6 +11705,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1788738021
@@ -11593,6 +11805,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -11701,6 +11917,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1820053027 stripped
@@ -11802,6 +12022,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (62)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -11905,6 +12129,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (51)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1839985445 stripped
@@ -12007,6 +12235,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (60)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1842351685 stripped
@@ -12051,7 +12283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 738483306197683214, guid: 277256a6288b48f4e9ffb4a89d00eddf, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 268.75653
+      value: 414.06696
       objectReference: {fileID: 0}
     - target: {fileID: 738483306197683214, guid: 277256a6288b48f4e9ffb4a89d00eddf, type: 3}
       propertyPath: m_SizeDelta.y
@@ -12087,7 +12319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 738483306197683214, guid: 277256a6288b48f4e9ffb4a89d00eddf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 134.37827
+      value: 207.03348
       objectReference: {fileID: 0}
     - target: {fileID: 738483306197683214, guid: 277256a6288b48f4e9ffb4a89d00eddf, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -12227,6 +12459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1876056860 stripped
@@ -12328,6 +12564,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (63)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -12529,6 +12769,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (80)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!224 &1895272292 stripped
@@ -12677,6 +12921,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1949116275
@@ -12773,6 +13021,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -12876,6 +13128,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &1964150637
@@ -12972,6 +13228,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (85)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -13074,6 +13334,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -13182,6 +13446,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &2049042903
@@ -13278,6 +13546,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (52)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -13376,6 +13648,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &2054922849
@@ -13473,6 +13749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
 --- !u!1001 &2059731264
@@ -13569,6 +13849,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -13676,6 +13960,10 @@ PrefabInstance:
     - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
       propertyPath: m_Name
       value: BoardCell (50)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
@@ -13877,28 +14165,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardCell (81)
       objectReference: {fileID: 0}
+    - target: {fileID: 6771312246158386341, guid: 10c3118e90354124db0839befaaaf169, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10c3118e90354124db0839befaaaf169, type: 3}
---- !u!224 &277149175241972529
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5108517544393751071}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 9133905303098157495}
-  m_Father: {fileID: 1040268890}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 134.4336, y: -32}
-  m_SizeDelta: {x: 268.8672, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &2425744383981768019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13952,7 +14224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2425744384629101483, guid: 2deb5ae062d541e40b65936991dc0e3b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 236.75653
+      value: 382.06696
       objectReference: {fileID: 0}
     - target: {fileID: 2425744384629101483, guid: 2deb5ae062d541e40b65936991dc0e3b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -13988,7 +14260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2425744384629101483, guid: 2deb5ae062d541e40b65936991dc0e3b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 134.37827
+      value: 207.03348
       objectReference: {fileID: 0}
     - target: {fileID: 2425744384629101483, guid: 2deb5ae062d541e40b65936991dc0e3b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -14199,22 +14471,6 @@ PrefabInstance:
     - {fileID: 1259474290, guid: f7de8f7e930cd8d4287a0a9145f95819, type: 3}
     - {fileID: 9075452055237774667, guid: f7de8f7e930cd8d4287a0a9145f95819, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f7de8f7e930cd8d4287a0a9145f95819, type: 3}
---- !u!1 &5108517544393751071
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 277149175241972529}
-  m_Layer: 5
-  m_Name: Cnt_Info
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!224 &5914817465180167618
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15251,81 +15507,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!222 &5914817466511525520
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5914817466511525523}
-  m_CullTransparentMesh: 1
---- !u!114 &5914817466511525521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5914817466511525523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 545584750809702468ea62a9581ad4fc, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!224 &5914817466511525522
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5914817466511525523}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5914817466913062956}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -36, y: -36}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &5914817466511525523
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5914817466511525522}
-  - component: {fileID: 5914817466511525520}
-  - component: {fileID: 5914817466511525521}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!222 &5914817466734865799
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -15385,7 +15566,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -134.37827, y: 0}
+  m_SizeDelta: {x: 0, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5914817466734865802
 GameObject:
@@ -15907,16 +16088,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Sprite: {fileID: 21300000, guid: e4b9c7e03a84b4e4d9fdf4b4f128793a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -15990,15 +16171,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 5914817466511525522}
+  m_Children: []
   m_Father: {fileID: 475359345}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -172, y: -38}
+  m_SizeDelta: {x: -80, y: -80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5914817466913062957
 GameObject:
@@ -16055,137 +16235,3 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &9133905303098157488
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9133905303098157495}
-  - component: {fileID: 9133905303098157493}
-  - component: {fileID: 9133905303098157494}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!222 &9133905303098157493
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9133905303098157488}
-  m_CullTransparentMesh: 1
---- !u!114 &9133905303098157494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9133905303098157488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Player 1 Is Making His Move
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 4096
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!224 &9133905303098157495
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9133905303098157488}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 277149175241972529}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -32, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}

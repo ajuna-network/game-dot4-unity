@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
+  m_AmbientSkyColor: {r: 0.6, g: 0.6, b: 0.6, a: 1}
   m_AmbientEquatorColor: {r: 0.4069135, g: 0.39554998, b: 0.45, a: 1}
   m_AmbientGroundColor: {r: 0.64391315, g: 0.55, b: 1, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.13333334, g: 0.19215688, b: 0.34117648, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 3ad06640e4c9f77499826074b1efc5f0, type: 2}
   m_HaloStrength: 0.5
@@ -2593,7 +2593,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 86}
+  m_SizeDelta: {x: 0, y: 68}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &689947778
 MonoBehaviour:
@@ -2610,7 +2610,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 16
     m_Right: 16
-    m_Top: 18
+    m_Top: 0
     m_Bottom: 4
   m_ChildAlignment: 0
   m_Spacing: 4
@@ -2896,7 +2896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6b9a915d155341479c70bfb84d433dd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6b9a915d155341479c70bfb84d433dd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3329,7 +3329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 207
+      value: 207.06696
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4713,6 +4713,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1101274144}
   - component: {fileID: 1101274145}
+  - component: {fileID: 1101274146}
+  - component: {fileID: 1101274147}
   m_Layer: 5
   m_Name: Cnv_SceneRender
   m_TagString: Untagged
@@ -4761,6 +4763,41 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1101274146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101274143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1101274147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1101274143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b94f05f757b4bf409b7e68768ffaaf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToRotate: {fileID: 1282824452}
+  rotateSpeed: 0.5
+  userIsRotating: 0
+  grabRotationSpeed: 0.2
+  restRotation: {x: 0, y: 0, z: 0, w: 1}
+  lerpTime: 150
 --- !u!1001 &1113730227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4790,7 +4827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 247697e2db41faa4bbf01a958be64767, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 247697e2db41faa4bbf01a958be64767, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5897,7 +5934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4323951864120350189, guid: 073f7b1957aa573428023a64a4fd2276, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -82
+      value: -64
       objectReference: {fileID: 0}
     - target: {fileID: 4323951864120350189, guid: 073f7b1957aa573428023a64a4fd2276, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6207,7 +6244,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282824451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 1733641454}
@@ -7619,7 +7656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 0
   m_OnCullStateChanged:
@@ -8397,7 +8434,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 207
+      value: 207.06696
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.y

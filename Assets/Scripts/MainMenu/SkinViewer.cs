@@ -1,19 +1,71 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace MainMenu
 {
-    public class SkinViewer : MonoBehaviour
+    public class SkinViewer : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private Transform objectToRotate;
+        [Range(-1f, 1f)] [SerializeField] private float rotateSpeed = 0.1f;
+        [SerializeField] private bool userIsRotating;
+        [SerializeField] private float grabRotationSpeed;
+
+        [SerializeField] private Quaternion restRotation;
+
+       // [SerializeField] private float timeElapsed;
+        [SerializeField] private float lerpTime;
+
+
+        private void Awake()
         {
-        
+          
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
-        
+            if (userIsRotating) return;
+
+            objectToRotate.Rotate(Vector3.up, rotateSpeed);
+            restRotation = objectToRotate.transform.rotation;
+        }
+
+
+        IEnumerator RotateToRest()
+        {
+           // timeElapsed = 0;
+
+            while (objectToRotate.transform.rotation != restRotation)
+            {
+                // rotating = true;
+
+                objectToRotate.transform.rotation = Quaternion.RotateTowards(objectToRotate.transform.rotation,
+                    restRotation, Time.deltaTime * lerpTime);
+               // timeElapsed += Time.deltaTime;
+
+                yield return null;
+            }
+
+            userIsRotating = false;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            var mouseXPos = eventData.delta.x * grabRotationSpeed;
+            var mouseYPos = eventData.delta.y * grabRotationSpeed;
+
+            var rotation = new Vector3(mouseYPos, -mouseXPos, 0);
+            objectToRotate.transform.Rotate(rotation,Space.World);
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            StartCoroutine(RotateToRest());
+        }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            userIsRotating = true;
         }
     }
 }
