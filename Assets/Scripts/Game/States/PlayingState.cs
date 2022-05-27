@@ -1,11 +1,14 @@
 using System;
-
+using System.Collections;
+using System.Linq;
 using System.Threading.Tasks;
 using _StateMachine;
 using Ajuna.GenericGameEngine.Enums;
 using Game.Engine;
 using Game.InGame;
 using GameEngine.GravityDot;
+using GameEngine.UnityMock;
+using TMPro;
 using UnityEngine;
 
 namespace Game.States
@@ -146,10 +149,10 @@ namespace Game.States
             //gets the bomb pos to sync token movement and detonation
           
 
-            while (StateMachine.gameBoard.AnimateToken())
-            {
-                await Task.Yield();
-            }
+            // while (StateMachine.gameBoard.AnimateToken())
+            // {
+            //     await Task.Yield();
+            // }
 
 
             StateMachine.gameBoard.ToggleIndicator(false);
