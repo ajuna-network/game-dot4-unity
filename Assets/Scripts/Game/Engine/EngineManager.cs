@@ -71,6 +71,8 @@ namespace Game.Engine
         {
             gameEngine.PlayerMove(currentGameID, gameEngine.GetPlayerId(Fullstate.CurrentPlayer), side, (int) row);
             RefreshFullState();
+
+        
         }
 
         #endregion
@@ -78,10 +80,10 @@ namespace Game.Engine
 
         #region Bombs
 
-        public static Vector2 CheckForBombs()
-        {
-            return new Vector2(Fullstate.GroundZero[0], gameEngine.FullState(currentGameID).GroundZero[1]);
-        }
+        // public static Vector2 CheckForBombs()
+        // {
+        //     return new Vector2(;
+        // }
 
         public static bool IsValidBomb(int player, Vector2 pos)
         {
@@ -98,8 +100,9 @@ namespace Game.Engine
 
         public static void PlaceBomb(int player, int[] pos)
         {
-            gameEngine.PlayerBomb(currentGameID, gameEngine.GetPlayerId(player), pos[0], pos[1]);
-            RefreshFullState();
+         
+                gameEngine.PlayerBomb(currentGameID, gameEngine.GetPlayerId(player), pos[0], pos[1]);
+                RefreshFullState();
         }
 
         #endregion

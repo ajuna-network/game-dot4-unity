@@ -47,8 +47,6 @@ namespace Game.Board
             {
                 SetCellType(CellType.Normal, new Vector2(row, column));
             }
-            //
-                    
 
             if (fullstate.Board[(byte) row, (byte) column] == 12)
             {
@@ -62,7 +60,7 @@ namespace Game.Board
         }
         
         
-        void SetCellType(CellType cellType, Vector2 pos)
+        public void SetCellType(CellType cellType, Vector2 pos)
         {
             cellPos = pos;
             gridTxt.text = pos.ToString();
@@ -74,7 +72,8 @@ namespace Game.Board
                     bombSprite.enabled = false;
                     spriteRenderer.color = defaultColor;
                     // idTxt.enabled = false;
-                    idTxt.text = "";
+                    idTxt.text = "o";
+                    idTxt.color = Color.white;
                     break;
                 case CellType.Obstacle:
                     spriteRenderer.enabled = false;

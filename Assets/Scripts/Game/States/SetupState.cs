@@ -7,6 +7,7 @@ using Ajuna.GenericGameEngine.Enums;
 using Game.Board;
 using Game.Engine;
 using Game.GameSetup;
+using Game.InGame;
 using GameEngine.UnityMock;
 using UnityEngine;
 
@@ -33,31 +34,23 @@ namespace Game.States
             }
 
             StateUI.timer.StartTimer();
-
-
-            //EngineManager.RefreshFullState();
         }
 
         public override void Action()
         {
-            //should transition when player placed 3 bombs
-            // if (EngineManager.Fullstate.GameState != GameState.INITIALIZED || StateMachine.gameBoard.AllBombsPlaced())
-
             if (EngineManager.Fullstate.GameState != GameState.INITIALIZED)
             {
-                StateMachine.CurrentState = new PlayingState(StateMachine, StateMachine.inGameUI);
+                WaitForAnim();
             }
         }
 
         public override void Exit()
         {
+           /// WaitForAnim();
             StateUI.HideUI();
             StateMachine.gameBoard.boardRaycaster.enabled = false;
             StateUI.timer.StopTimer();
             StateUI.timer.ResetTimer();
-
-            ////////DEBUG
-            // StateMachine.gameBoard.GenerateBoard(EngineManager.gameEngine.FullState(StateMachine.gameId));
         }
 
 
@@ -74,11 +67,9 @@ namespace Game.States
 
             while (waitTimeA < 30)
             {
-                if (StateMachine.playerAI.GetBombPosAndTime(StateMachine.gameId, out int waitTimeNew, out int[] position))
+                if (StateMachine.playerAI.GetBombPosAndTime(StateMachine.gameId, out int waitTimeNew,
+                        out int[] position))
                 {
-                    //StateMachine.gameBoard.HighlightBombCell(2, new Vector2(position[0], position[1]));
-                    // EngineManager.PlaceBomb(2, position);
-
                     StateMachine.gameBoard.PlaceBomb(2, new Vector2(position[0], position[1]));
 
                     waitTimeA = waitTimeNew > waitTimeA ? waitTimeNew : waitTimeA;
@@ -86,13 +77,20 @@ namespace Game.States
             }
         }
 
+        void WaitForAnim()
+        {
+            Exit();
+            
+            if (!StateMachine.gameBoard.IntroDone())
+            {
+                return;
+            }
+            
+            StateMachine.CurrentState = new PlayingState(StateMachine, StateMachine.inGameUI);
+        }
+
 
         #region Conditions
-
-        // void ReadyClicked()
-        // {
-        //     StateMachine.CurrentState = new PlayingState(StateMachine, StateMachine.inGameUI);
-        // }
 
         #endregion
     }

@@ -39,10 +39,5 @@ namespace Game
             CurrentState = new SetupState(this, setupUI);
         }
 
-        private void FixedUpdate()
-        {
-//            Debug.Log(EngineManager.Fullstate.GameState);
-            // Debug.Log(EngineManager.Fullstate.CurrentPlayer);
-        }
     }
 }

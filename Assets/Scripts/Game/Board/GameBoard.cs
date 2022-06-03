@@ -23,12 +23,20 @@ namespace Game.Board
         [SerializeField] RectTransform boardContainer;
         public GraphicRaycaster boardRaycaster;
         public Slider indicatorSlider;
+
         public Animator animator;
+
+        //maybe have this in skinviewer class
+        public GameObject currentToken;
 
 
         Dictionary<Vector2, GameObject> BoardCells = new Dictionary<Vector2, GameObject>();
         private float cellSize;
+        private BoardCell targetCell;
         private float boardContainerSize;
+
+        // private Vector3 targetPos;
+        private bool shouldExplode;
 
 
         [Header("Styling")] [SerializeField] private Color player1Color;
@@ -38,8 +46,8 @@ namespace Game.Board
         public float selectedRow;
         public List<BoardCell> highlightedCells = new List<BoardCell>();
 
-        public List<BoardCell> player1BombCells = new List<BoardCell>(3);
-        public List<BoardCell> player2BombCells = new List<BoardCell>(3);
+        public List<BoardCell> player1BombCells = new List<BoardCell>(2);
+        public List<BoardCell> player2BombCells = new List<BoardCell>(2);
 
         private void OnEnable()
         {
@@ -87,42 +95,6 @@ namespace Game.Board
                     BoardCells.Add(new Vector2(row, column), cell);
 
                     cell.GetComponent<BoardCell>().UpdateCell(fullstate, row, column);
-
-
-                    // if (fullstate.Board[(byte) row, (byte) column] == 9)
-                    // {
-                    //     cell.GetComponent<BoardCell>().Init(CellType.Obstacle, new Vector2(row, column));
-                    // }
-                    //
-                    // if (fullstate.Board[(byte) row, (byte) column] == 0)
-                    // {
-                    //     cell.GetComponent<BoardCell>().Init(CellType.Normal, new Vector2(row, column));
-                    // }
-                    // //
-                    //
-                    //
-                    // if (fullstate.Board[(byte) row, (byte) column] == 12)
-                    // {
-                    //     cell.GetComponent<BoardCell>().Init(CellType.EnemyBomb, new Vector2(row, column));
-                    // }
-                    //
-                    // if (fullstate.Board[(byte) row, (byte) column] == 11)
-                    // {
-                    //     cell.GetComponent<BoardCell>().Init(CellType.PlayerBomb, new Vector2(row, column));
-                    // }
-                }
-            }
-        }
-
-        public void UpdateCells(FullState fullstate)
-        {
-            for (var row = 0; row < fullstate.Board.GetLength(0); row++)
-            {
-                for (int column = 0; column < fullstate.Board.GetLength(1); column++)
-                {
-                    BoardCell cell = BoardCells[new Vector2(row, column)].gameObject.GetComponent<BoardCell>();
-
-                    cell.UpdateCell(fullstate, row, column);
                 }
             }
         }
@@ -161,10 +133,7 @@ namespace Game.Board
         //for player input
         void SetPlayerBomb(Vector2 pos)
         {
-            if (EngineManager.IsValidBomb(1, pos))
-            {
-                PlaceBomb(1, pos);
-            }
+            PlaceBomb(1, pos);
         }
 
         public void PlaceBomb(int player, Vector2 pos)
@@ -174,37 +143,31 @@ namespace Game.Board
                 (int) pos.x,
                 (int) pos.y
             };
-
-            EngineManager.PlaceBomb(player, position);
-            UpdateCells(EngineManager.Fullstate);
-        }
-
-
-        public void HighlightBombCell(int player, Vector2 pos)
-        {
             BoardCell selectedCell = BoardCells[pos].gameObject.GetComponent<BoardCell>();
-            /// selectedCell.Init(CellType.Bomb, pos);
+
 
             switch (player)
             {
                 case 1:
-                    player1BombCells.Add(selectedCell);
-                    // selectedCell.HighLight(GetCurrentPlayerColor(1));
+                    if (player1BombCells.Count != 3)
+                    {
+                        player1BombCells.Add(selectedCell);
+                        selectedCell.SetCellType(CellType.PlayerBomb, pos);
+                    }
 
                     break;
+
                 case 2:
-                    player2BombCells.Add(selectedCell);
-                    // selectedCell.HighLight(GetCurrentPlayerColor(2));
+                    if (player2BombCells.Count != 3)
+                    {
+                        player2BombCells.Add(selectedCell);
+                        selectedCell.SetCellType(CellType.EnemyBomb, pos);
+                    }
+
                     break;
             }
 
-
-            //only highlight player ones
-        }
-
-        public bool AllBombsPlaced()
-        {
-            return player1BombCells.Count == 3;
+            EngineManager.PlaceBomb(player, position);
         }
 
 
@@ -264,12 +227,44 @@ namespace Game.Board
 
             foreach (var cell in selection)
             {
-                BoardCell selectedCell = BoardCells[new Vector2(cell[0], cell[1])].gameObject
-                    .GetComponent<BoardCell>();
+                BoardCell selectedCell = BoardCells[new Vector2(cell[0], cell[1])].gameObject.GetComponent<BoardCell>();
 
                 highlightedCells.Add(selectedCell);
                 selectedCell.HighLight(GetCurrentPlayerColor(currentPlayer));
             }
+
+            //Sets the target cell to move to Can be better
+            foreach (var cell in selection)
+            {
+                BoardCell selectedCell = BoardCells[new Vector2(cell[0], cell[1])].gameObject.GetComponent<BoardCell>();
+
+                foreach (var bomb in player1BombCells)
+                {
+                    if (selectedCell == bomb)
+                    {
+                        targetCell = bomb;
+                        shouldExplode = true;
+                        return;
+                    }
+                }
+
+                targetCell = highlightedCells.Last().gameObject.GetComponent<BoardCell>();
+                shouldExplode = false;
+
+                foreach (var bomb in player2BombCells)
+                {
+                    if (selectedCell == bomb)
+                    {
+                        targetCell = bomb;
+                        shouldExplode = true;
+                        return;
+                    }
+
+                    targetCell = highlightedCells.Last().gameObject.GetComponent<BoardCell>();
+                    shouldExplode = false;
+                }
+            }
+
 
             indicatorSlider.handleRect.GetComponent<Image>().color = GetCurrentPlayerColor(currentPlayer);
         }
@@ -284,6 +279,7 @@ namespace Game.Board
                 }
 
                 highlightedCells.Clear();
+                targetCell = null;
             }
         }
 
@@ -310,23 +306,25 @@ namespace Game.Board
             indicatorSlider.gameObject.SetActive(toggle);
         }
 
-        public void PlayIntro()
-        {
-            animator.SetTrigger("PlayIntro");
-        }
 
         public void PlayOutro()
         {
             animator.SetTrigger("PlayOutro");
         }
 
-        public bool IsPlaying()
+        public bool IntroDone()
         {
-            return animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1;
-        }
+            animator.SetTrigger("PlayIntro");
 
-        //maybe have this in skinviewer class
-        public GameObject currentToken;
+            if (animator.IsInTransition(0))
+            {
+                return false;
+            }
+
+
+            return animator.GetCurrentAnimatorStateInfo(0).IsTag("Intro") &&
+                   animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1;
+        }
 
 
         public void SpawnSkin(GameObject currentPlayerSkin)
@@ -337,58 +335,89 @@ namespace Game.Board
             currentToken.transform.localScale = new Vector3(cellSize, cellSize, cellSize);
         }
 
-        public bool AnimateToken(Vector3 targetPos)
+
+        //return the board cell
+        // public BoardCell GetTokenDestination()
+        // {
+        //     var bombCell = new Vector2();
+        //     
+        //
+        //
+        //     if (targetCell == highlightedCells.Last().gameObject.GetComponent<BoardCell>())
+        //     {
+        //         print("NoBomb");
+        //         shouldExplode = false;
+        //       //  return highlightedCells.Last().gameObject.GetComponent<BoardCell>();
+        //     }
+        //     else
+        //     {
+        //         print("BombInLane");
+        //         shouldExplode = true;
+        //       //  return BoardCells[new Vector2(targetCell.transform.position.x, targetCell.transform.position.y)].gameObject.GetComponent<BoardCell>();
+        //     }
+        // }
+
+        //pass this the cell and get the pos
+        public bool AnimateToken()
         {
-    
+            //  currentToken.transform.position = targetPos;
 
+            // if ()
+            // {
+            //     //move to end
+            //     shouldExplode = false;
+            // }
+            // else
+            // {
+            //     //move to target // target is assigned in highlight
+            //     shouldExplode = true;
+            // }
 
-            while (currentToken.transform.position != targetPos)
+            while (currentToken.transform.position != targetCell.transform.position)
             {
                 currentToken.transform.position =
-                    Vector3.MoveTowards(currentToken.transform.position, targetPos, 12 * Time.deltaTime);
-
-                print("True");
+                    Vector3.MoveTowards(currentToken.transform.position, targetCell.transform.position,
+                        6 * Time.deltaTime);
                 return true;
             }
 
-          
-          
-            currentToken = null;
-            print("False");
+            if (shouldExplode)
+            {
+                StartCoroutine(ExplodeBomb(targetCell));
+            }
+
+            // currentToken = null;
             return false;
-
-            //if there is a bomb, move to it
-            //else move to last cell
         }
 
-        public Vector3 GetTargetPos()
+        IEnumerator ExplodeBomb(BoardCell targetCell)
         {
-            EngineManager.MakeMove(selectedSide, selectedRow);
-            var bombCell = EngineManager.CheckForBombs();
+            yield return new WaitForSeconds(1);
+            Destroy(currentToken);
 
-            var targetPos = new Vector3();
-
-            if (bombCell.x == 255.0)
-            {
-                print("NoBomb");
-                return highlightedCells.Last().gameObject.transform.position;
-            }
-            else
-            {
-                print("BombInLane");
-                return BoardCells[new Vector2(bombCell.x, bombCell.y)].gameObject.transform.position;
-            }
+            targetCell.SetCellType(CellType.Normal, new Vector2(0, 0));
+            RemoveBomb(targetCell);
+            yield return null;
         }
 
-        // IEnumerator MoveToCell(Vector3 cellPos)
-        // {
-        //     while (currentToken.transform.position != cellPos)
-        //     {
-        //         currentToken.transform.position =
-        //             Vector3.MoveTowards(currentToken.transform.position, cellPos, 12 * Time.deltaTime);
-        //
-        //         yield return null;
-        //     }
-        // }
+        void RemoveBomb(BoardCell bombCell)
+        {
+            foreach (var bomb in player1BombCells)
+            {
+                if (bombCell == bomb)
+                {
+                    player1BombCells.Remove(bomb);
+                }
+            }
+
+
+            foreach (var bomb in player2BombCells)
+            {
+                if (bombCell == bomb)
+                {
+                    player2BombCells.Remove(bomb);
+                }
+            }
+        }
     }
 }

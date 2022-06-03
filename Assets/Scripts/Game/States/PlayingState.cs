@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using _StateMachine;
 using Ajuna.GenericGameEngine.Enums;
+using Game.Board;
 using Game.Engine;
 using Game.InGame;
 using GameEngine.GravityDot;
@@ -27,13 +28,12 @@ namespace Game.States
         {
             StateUI.ShowUI();
             StateUI.inputUI.SetActive(false);
-            StateMachine.gameBoard.PlayIntro();
 
 
             StateUI.turnBtn.onClick.AddListener(TurnClicked);
             StartNextTurn(EngineManager.Fullstate.CurrentPlayer);
 
-            //state enter and exit would have to be IEnum to wait for anim to play first??
+            //state enter and exit would have to be IEnum or bool after its done to wait for anim to play first??
         }
 
         public override void Action()
@@ -56,22 +56,16 @@ namespace Game.States
             StateMachine.gameBoard.PlayOutro();
         }
 
-        //should this be in the board?
-
 
         GameObject GetCurrentPlayerSkin(int currentPlayer)
         {
             switch (currentPlayer)
             {
                 case 1:
-
                     return StateMachine.player1Token.tokenPrefab;
-
-
                 case 2:
                     return StateMachine.player2Token.tokenPrefab;
             }
-
             return null;
         }
 
@@ -103,12 +97,12 @@ namespace Game.States
 
                 await Task.Delay(TimeSpan.FromSeconds(2));
 
-                StartTurn(currentPlayer);
+                StartTurn();
             }
         }
 
 
-        void StartTurn(int currentPlayer)
+        void StartTurn()
         {
             StateUI.ShowUI();
             StateUI.inputUI.SetActive(true);
@@ -133,34 +127,25 @@ namespace Game.States
 
             StateUI.timer.StopTimer();
 
-
             WaitForTokenAnim();
         }
 
 //should be on gameboard?
         async void WaitForTokenAnim()
         {
-            
-            
-            
-            
-            //move this to game board
-          
-            //gets the bomb pos to sync token movement and detonation
-          
+            while (StateMachine.gameBoard.AnimateToken())
+            {
+                await Task.Yield();
+            }
 
-            // while (StateMachine.gameBoard.AnimateToken())
-            // {
-            //     await Task.Yield();
-            // }
-
+            EngineManager.MakeMove(StateMachine.gameBoard.selectedSide, StateMachine.gameBoard.selectedRow);
 
             StateMachine.gameBoard.ToggleIndicator(false);
             StateMachine.gameBoard.ClearHighlight();
 
-
             await Task.Delay(TimeSpan.FromSeconds(2));
 
+            StateMachine.gameBoard.currentToken = null;
             StartNextTurn(EngineManager.Fullstate.CurrentPlayer);
         }
 
