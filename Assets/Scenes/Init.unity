@@ -3293,6 +3293,7 @@ GameObject:
   - component: {fileID: 1574032684}
   - component: {fileID: 1574032685}
   - component: {fileID: 1574032686}
+  - component: {fileID: 1574032687}
   m_Layer: 0
   m_Name: InitManager
   m_TagString: Untagged
@@ -3341,6 +3342,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1858227e9270d404d9b1781e52fe8577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1574032687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574032683}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e142e483c3006514da4a7c9fa1f71667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _websocketUrl: wss://mogiway-01.dotmog.com
 --- !u!1 &1592751883
 GameObject:
   m_ObjectHideFlags: 0

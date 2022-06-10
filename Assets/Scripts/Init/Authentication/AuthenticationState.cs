@@ -45,7 +45,7 @@ namespace Init.Authentication
             StateUI.ShowUI();
 
             StateUI.CreateWallet();
-          //  StateUI.AttemptLogin();
+            StateUI.AttemptLogin();
         }
 
 

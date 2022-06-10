@@ -185,8 +185,6 @@ namespace Game.Board
 
                 EngineManager.PlaceBomb(player, position);
             }
-
-          
         }
 
 
@@ -332,8 +330,10 @@ namespace Game.Board
             {
                 print("Bomb In Row");
                 shouldExplode = true;
-                targetCell = BoardCells[new Vector2(EngineManager.Fullstate.GroundZero[0], EngineManager.Fullstate.GroundZero[1])].gameObject.GetComponent<BoardCell>();
-                
+                targetCell =
+                    BoardCells[
+                            new Vector2(EngineManager.Fullstate.GroundZero[0], EngineManager.Fullstate.GroundZero[1])]
+                        .gameObject.GetComponent<BoardCell>();
             }
             else
             {
@@ -344,21 +344,16 @@ namespace Game.Board
             tokenCells.Add(new Vector2(targetCell.cellPos.x, targetCell.cellPos.y), currentToken);
         }
 
-        // BoardCell GetBoardCell(Vector2 cellPos)
-        // {
-        //     return BoardCells[cellPos].gameObject.GetComponent<BoardCell>();
-        // }
-
-        //pass this the cell and get the pos
+      
         public async Task AnimateToken()
         {
             await MoveToken();
-            
+
             ClearHighlight();
+            ToggleIndicator(false);
 
             if (shouldExplode)
             {
-             
                 await ExplodeBomb(targetCell);
             }
 
@@ -386,40 +381,38 @@ namespace Game.Board
             {
                 for (int y = (int) targetCell.cellPos.y - 1; y <= targetCell.cellPos.y + 1; y++)
                 {
-                    if (x == (int) targetCell.cellPos.x && y == (int) targetCell.cellPos.y)
-                        continue;
+                    // if (x == (int) targetCell.cellPos.x && y == (int) targetCell.cellPos.y)
+                    //     continue;
 
 
-                  
-                    if (BoardCells.ContainsKey(new Vector2(x,y)))
+                    if (BoardCells.ContainsKey(new Vector2(x, y)))
                     {
-                        explosionCells.Add(BoardCells[new Vector2(x,y)].gameObject.GetComponent<BoardCell>());
+                        explosionCells.Add(BoardCells[new Vector2(x, y)].gameObject.GetComponent<BoardCell>());
                     }
                 }
             }
 
             await FlashCells(explosionCells, 0.15f, 3);
 
-           
-//should remove surrounding bombs aswell
-           //for each cell in bombs, see if that cell has a token and destroy it 
-           foreach (var cell in explosionCells)
-           {
-               if (tokenCells.ContainsKey(new Vector2(cell.cellPos.x, cell.cellPos.y)))
-               {
-                   Destroy(tokenCells[new Vector2(cell.cellPos.x, cell.cellPos.y)].gameObject);
-                   tokenCells.Remove(new Vector2(cell.cellPos.x, cell.cellPos.y));
-               }
-           }
-            
-           
-           explosionCells.Clear();
-           Destroy(currentToken);
+            //it doesnt remove the placed token 
+            //maybe flash tokens aswell
 
+            foreach (var cell in explosionCells)
+            {
+                if (tokenCells.ContainsKey(new Vector2(cell.cellPos.x, cell.cellPos.y)))
+                {
+                    Destroy(tokenCells[new Vector2(cell.cellPos.x, cell.cellPos.y)].gameObject);
+                    tokenCells.Remove(new Vector2(cell.cellPos.x, cell.cellPos.y));
+                }
+            }
+
+
+            explosionCells.Clear();
+           // Destroy(currentToken);
         }
 
 
-        async Task FlashCells(List<BoardCell> explosionCells, float speed, int flashes )
+        async Task FlashCells(List<BoardCell> explosionCells, float speed, int flashes)
         {
             for (int i = 0; i < flashes; i++)
             {

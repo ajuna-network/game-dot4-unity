@@ -146,7 +146,7 @@ namespace Game.States
 
           //do a waitfor bombs if there are
 
-            StateMachine.gameBoard.ToggleIndicator(false);
+           
            
 
             await Task.Delay(TimeSpan.FromSeconds(2));

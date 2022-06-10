@@ -17,8 +17,9 @@ namespace Game.States
             StateUI.ShowUI();
             StateUI.nextBtn.onClick.AddListener(NextClicked);
             
-            StateUI.SetResultText(EngineManager.Fullstate.GameState);
+            StateUI.SetResultHeader(EngineManager.Fullstate.GameState);
             //set ui text based on timeout or finished
+            StateUI.GetScore();
         }
 
         void NextClicked()
