@@ -1,9 +1,11 @@
 using SubstrateNetWallet;
 using System.IO;
 using UnityEngine;
+
 public class CachingController : MonoBehaviour
 {
     private string _persistentPath;
+
     void Awake()
     {
         _persistentPath = Application.persistentDataPath;
@@ -12,6 +14,7 @@ public class CachingController : MonoBehaviour
         SystemInteraction.PersistentExists = f => File.Exists(Path.Combine(_persistentPath, f));
         SystemInteraction.ReadPersistent = f => File.ReadAllText(Path.Combine(_persistentPath, f));
         SystemInteraction.Persist = (f, c) => File.WriteAllText(Path.Combine(_persistentPath, f), c);
+
         Debug.Log(_persistentPath);
     }
 }

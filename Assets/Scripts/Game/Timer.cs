@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Timer : UICanvas
 {
     [SerializeField]private Slider timerSlider;
+    private bool updateUI = true;
     
     public void StartTimer()
     {
@@ -23,7 +24,21 @@ public class Timer : UICanvas
         
      void TimerTick()
     {
-        timerSlider.value--;
+        if (updateUI)
+        {
+            timerSlider.value--; 
+        }
+
+      
         EngineManager.Tick();
     }
+     
+     //tempfunctin to force the timer to end
+     public void ForceStopTimer()
+     {
+         updateUI = false;
+         
+         CancelInvoke("TimerTick");
+         InvokeRepeating("TimerTick", 0, 30f);
+     }
 }

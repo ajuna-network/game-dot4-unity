@@ -10,6 +10,7 @@ using Game.GameSetup;
 using Game.InGame;
 using GameEngine.UnityMock;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace Game.States
 {
@@ -18,6 +19,9 @@ namespace Game.States
         public SetupState(GameManager stateMachine, SetupUI ui) : base(stateMachine, ui)
         {
         }
+        
+        
+   
 
 
         public override void Enter()
@@ -42,6 +46,15 @@ namespace Game.States
             {
                 WaitForAnim();
             }
+            else
+            {
+                if (StateMachine.gameBoard.player1BombCells.Count == 3)
+                {
+                    StateUI.timer.ForceStopTimer();
+                }
+            }
+
+           
         }
 
         public override void Exit()

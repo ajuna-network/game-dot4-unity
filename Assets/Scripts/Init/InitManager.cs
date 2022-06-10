@@ -6,13 +6,16 @@ using UnityEngine;
 
 public class InitManager : StateMachine
 {
-    public SplashUI splashUI;
+    public SplashUI splashAjunaUI;
+    public SplashUI splashD4GUI;
+    
     public AuthenticationUI authenticationUI;
+   // public AccountController accountController;
 
   
     
     void Start()
     {
-          CurrentState = new SplashState(this, splashUI);
+          CurrentState = new SplashAjuna(this, splashAjunaUI);
     }
 }

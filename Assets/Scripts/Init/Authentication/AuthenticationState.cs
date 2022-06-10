@@ -1,7 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using _StateMachine;
-using DOTMogCore.Manager;
-using SubstrateNetWallet;
+using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.SceneManagement;
 
 
@@ -14,137 +15,73 @@ namespace Init.Authentication
         }
 
         // private string _accountAddress;
-        private string _walletName = "dev_wallet";
-        private string _websocketUrl = "wss://mogiway-01.dotmog.com";
+      
+      //  private string _websocketUrl = "wss://mogiway-01.dotmog.com";
 
 
-        private Task _loginTask;
-        public AccountManager AccountManager { get; private set; }
-        private Wallet Wallet { get; set; }
+      
+      //  public AccountManager AccountManager { get; private set; }
+      //  private Wallet Wallet { get; set; }
 
 
         public override void Enter()
         {
+          
+             
+            
             StateUI.createBtn.gameObject.SetActive(false);
             StateUI.decryptBtn.gameObject.SetActive(false);
             StateUI.inputsCnt.gameObject.SetActive(false);
             StateUI.infoTxt.gameObject.SetActive(false);
 
-            StateUI.createBtn.onClick.AddListener(OnCreateClicked);
-            StateUI.decryptBtn.onClick.AddListener(OnDecryptClicked);
+          //  StateUI.createBtn.onClick.AddListener(OnCreateClicked);
+           // StateUI.decryptBtn.onClick.AddListener(OnDecryptClicked);
 
-            Wallet = new Wallet();
-            AccountManager = new AccountManager(Wallet);
+          //  Wallet = new Wallet();
+          //  AccountManager = new AccountManager(Wallet);
 
-            _loginTask = AttemptLogin();
+           
 
             StateUI.ShowUI();
+
+            StateUI.CreateWallet();
+          //  StateUI.AttemptLogin();
         }
 
 
         public override void Exit()
         {
-            StateUI.createBtn.onClick.RemoveListener(OnCreateClicked);
-            StateUI.decryptBtn.onClick.RemoveListener(OnDecryptClicked);
+          //  StateUI.createBtn.onClick.RemoveListener(OnCreateClicked);
+          //  StateUI.decryptBtn.onClick.RemoveListener(OnDecryptClicked);
 
             StateUI.HideUI();
         }
 
-        public async void OnCreateClicked()
-        {
-            var password = StateUI.passwordInput.text;
-
-          //  
+ 
 
 
-            if (!Wallet.IsValidPassword(password))
-            {
-                StateUI.infoTxt.gameObject.SetActive(true);
-                StateUI.infoTxt.text = "Not a Valid Password";
-                return;
-            }
 
-            if (!await Wallet.CreateAsync(password, _walletName))
-            {
-                StateUI.infoTxt.gameObject.SetActive(true);
-                StateUI.infoTxt.text = "Failed To Create New Account";
-            }
-
-
-          //  StateUI.infoTxt.text = "New Account Created";
-            _loginTask = AttemptLogin();
-        }
-
-        async void OnDecryptClicked()
-        {
-            var password = StateUI.passwordInput.text;
-
-            if (!await Wallet.UnlockAsync(password))
-            {
-                StateUI.infoTxt.gameObject.SetActive(true);
-                StateUI.infoTxt.text = "Invalid Password";
-                return;
-            }
-          
-
-            _loginTask = AttemptLogin();
-        }
+    
 
 
         #region AccountController
 
-        async Task AttemptLogin()
-        {
-            //Connect
-            if (!Wallet.IsConnected)
-            {
-                StateUI.statusTxt.text = "Connecting...";
+        //add a red/green dot to indicate connecteion
+        //do a IsConnected in update
 
-                await Wallet.StartAsync(_websocketUrl);
-
-               // StateUI.statusTxt.text = "Connected";
-            }
-
-            //Load Wallet
-            if (!Wallet.Load(_walletName))
-            {
-                StateUI.statusTxt.text = "Please Create a New Wallet";
-                StateUI.createBtn.gameObject.SetActive(true);
-                StateUI.inputsCnt.gameObject.SetActive(true);
-                return;
-            }
-
-          
-
-            //Unlock Wallet
-            if (!Wallet.IsUnlocked)
-            {
-                //show decrypt  
-                StateUI.statusTxt.text = "Please Enter Your Password";
-                StateUI.createBtn.gameObject.SetActive(false);
-                StateUI.inputsCnt.gameObject.SetActive(true);
-                StateUI.decryptBtn.gameObject.SetActive(true);
-                return;
-            }
-
-            _loginTask = null;
-            //goto next state
-            SceneManager.LoadScene("MainMenu");
-           
-        }
 
         
         
 
-        async Task DisconnectWallet()
-        {
-            await Wallet.StopAsync();
-        }
-
-        void OnApplicationQuit()
-        {
-            _ = DisconnectWallet();
-        }
+        // async Task DisconnectWallet()
+        // {
+        //     await AccountController.Instance.Wallet.StopAsync();
+        // }
+        //
+        // void OnApplicationQuit()
+        // {
+        //     _ = DisconnectWallet();
+        // }
 
         #endregion
     }

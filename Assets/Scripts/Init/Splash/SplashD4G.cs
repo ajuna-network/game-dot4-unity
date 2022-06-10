@@ -3,9 +3,9 @@ using Init.Authentication;
 
 namespace Init.Splash
 {
-    public class SplashState : State<InitManager, SplashUI>
+    public class SplashD4G : State<InitManager, SplashUI>
     {
-        public SplashState(InitManager stateMachine, SplashUI ui) : base(stateMachine, ui)
+        public SplashD4G(InitManager stateMachine, SplashUI ui) : base(stateMachine, ui)
         {
         }
 

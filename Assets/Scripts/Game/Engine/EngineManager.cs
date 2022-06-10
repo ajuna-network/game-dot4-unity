@@ -41,7 +41,7 @@ namespace Game.Engine
         {
             Fullstate = gameEngine.FullState(currentGameID);
 
-            OnRefresh?.Invoke(Fullstate);
+            OnRefresh?.Invoke(gameEngine.FullState(currentGameID));
         }
 
         public static void Tick()
@@ -53,6 +53,7 @@ namespace Game.Engine
 
         #region SelectionPlacement
 
+        //should be GetSelection
         public static List<int[]> UpdateSelection(Side side, float row)
         {
             return MockLogic.GetRay(gameEngine.FullState(currentGameID).Board, side, (int) row,

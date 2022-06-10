@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Threading.Tasks;
+using Game.Engine;
 using GameEngine.UnityMock;
 using TMPro;
 using UnityEngine;
@@ -11,7 +14,9 @@ namespace Game.Board
         Normal,
         Obstacle,
         PlayerBomb,
-        EnemyBomb
+        EnemyBomb,
+        PlayerToken,
+        EnemyToken
     }
 
     public class BoardCell : MonoBehaviour
@@ -28,16 +33,33 @@ namespace Game.Board
         private Material[] materials;
 
         public Vector2 cellPos;
+        public CellType cellType;
 
         public static event Action<Vector2> OnCellSelected;
 
         private void Awake()
         {
             toggle.onClick.AddListener(Selected);
+          
         }
-        
+
+
+
+
+
         public void UpdateCell(FullState fullstate, int row, int column)
         {
+
+            if (fullstate.Board[(byte) row, (byte) column] == 1)
+            {
+                SetCellType(CellType.PlayerToken, new Vector2(row, column));
+            }
+            if (fullstate.Board[(byte) row, (byte) column] == 2)
+            {
+                SetCellType(CellType.EnemyToken, new Vector2(row, column));
+            }
+            
+            
             if (fullstate.Board[(byte) row, (byte) column] == 9)
             {
                 SetCellType(CellType.Obstacle, new Vector2(row, column));
@@ -64,34 +86,47 @@ namespace Game.Board
         {
             cellPos = pos;
             gridTxt.text = pos.ToString();
+            this.cellType = cellType;
 
             switch (cellType)
             {
                 case CellType.Normal:
                     spriteRenderer.enabled = true;
-                    bombSprite.enabled = false;
-                    spriteRenderer.color = defaultColor;
+                  //  bombSprite.enabled = false;
+                  //  spriteRenderer.color = defaultColor;
                     // idTxt.enabled = false;
                     idTxt.text = "o";
                     idTxt.color = Color.white;
                     break;
                 case CellType.Obstacle:
                     spriteRenderer.enabled = false;
-                    bombSprite.enabled = false;
+                   // bombSprite.enabled = false;
                     idTxt.enabled = false;
                     gridTxt.enabled = false;
                     idTxt.text = "0";
                     break;
                 case CellType.PlayerBomb:
-                    bombSprite.enabled = true;
+                    //bombSprite.enabled = true;
                     // idTxt.enabled = true;
                     idTxt.text = "B1";
                     idTxt.color = Color.blue;
                     break;
                 case CellType.EnemyBomb:
-                    bombSprite.enabled = true;
+                   // bombSprite.enabled = true;
                     // idTxt.enabled = true;
                     idTxt.text = "B2";
+                    idTxt.color = Color.red;
+                    break;
+                case CellType.PlayerToken:
+                   // bombSprite.enabled = false;
+                    // idTxt.enabled = true;
+                    idTxt.text = "P1";
+                    idTxt.color = Color.blue;
+                    break;
+                case CellType.EnemyToken:
+                   // bombSprite.enabled = false;
+                    // idTxt.enabled = true;
+                    idTxt.text = "P2";
                     idTxt.color = Color.red;
                     break;
             }
@@ -111,6 +146,15 @@ namespace Game.Board
         void Selected()
         {
             OnCellSelected?.Invoke(cellPos);
+        }
+
+        public void TurnColor(Color color)
+        {
+            spriteRenderer.color = color;
+        }
+        public void TurnDefaultColor( )
+        {
+            spriteRenderer.color = defaultColor;
         }
     }
 }

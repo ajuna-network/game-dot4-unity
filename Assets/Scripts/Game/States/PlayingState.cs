@@ -105,6 +105,7 @@ namespace Game.States
         void StartTurn()
         {
             StateUI.ShowUI();
+            StateMachine.gameBoard.currentToken = null;
             StateUI.inputUI.SetActive(true);
             // StateUI.SetGameText("Player" + currentPlayer + " Make your move");
             StateUI.SetGameText("Make your move");
@@ -127,25 +128,30 @@ namespace Game.States
 
             StateUI.timer.StopTimer();
 
+            StateMachine.gameBoard.MakeMove();
+            
             WaitForTokenAnim();
         }
 
 //should be on gameboard?
         async void WaitForTokenAnim()
         {
-            while (StateMachine.gameBoard.AnimateToken())
-            {
-                await Task.Yield();
-            }
+           // 
+            
+            await StateMachine.gameBoard.AnimateToken();
+            
+            Debug.Log("animDone");
+           // StateMachine.gameBoard.ClearHighlight();
+           
 
-            EngineManager.MakeMove(StateMachine.gameBoard.selectedSide, StateMachine.gameBoard.selectedRow);
+          //do a waitfor bombs if there are
 
             StateMachine.gameBoard.ToggleIndicator(false);
-            StateMachine.gameBoard.ClearHighlight();
+           
 
             await Task.Delay(TimeSpan.FromSeconds(2));
 
-            StateMachine.gameBoard.currentToken = null;
+           // 
             StartNextTurn(EngineManager.Fullstate.CurrentPlayer);
         }
 
