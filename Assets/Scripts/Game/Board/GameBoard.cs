@@ -170,6 +170,7 @@ namespace Game.Board
                         if (player1BombCells.Count != 3)
                         {
                             player1BombCells.Add(selectedCell);
+                            selectedCell.SetCellType(CellType.PlayerBomb,pos);
                         }
 
                         break;

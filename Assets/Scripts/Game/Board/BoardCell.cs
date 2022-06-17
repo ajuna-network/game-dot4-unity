@@ -92,7 +92,7 @@ namespace Game.Board
             {
                 case CellType.Normal:
                     spriteRenderer.enabled = true;
-                  //  bombSprite.enabled = false;
+                    bombSprite.enabled = false;
                   //  spriteRenderer.color = defaultColor;
                     // idTxt.enabled = false;
                     idTxt.text = "o";
@@ -106,7 +106,7 @@ namespace Game.Board
                     idTxt.text = "0";
                     break;
                 case CellType.PlayerBomb:
-                    //bombSprite.enabled = true;
+                    bombSprite.enabled = true;
                     // idTxt.enabled = true;
                     idTxt.text = "B1";
                     idTxt.color = Color.blue;

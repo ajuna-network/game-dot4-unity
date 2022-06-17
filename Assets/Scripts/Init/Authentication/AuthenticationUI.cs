@@ -79,7 +79,7 @@ namespace Init.Authentication
             //Load Wallet
             if (!wallet.Load(_walletName))
             {
-                statusTxt.text = "Please Create a New Wallet";
+                statusTxt.text = "Create a New Wallet";
                 createBtn.gameObject.SetActive(true);
                 inputsCnt.gameObject.SetActive(true);
                 return;
@@ -90,7 +90,7 @@ namespace Init.Authentication
             if (!wallet.IsUnlocked)
             {
                 //show decrypt  
-                statusTxt.text = "Please Enter Your Password";
+                statusTxt.text = "Enter Your Password";
                 createBtn.gameObject.SetActive(false);
                 inputsCnt.gameObject.SetActive(true);
                 decryptBtn.gameObject.SetActive(true);

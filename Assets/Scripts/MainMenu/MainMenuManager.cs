@@ -21,6 +21,7 @@ namespace MainMenu
         public LeaderBoardUI leaderBoardUI;
         public SetupUI setupUI;
         public SearchingUI searchingUI;
+        public GameObject SceneUI;
 
         public GameSettings gameSettings;
     

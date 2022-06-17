@@ -13,6 +13,7 @@ namespace MainMenu.Leaderboard
         public override void Enter()
         {
             StateUI.ShowUI();
+            StateMachine.SceneUI.SetActive(false);
 
             StateUI.backBtn.onClick.AddListener(BackClicked);
         }

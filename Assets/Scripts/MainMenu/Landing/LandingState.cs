@@ -20,6 +20,7 @@ namespace MainMenu.Landing
         public override void Enter()
         {
             StateUI.ShowUI();
+            StateMachine.SceneUI.SetActive(true);
             
             StateUI.playBtn.onClick.AddListener(PlayClicked);
             StateUI.leaderboardbtn.onClick.AddListener(LeaderboardClicked);

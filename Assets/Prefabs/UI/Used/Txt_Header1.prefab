@@ -67,15 +67,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Wallet Login
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 18a2ea6ecb13b8e40adcb11e358f71e5, type: 2}
-  m_sharedMaterial: {fileID: -7639110455786925498, guid: 18a2ea6ecb13b8e40adcb11e358f71e5, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3f18414babe7ffc4ca9429b8797429ff, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: d605966d2bfe7034fb1540d3ca8b417b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4278255360
-  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 46
+  m_fontSize: 20
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
