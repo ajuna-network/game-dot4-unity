@@ -149,7 +149,17 @@ namespace Game.Board
         //for player input
         void SetPlayerBomb(Vector2 pos)
         {
-            PlaceBomb(1, pos);
+            //TODO validation check is done below aswell, not removing the bottom one now to avoid breaking the AI, but should be tested and removed
+            if (EngineManager.IsValidBomb(1, pos))
+            {
+
+                PlaceBomb(1, pos);
+                AudioManager.Instance.PlaySound(Sound.ValidMove);
+            }
+            else
+            {
+                AudioManager.Instance.PlaySound(Sound.InvalidMove);
+            }
         }
 
         public void PlaceBomb(int player, Vector2 pos)
@@ -171,6 +181,7 @@ namespace Game.Board
                         {
                             player1BombCells.Add(selectedCell);
                             selectedCell.SetCellType(CellType.PlayerBomb,pos);
+                            //add bomplace shound here instead;
                         }
 
                         break;
@@ -183,9 +194,10 @@ namespace Game.Board
 
                         break;
                 }
-
+              
                 EngineManager.PlaceBomb(player, position);
             }
+
         }
 
 
@@ -323,7 +335,7 @@ namespace Game.Board
         public void MakeMove()
         {
             EngineManager.MakeMove(selectedSide, selectedRow);
-
+           
 
             // here i can get the target pos
 
@@ -407,7 +419,7 @@ namespace Game.Board
                 }
             }
 
-
+            AudioManager.Instance.PlaySound(Sound.Detonate);
             explosionCells.Clear();
            // Destroy(currentToken);
         }
@@ -418,6 +430,8 @@ namespace Game.Board
             for (int i = 0; i < flashes; i++)
             {
                 await Task.Delay(TimeSpan.FromSeconds(speed));
+                
+                AudioManager.Instance.PlaySound(Sound.BombBeep);
 
                 foreach (var cell in explosionCells)
                 {

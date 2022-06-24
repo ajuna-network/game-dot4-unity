@@ -13,7 +13,7 @@ namespace MainMenu.Leaderboard.UI
 
         private void OnEnable()
         {
-            SpawnUIEntries(Leaderboard.LeaderboardEntries);
+          //  SpawnUIEntries(Leaderboard.LeaderboardEntries);
         }
     
         private void OnDisable()

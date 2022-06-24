@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1617133620610545866}
   - component: {fileID: 6853313239445711423}
   - component: {fileID: 2811655797780543878}
+  - component: {fileID: 5869723217200031329}
   m_Layer: 5
   m_Name: Slider_SideSelection
   m_TagString: Untagged
@@ -105,6 +106,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5869723217200031329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832540354636199143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5366a38a8aa76d34fb076d5898a355dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
 --- !u!1 &4520806165445434676
 GameObject:
   m_ObjectHideFlags: 0

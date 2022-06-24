@@ -978,6 +978,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 67367c6959c41ba469164dfa495bb74b, type: 3}
     - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9785366
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
       objectReference: {fileID: 0}
@@ -1256,6 +1264,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e362fce3164098b49beddc1edf71a311, type: 3}
+    - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9785366
+      objectReference: {fileID: 0}
     - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
@@ -2987,6 +3003,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 87068d839fa900d4a859c74b5558d5c8, type: 3}
+    - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9785366
+      objectReference: {fileID: 0}
     - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_PreserveAspect
       value: 1
@@ -5042,7 +5066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6186930604211800938, guid: 209253339db84ea4bb91b948f1d10fe9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 26.251665
+      value: 26.251663
       objectReference: {fileID: 0}
     - target: {fileID: 6186930604211800938, guid: 209253339db84ea4bb91b948f1d10fe9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5167,6 +5191,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8796355760507810849, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
   m_PrefabInstance: {fileID: 1852727545}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &662801416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662801415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90d1aa0fb09a7e4681e0a17b1231d93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &662801420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6361,7 +6397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Content: {fileID: 996378908}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -6869,7 +6905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 206.89655
+      value: 206.9461
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7054,6 +7090,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &842695163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842695161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a90d1aa0fb09a7e4681e0a17b1231d93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &842695167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15412,7 +15460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 206.89655
+      value: 206.9461
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -15851,7 +15899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 206.89655
+      value: 206.9461
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -16156,7 +16204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 206.89655
+      value: 206.9461
       objectReference: {fileID: 0}
     - target: {fileID: 8796355760507810850, guid: d56cca73d72c0de42b9c01f37e2e75ee, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -17362,6 +17410,14 @@ PrefabInstance:
     - target: {fileID: 213019389798908341, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_Name
       value: Btn_Discord
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9785366
       objectReference: {fileID: 0}
     - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_PreserveAspect

@@ -97,7 +97,7 @@ namespace Init.Authentication
                 return;
             }
 
-
+            
             //goto next state
             SceneManager.LoadScene("MainMenu");
         }
@@ -111,6 +111,7 @@ namespace Init.Authentication
             {
                 infoTxt.gameObject.SetActive(true);
                 infoTxt.text = "Not a Valid Password";
+                AudioManager.Instance.PlaySound(Sound.InvalidMove);
                 return;
             }
 
@@ -118,6 +119,8 @@ namespace Init.Authentication
             {
                 infoTxt.gameObject.SetActive(true);
                 infoTxt.text = "Failed To Create New Account";
+                AudioManager.Instance.PlaySound(Sound.InvalidMove);
+              
             }
 
 
@@ -133,6 +136,7 @@ namespace Init.Authentication
             {
                 infoTxt.gameObject.SetActive(true);
                 infoTxt.text = "Invalid Password";
+                AudioManager.Instance.PlaySound(Sound.InvalidMove);
                 return;
             }
 

@@ -66,20 +66,23 @@ namespace Game.States
                 case 2:
                     return StateMachine.player2Token.tokenPrefab;
             }
+
             return null;
         }
 
 
         void TurnClicked()
         {
+            //TODO this validation check should be on the board
             if (EngineManager.IsValidMove(StateMachine.gameBoard.selectedSide, StateMachine.gameBoard.selectedRow))
             {
                 TakeTurn(EngineManager.Fullstate.CurrentPlayer);
+                AudioManager.Instance.PlaySound(Sound.ValidMove);
             }
             else
             {
                 Debug.Log("Cannot Place");
-                // SoundHapticManager.instance.PlayGameAudio(GameAudio.Error);
+                AudioManager.Instance.PlaySound(Sound.InvalidMove);
             }
         }
 
@@ -129,29 +132,27 @@ namespace Game.States
             StateUI.timer.StopTimer();
 
             StateMachine.gameBoard.MakeMove();
-            
+
             WaitForTokenAnim();
         }
 
-//should be on gameboard?
+        //should be on gameboard?
         async void WaitForTokenAnim()
         {
-           // 
-            
+            // 
+
             await StateMachine.gameBoard.AnimateToken();
-            
+
             Debug.Log("animDone");
-           // StateMachine.gameBoard.ClearHighlight();
-           
+            // StateMachine.gameBoard.ClearHighlight();
 
-          //do a waitfor bombs if there are
 
-           
-           
+            //do a waitfor bombs if there are
+
 
             await Task.Delay(TimeSpan.FromSeconds(2));
 
-           // 
+            // 
             StartNextTurn(EngineManager.Fullstate.CurrentPlayer);
         }
 

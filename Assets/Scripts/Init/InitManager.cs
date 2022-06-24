@@ -17,5 +17,6 @@ public class InitManager : StateMachine
     void Start()
     {
           CurrentState = new SplashAjuna(this, splashAjunaUI);
+          AudioManager.Instance.PlayMusic();
     }
 }
