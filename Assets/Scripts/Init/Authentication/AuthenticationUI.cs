@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using NLog;
 using NLog.Config;
-using SubstrateNetWallet;
+using Ajuna.NetWallet;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,7 +21,7 @@ namespace Init.Authentication
         public RectTransform inputsCnt;
         public TMP_InputField passwordInput;
 
-        [SerializeField] private string websocketUrl = "wss://mogiway-01.dotmog.com";
+        [SerializeField] private string websocketUrl = "ws://127.0.0.1:9944";
         private string _walletName = "dev_wallet";
 
         private Wallet wallet;
