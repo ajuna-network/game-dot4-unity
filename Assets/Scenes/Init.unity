@@ -673,6 +673,7 @@ GameObject:
   - component: {fileID: 354644274}
   - component: {fileID: 354644273}
   - component: {fileID: 354644270}
+  - component: {fileID: 354644275}
   m_Layer: 0
   m_Name: Persistant
   m_TagString: Untagged
@@ -921,6 +922,23 @@ MonoBehaviour:
   ValidMove: {fileID: 8300000, guid: 93ff4f98d985a8241b0c266acb50c321, type: 3}
   Detonate: {fileID: 8300000, guid: f44f3a9caf3a4fc4e8481ae6147c552b, type: 3}
   BombBeep: {fileID: 8300000, guid: 896ae63cf8beacb48b716413e20ba111, type: 3}
+--- !u!114 &354644275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354644269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d94ecd7792a106d43ae84205917c0195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NodeUrl: ws://127.0.0.1:9944
+  workerUrl: ws://183c-84-75-48-249.ngrok.io
+  shardHex: Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi
+  mrenclaveHex: Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi
+  WalletName: dev_wallet
 --- !u!224 &492312834 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4409343867899580061, guid: 4e02bb4864ffbd34f91ed42e81c584a1, type: 3}
@@ -1157,7 +1175,6 @@ MonoBehaviour:
   createBtn: {fileID: 1894927984}
   inputsCnt: {fileID: 10893011}
   passwordInput: {fileID: 253305323}
-  websocketUrl: wss://mogiway-01.dotmog.com
 --- !u!1 &672259402
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,7 +3461,6 @@ GameObject:
   - component: {fileID: 1574032684}
   - component: {fileID: 1574032685}
   - component: {fileID: 1574032686}
-  - component: {fileID: 1574032687}
   m_Layer: 0
   m_Name: InitManager
   m_TagString: Untagged
@@ -3493,19 +3509,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1858227e9270d404d9b1781e52fe8577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1574032687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1574032683}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e142e483c3006514da4a7c9fa1f71667, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _websocketUrl: wss://mogiway-01.dotmog.com
 --- !u!1 &1592751883
 GameObject:
   m_ObjectHideFlags: 0

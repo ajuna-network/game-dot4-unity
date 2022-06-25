@@ -8,7 +8,8 @@ namespace MainMenu.Faucet.UI
         public Button telegramBtn;
         public Button twitterBtn;
         public Button ajunaBtn;
-    
+        public Button faucetBtn;
+
         public Button backBtn;
 
     }

@@ -7,6 +7,7 @@ namespace MainMenu.Faucet
 {
     public class FaucetState : State<MainMenuManager, FaucetUI>
     {
+        public NetworkManager Network => NetworkManager.Instance;
 
         public FaucetState(MainMenuManager stateMachine, FaucetUI ui) : base(stateMachine, ui)
         {
@@ -26,6 +27,7 @@ namespace MainMenu.Faucet
             StateUI.telegramBtn.onClick.AddListener(TelegramClicked);
             StateUI.twitterBtn.onClick.AddListener(TwitterClicked);
             StateUI.ajunaBtn.onClick.AddListener(AjunaClicked);
+            StateUI.faucetBtn.onClick.AddListener(FaucetClicked);
 
             StateUI.backBtn.onClick.AddListener(BackClicked);
         }
@@ -38,6 +40,7 @@ namespace MainMenu.Faucet
             StateUI.telegramBtn.onClick.RemoveListener(TelegramClicked);
             StateUI.twitterBtn.onClick.RemoveListener(TwitterClicked);
             StateUI.ajunaBtn.onClick.RemoveListener(AjunaClicked);
+            StateUI.faucetBtn.onClick.RemoveListener(FaucetClicked);
 
             StateUI.backBtn.onClick.RemoveListener(BackClicked);
         }
@@ -71,7 +74,19 @@ namespace MainMenu.Faucet
 
         void FaucetClicked()
         {
-            // todo add faucet
+            // don't do as long as there is still an ongoing transaction
+            if (Network.Dot4GClient.HasExtrinsics > 0)
+            {
+                return;
+            }
+
+            // let's leave alice alone
+            if (Network.Wallet.AccountInfo != null && Network.Wallet.AccountInfo.Data.Free.Value > 10000000)
+            {
+                return;
+            }
+
+            _ = Network.Dot4GClient.FaucetAsync();
         }
 
         #endregion
