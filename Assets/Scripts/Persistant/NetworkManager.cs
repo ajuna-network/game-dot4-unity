@@ -13,21 +13,24 @@ public class NetworkManager : MonoBehaviour
 {
     public static NetworkManager Instance;
 
-    [SerializeField] 
-    private string nodeUrl = "ws://127.0.0.1:9944";
+    [SerializeField]
+    public string nodeUrl = "ws://127.0.0.1:9944";
 
-    [SerializeField] 
+    [SerializeField]
     private string workerUrl = "ws://183c-84-75-48-249.ngrok.io";
 
-    [SerializeField] 
+    [SerializeField]
     private string shardHex = "Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi";
 
     [SerializeField]
     private string mrenclaveHex = "Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi";
 
-    public Wallet wallet;
+    [SerializeField]
+    public string walletName = "dev_wallet";
 
-    public Dot4GClient dot4gClient;
+    public Wallet Wallet;
+
+    public Dot4GClient Dot4GClient;
 
     void Awake()
     {
@@ -42,11 +45,11 @@ public class NetworkManager : MonoBehaviour
         LogManager.Configuration = config;
 
         // initializing standard ajuna wallet
-        wallet = new Wallet();
+        Wallet = new Wallet();
 
         // initializing unity interface for dot4g
-        dot4gClient = new Dot4GClient(
-            wallet,
+        Dot4GClient = new Dot4GClient(
+            Wallet,
             nodeUrl,
             shardHex,
             mrenclaveHex
