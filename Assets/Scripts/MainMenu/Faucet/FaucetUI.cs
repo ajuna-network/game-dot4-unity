@@ -10,5 +10,11 @@ namespace MainMenu.Faucet.UI
         public Button ajunaBtn;
     
         public Button backBtn;
+
+        public async void OnFaucetClicked()
+        {
+            
+        }
     }
+
 }

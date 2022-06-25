@@ -14,16 +14,6 @@ namespace Init.Authentication
         {
         }
 
-        // private string _accountAddress;
-      
-      //  private string _websocketUrl = "wss://mogiway-01.dotmog.com";
-
-
-      
-      //  public AccountManager AccountManager { get; private set; }
-      //  private Wallet Wallet { get; set; }
-
-
         public override void Enter()
         {
           

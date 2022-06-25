@@ -10,9 +10,6 @@ public class InitManager : StateMachine
     public SplashUI splashD4GUI;
     
     public AuthenticationUI authenticationUI;
-   // public AccountController accountController;
-
-  
     
     void Start()
     {
