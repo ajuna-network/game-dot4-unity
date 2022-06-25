@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using DOTMogCore.Manager;
 using NLog;
 using NLog.Config;
 using SubstrateNetWallet;
@@ -25,29 +24,15 @@ namespace Init.Authentication
         [SerializeField] private string websocketUrl = "wss://mogiway-01.dotmog.com";
         private string _walletName = "dev_wallet";
 
-        private AccountManager accountManager;
         private Wallet wallet;
         
         
-        ////After Crash
-        public GameManager GameManager { get; private set; }
-    
-        public ExplorerManager ExplorerManager { get; private set; }
-
-
         public void CreateWallet()
         {
             LoggingConfiguration config = new LoggingConfiguration();
             LogManager.Configuration = config;
             
             wallet = new Wallet();
-            accountManager = new AccountManager(wallet);
-            
-            
-            ////After crash
-            GameManager = new GameManager(wallet);
-            ExplorerManager = new ExplorerManager(wallet);
-            ExplorerManager.SetPageSize(15);
         }
 
         

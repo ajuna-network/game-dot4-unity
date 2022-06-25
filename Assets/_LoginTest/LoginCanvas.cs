@@ -164,7 +164,7 @@ public class LoginCanvas : MonoBehaviour
           //  MessageText.GetComponent<LocalizedText>().ChangeKey("Login.MessageText.NoAccount");
 
         }
-        else if (_accountController.GameManager.IsReady)
+        else
         {
             NoWalletPanel.gameObject.SetActive(true);
             PasswordPanel.gameObject.SetActive(false);
@@ -188,11 +188,6 @@ public class LoginCanvas : MonoBehaviour
            // _sceneController.ChangeSceneState(SceneController.SceneName.MainScene, 3);
 
         }
-        else
-        {
-            Debug.LogError("Unhandled, please report!");
-        }
-
     }
 
     public void OnClickCreateAccount()
