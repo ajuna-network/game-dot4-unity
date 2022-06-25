@@ -21,50 +21,28 @@ namespace MainMenu.Searching.UI
         public enum SearchState { 
             None,
             MatchFound,
-            Canceled,
             NeedToQueue,
             WaitForPlayers,
             CheckRunnerState,
-            Extrinsics
+            Extrinsics,
+            AskBigBag
         }
 
         IEnumerator Searching()
         {
             var searchState = SearchState.None;
-
-            searchingText.text = "searching for a game";
-
-            while(searchState != SearchState.MatchFound || searchState != SearchState.Canceled)
+            while (searchState != SearchState.MatchFound)
             {
-                switch (searchState)
-                {
-                    case SearchState.NeedToQueue:
-                        searchingText.text = "waiting for queue";
-                        break;
-
-                    case SearchState.WaitForPlayers:
-                        searchingText.text = "waiting for players";
-                        break;
-
-                    case SearchState.CheckRunnerState:
-                        searchingText.text = "waiting for runner";
-                        break;
-
-                    case SearchState.Extrinsics:
-                        searchingText.text = "waiting for transaction";
-                        break;
-
-                    case SearchState.None:
-                    case SearchState.MatchFound:
-                    case SearchState.Canceled:
-                    default:
-                        break;
-                }
+                searchingText.text = GetSeachingText(searchState);
+                
+                var excuteExtrinsicTask = ExecuteExtrinsic(searchState);
 
                 var searchStateTask = GetSearchState();
-                while (!searchStateTask.IsCompleted)
+
+                while (!searchStateTask.IsCompleted || !excuteExtrinsicTask.IsCompleted)
                 {
                     yield return new WaitForSeconds(1);
+
                 }
                 searchState = searchStateTask.Result;
             }
@@ -72,18 +50,47 @@ namespace MainMenu.Searching.UI
             StartCoroutine(nameof(MatchFound));
         }
 
-        public async Task<SearchState> GetSearchState()
+        private string GetSeachingText(SearchState searchState)
+        {
+            return searchState switch
+            {
+                SearchState.AskBigBag => "find sister bajun big bag first",
+                SearchState.NeedToQueue => "waiting for queue",
+                SearchState.WaitForPlayers => "waiting for players",
+                SearchState.CheckRunnerState => "waiting for runner",
+                SearchState.Extrinsics => "waiting for transaction",
+                SearchState.MatchFound => "match found",
+                _ => "searching for a game",
+            };
+        }
+
+        public async Task<bool> ExecuteExtrinsic(SearchState searchState)
         {
             if (Network.Dot4GClient.HasExtrinsics > 0)
             {
-                return SearchState.Extrinsics;
+                return false;
             }
+            if (searchState == SearchState.NeedToQueue)
+            {
+                return await Network.Dot4GClient.QueueAsync();
+            }
+        
+            return false;
+        }
 
+        public async Task<SearchState> GetSearchState()
+        {
             var playerQueued = await Network.Dot4GClient.GetPlayerQueueAsync();
             
             var runnerId = await Network.Dot4GClient.GetRunnerIdAsync();
- 
-            if (runnerId.Value == 1)
+
+
+            if (Network.Wallet.AccountInfo == null)
+            {
+                return SearchState.AskBigBag;
+            }
+
+            if (runnerId.Value != 0)
             {
                 var runnerState = await Network.Dot4GClient.GetRunnerStateAsync(runnerId);
                 if (runnerState != null && runnerState.Value == RunnerState.Accepted)
