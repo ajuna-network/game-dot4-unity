@@ -31,6 +31,7 @@ namespace MainMenu.Searching.UI
         IEnumerator Searching()
         {
             var searchState = SearchState.None;
+
             while (searchState != SearchState.MatchFound)
             {
                 searchingText.text = GetSeachingText(searchState);
@@ -70,6 +71,7 @@ namespace MainMenu.Searching.UI
             {
                 return false;
             }
+
             if (searchState == SearchState.NeedToQueue)
             {
                 return await Network.Dot4GClient.QueueAsync();
@@ -84,12 +86,12 @@ namespace MainMenu.Searching.UI
             
             var runnerId = await Network.Dot4GClient.GetRunnerIdAsync();
 
-
             if (Network.Wallet.AccountInfo == null)
             {
                 return SearchState.AskBigBag;
             }
 
+            // having a runner ID means we have a game to join
             if (runnerId.Value != 0)
             {
                 var runnerState = await Network.Dot4GClient.GetRunnerStateAsync(runnerId);
@@ -116,8 +118,6 @@ namespace MainMenu.Searching.UI
         {
             searchingText.text = "match found";
             yield return new WaitForSeconds(1);
-            // await Task.Delay(TimeSpan.FromSeconds(1));
-
 
             StartCoroutine(nameof(Joining));
         }
@@ -125,9 +125,25 @@ namespace MainMenu.Searching.UI
         IEnumerator Joining()
         {
             searchingText.text = "joining";
-            yield return new WaitForSeconds(1);
-            // await Task.Delay(TimeSpan.FromSeconds(1));
+
+            var waitJoin = true;
+            while (waitJoin)
+            {
+                var gameTask = GetGameBoardAsync();
+                while (!gameTask.IsCompleted)
+                {
+                    yield return new WaitForSeconds(1);
+                }
+                waitJoin = gameTask.Result;
+            }
+
             JoinMatch();
+        }
+
+        public async Task<bool> GetGameBoardAsync()
+        {
+            var gameBoard = await Network.Dot4GClient.GetGameBoardAsync();
+            return gameBoard != null;
         }
 
         void JoinMatch()
