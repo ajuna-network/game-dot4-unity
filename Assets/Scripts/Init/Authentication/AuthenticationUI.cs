@@ -20,9 +20,9 @@ namespace Init.Authentication
         public Button createBtn;
         public RectTransform inputsCnt;
         public TMP_InputField passwordInput;
+       
+        public NetworkManager Network => NetworkManager.Instance;
 
-        public NetworkManager networkManager;      
-        
         //public void CreateWallet()
         //{
         //    LoggingConfiguration config = new LoggingConfiguration();
@@ -31,7 +31,7 @@ namespace Init.Authentication
         //    wallet = new Wallet();
         //}
 
-        
+
         private void Start()
         {
             createBtn.onClick.AddListener(OnCreateClicked);
@@ -44,21 +44,21 @@ namespace Init.Authentication
             //do async task for  wallet.Strt
 
             //Connect
-            if (!networkManager.Wallet.IsConnected)
+            if (!Network.Wallet.IsConnected)
             {
                 statusTxt.text = "Connecting...";
 
                 //  var connectTask =  Wallet.StartAsync(_websocketUrl);
                 //execute taks 
 
-                await networkManager.Wallet.StartAsync(networkManager.nodeUrl);
+                await Network.Wallet.StartAsync(Network.NodeUrl);
                 //and waith for when its complete
 
                 // StateUI.statusTxt.text = "Connected";
             }
 
             //Load Wallet
-            if (!networkManager.Wallet.Load(networkManager.walletName))
+            if (!Network.Wallet.Load(Network.WalletName))
             {
                 statusTxt.text = "Create a New Wallet";
                 createBtn.gameObject.SetActive(true);
@@ -68,7 +68,7 @@ namespace Init.Authentication
 
 
             //Unlock Wallet
-            if (!networkManager.Wallet.IsUnlocked)
+            if (!Network.Wallet.IsUnlocked)
             {
                 //show decrypt  
                 statusTxt.text = "Enter Your Password";
@@ -88,7 +88,7 @@ namespace Init.Authentication
             var password = passwordInput.text;
 
 
-            if (!networkManager.Wallet.IsValidPassword(password))
+            if (!Network.Wallet.IsValidPassword(password))
             {
                 infoTxt.gameObject.SetActive(true);
                 infoTxt.text = "Not a Valid Password";
@@ -96,7 +96,7 @@ namespace Init.Authentication
                 return;
             }
 
-            if (!await networkManager.Wallet.CreateAsync(password, networkManager.walletName))
+            if (!await Network.Wallet.CreateAsync(password, Network.WalletName))
             {
                 infoTxt.gameObject.SetActive(true);
                 infoTxt.text = "Failed To Create New Account";
@@ -113,7 +113,7 @@ namespace Init.Authentication
         {
             var password = passwordInput.text;
 
-            if (!await networkManager.Wallet.UnlockAsync(password))
+            if (!await Network.Wallet.UnlockAsync(password))
             {
                 infoTxt.gameObject.SetActive(true);
                 infoTxt.text = "Invalid Password";

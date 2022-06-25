@@ -7,6 +7,7 @@ namespace MainMenu.Faucet
 {
     public class FaucetState : State<MainMenuManager, FaucetUI>
     {
+
         public FaucetState(MainMenuManager stateMachine, FaucetUI ui) : base(stateMachine, ui)
         {
         }
@@ -66,6 +67,11 @@ namespace MainMenu.Faucet
         void AjunaClicked()
         {
             Application.OpenURL(ajunaURL);
+        }
+
+        void FaucetClicked()
+        {
+            // todo add faucet
         }
 
         #endregion

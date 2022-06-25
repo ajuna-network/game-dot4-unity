@@ -14,7 +14,7 @@ public class NetworkManager : MonoBehaviour
     public static NetworkManager Instance;
 
     [SerializeField]
-    public string nodeUrl = "ws://127.0.0.1:9944";
+    public string NodeUrl = "ws://127.0.0.1:9944";
 
     [SerializeField]
     private string workerUrl = "ws://183c-84-75-48-249.ngrok.io";
@@ -26,7 +26,7 @@ public class NetworkManager : MonoBehaviour
     private string mrenclaveHex = "Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi";
 
     [SerializeField]
-    public string walletName = "dev_wallet";
+    public string WalletName = "dev_wallet";
 
     public Wallet Wallet;
 
@@ -50,7 +50,7 @@ public class NetworkManager : MonoBehaviour
         // initializing unity interface for dot4g
         Dot4GClient = new Dot4GClient(
             Wallet,
-            nodeUrl,
+            NodeUrl,
             shardHex,
             mrenclaveHex
         );
