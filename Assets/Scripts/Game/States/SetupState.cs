@@ -4,6 +4,7 @@ using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using _StateMachine;
 using Ajuna.GenericGameEngine.Enums;
+using Ajuna.NetApi.Model.Base;
 using Game.Board;
 using Game.Engine;
 using Game.GameSetup;
@@ -26,18 +27,20 @@ namespace Game.States
         {
             StateUI.ShowUI();
 
-            EngineManager.SetupGame(StateMachine.gameId, StateMachine.player1ID, StateMachine.player2ID);
+            //EngineManager.SetupGame(StateMachine.gameId, StateMachine.player1ID, StateMachine.player2ID);
 
             StateMachine.gameBoard.Clear();
 
             //StateMachine.gameBoard.GenerateBoard(EngineManager.Fullstate);
 
-            StateUI.timer.StartTimer();
+            //StateUI.timer.StartTimer();
         }
 
         public override void Action()
         {
-            if (EngineManager.Fullstate.GameState != GameState.INITIALIZED)
+            Debug.Log($"Action: SetupState StateMachine.Dot4GObj is null = {StateMachine.Dot4GObj == null}");
+
+            if (StateMachine.Dot4GObj != null && StateMachine.Dot4GObj.GamePhase != GamePhase.Bomb)
             {
                 WaitForAnim();
             }
@@ -45,7 +48,7 @@ namespace Game.States
             {
                 if (StateMachine.gameBoard.player1BombCells.Count == 3)
                 {
-                    StateUI.timer.ForceStopTimer();
+                    //StateUI.timer.ForceStopTimer();
                 }
             }
 
@@ -56,13 +59,15 @@ namespace Game.States
         {
             StateUI.HideUI();
             StateMachine.gameBoard.boardRaycaster.enabled = false;
-            StateUI.timer.StopTimer();
-            StateUI.timer.ResetTimer();
+            //StateUI.timer.StopTimer();
+            //StateUI.timer.ResetTimer();
         }
 
 
         void WaitForAnim()
         {
+            Debug.Log("WaitForAnim");
+
             Exit();
             
             if (!StateMachine.gameBoard.IntroDone())

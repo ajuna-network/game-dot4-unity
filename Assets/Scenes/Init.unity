@@ -938,7 +938,7 @@ MonoBehaviour:
   workerUrl: ws://183c-84-75-48-249.ngrok.io
   shardHex: Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi
   mrenclaveHex: Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi
-  WalletName: dev_wallet1
+  WalletName: dev_wallet
 --- !u!224 &492312834 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4409343867899580061, guid: 4e02bb4864ffbd34f91ed42e81c584a1, type: 3}

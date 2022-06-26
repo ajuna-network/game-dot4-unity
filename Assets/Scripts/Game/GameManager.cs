@@ -1,16 +1,26 @@
 using _StateMachine;
+using Ajuna.NetApiExt.Model.AjunaWorker.Dot4G;
 using Game.Board;
 using Game.GameResults;
 using Game.GameSetup;
 using Game.InGame;
 using Game.States;
 using GameEngine.UnityMock;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Game
 {
     public class GameManager : StateMachine
     {
+        public NetworkManager Network => NetworkManager.Instance;
+
+        private bool _iniBoard = true;
+        private bool _boardTaskFlag = false;
+        private Task<Dot4GObj> _boardTask = null;
+        public Dot4GObj Dot4GObj;
+
+
         [Header("Game Session")] public int gameId = 1234;
         public int player1ID = 1111;
         public int player2ID = 2222;
@@ -24,9 +34,6 @@ namespace Game
         public GameBoard gameBoard;
         // public Timer timer;
 
-        [Header("Tokens")] public Achievement player1Token;
-        public Achievement player2Token;
-
         public GameSettings gameSettings;
 
         private void Awake()
@@ -37,6 +44,34 @@ namespace Game
         void Start()
         {
             CurrentState = new SetupState(this, setupUI);
+
+        }
+
+        private void Update()
+        {
+            if (!_boardTaskFlag)
+            {
+                _boardTaskFlag = true;
+                _boardTask = Network.Dot4GClient.GetGameBoardAsync();
+            }
+            else if (_boardTask.IsCompleted)
+            {
+                Dot4GObj = _boardTask.Result;
+                if (_iniBoard)
+                {
+                    gameBoard.GenerateBoard(Dot4GObj);
+                    _iniBoard = false;
+                }
+                else
+                {
+                    gameBoard.RefreshCells(Dot4GObj);
+                }
+                _boardTaskFlag = false;
+
+                Debug.Log($"Board updated in {CurrentState.GetType().Name}!");
+            }
+
+            CurrentState?.Action();
         }
 
     }
