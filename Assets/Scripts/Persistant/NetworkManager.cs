@@ -50,9 +50,15 @@ public class NetworkManager : MonoBehaviour
         // initializing unity interface for dot4g
         Dot4GClient = new Dot4GClient(
             Wallet,
-            NodeUrl,
+            workerUrl,
             shardHex,
             mrenclaveHex
         );
+
+    }
+
+    internal bool IsMe(string address)
+    {
+        return Wallet.Account.Value == address;
     }
 }

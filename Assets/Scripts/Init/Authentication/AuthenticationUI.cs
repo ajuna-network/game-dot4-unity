@@ -20,24 +20,14 @@ namespace Init.Authentication
         public Button createBtn;
         public RectTransform inputsCnt;
         public TMP_InputField passwordInput;
-       
+
         public NetworkManager Network => NetworkManager.Instance;
-
-        //public void CreateWallet()
-        //{
-        //    LoggingConfiguration config = new LoggingConfiguration();
-        //    /LogManager.Configuration = config;
-        //    
-        //    wallet = new Wallet();
-        //}
-
 
         private void Start()
         {
             createBtn.onClick.AddListener(OnCreateClicked);
             decryptBtn.onClick.AddListener(OnDecryptClicked);
         }
-
 
         public async Task AttemptLogin()
         {
@@ -47,14 +37,7 @@ namespace Init.Authentication
             if (!Network.Wallet.IsConnected)
             {
                 statusTxt.text = "Connecting...";
-
-                //  var connectTask =  Wallet.StartAsync(_websocketUrl);
-                //execute taks 
-
                 await Network.Wallet.StartAsync(Network.NodeUrl);
-                //and waith for when its complete
-
-                // StateUI.statusTxt.text = "Connected";
             }
 
             //Load Wallet
@@ -65,7 +48,6 @@ namespace Init.Authentication
                 inputsCnt.gameObject.SetActive(true);
                 return;
             }
-
 
             //Unlock Wallet
             if (!Network.Wallet.IsUnlocked)
@@ -78,7 +60,6 @@ namespace Init.Authentication
                 return;
             }
 
-            
             //goto next state
             SceneManager.LoadScene("MainMenu");
         }
@@ -101,7 +82,7 @@ namespace Init.Authentication
                 infoTxt.gameObject.SetActive(true);
                 infoTxt.text = "Failed To Create New Account";
                 AudioManager.Instance.PlaySound(Sound.InvalidMove);
-              
+
             }
 
 
@@ -126,8 +107,8 @@ namespace Init.Authentication
         }
 
         #endregion
-        
-       
+
+
     }
 
 }

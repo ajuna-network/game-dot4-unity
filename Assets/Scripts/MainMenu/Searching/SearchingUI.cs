@@ -40,6 +40,8 @@ namespace MainMenu.Searching.UI
 
                 var searchStateTask = GetSearchState();
 
+                yield return new WaitForSeconds(1);
+
                 while (!searchStateTask.IsCompleted || !excuteExtrinsicTask.IsCompleted)
                 {
                     yield return new WaitForSeconds(1);
@@ -121,29 +123,87 @@ namespace MainMenu.Searching.UI
 
             StartCoroutine(nameof(Joining));
         }
+        public enum WorkerState
+        {
+            None,
+            Connect,
+            Faucet,
+            Game,
+            Join,
+        }
 
         IEnumerator Joining()
         {
-            searchingText.text = "joining";
+            var workerState = WorkerState.None;
 
-            var waitJoin = true;
-            while (waitJoin)
+            while (workerState != WorkerState.Join)
             {
-                var gameTask = GetGameBoardAsync();
-                while (!gameTask.IsCompleted)
+                searchingText.text = GetSeachingText(workerState);
+
+                var excuteExtrinsicTask = ExecuteExtrinsic(workerState);
+
+                var workerStateTask = GetWorkerState();
+
+                yield return new WaitForSeconds(1);
+
+                while (!workerStateTask.IsCompleted || !excuteExtrinsicTask.IsCompleted)
                 {
                     yield return new WaitForSeconds(1);
+
                 }
-                waitJoin = gameTask.Result;
+                workerState = workerStateTask.Result;
             }
 
             JoinMatch();
         }
 
-        public async Task<bool> GetGameBoardAsync()
+        private string GetSeachingText(WorkerState workerState)
         {
+            return workerState switch
+            {
+                WorkerState.Connect => "waiting for tea",
+                WorkerState.Faucet => "waiting for sister",
+                WorkerState.Game => "waiting for game",
+                WorkerState.Join => "joining",
+                _ => "searching stuff",
+            };
+        }
+
+        public async Task<bool> ExecuteExtrinsic(WorkerState workerState)
+        {
+            switch (workerState)
+            {
+                case WorkerState.Connect:
+                    return await Network.Dot4GClient.ConnectTeeAsync();
+
+                case WorkerState.Faucet:
+                    return await Network.Dot4GClient.FaucetWorkerAsync();
+
+                default:
+                    return false;
+            }
+        }
+
+        public async Task<WorkerState> GetWorkerState()
+        {
+            if(!Network.Dot4GClient.IsTeeConnected)
+            {
+                return WorkerState.Connect;
+            }
+
+            var balance = await Network.Dot4GClient.GetBalanceWorkerAsync();
+            if (balance == null)
+            {
+                return WorkerState.Faucet;
+            }
+
             var gameBoard = await Network.Dot4GClient.GetGameBoardAsync();
-            return gameBoard != null;
+            if (gameBoard == null)
+            {
+                return WorkerState.Game;
+            }
+
+            return WorkerState.Join;
         }
 
         void JoinMatch()

@@ -116,11 +116,6 @@ namespace Game.States
             StateMachine.gameBoard.ToggleIndicator(true);
             StateMachine.gameBoard.SpawnSkin(GetCurrentPlayerSkin(EngineManager.Fullstate.CurrentPlayer));
             StateUI.timer.StartTimer();
-
-            if (StateMachine.gameSettings.pvAI)
-            {
-                AIPlay();
-            }
         }
 
         void TakeTurn(int currentPlayer)
@@ -158,14 +153,5 @@ namespace Game.States
 
         #endregion
 
-
-        void AIPlay()
-        {
-            if (StateMachine.playerAI.Play(StateMachine.gameId, out int waitTime, out Side side, out byte column))
-            {
-                StateMachine.gameBoard.SetSelectedSide(side, column);
-                TurnClicked();
-            }
-        }
     }
 }

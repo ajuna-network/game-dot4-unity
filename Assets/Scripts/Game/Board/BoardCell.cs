@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
+using System.Linq;
 using System.Threading.Tasks;
+using Ajuna.NetApi.Model.Base;
+using Ajuna.NetApiExt.Model.AjunaWorker.Dot4G;
 using Game.Engine;
 using GameEngine.UnityMock;
 using TMPro;
@@ -40,48 +43,86 @@ namespace Game.Board
         private void Awake()
         {
             toggle.onClick.AddListener(Selected);
-          
+
         }
-
-
-
-
 
         public void UpdateCell(FullState fullstate, int row, int column)
         {
 
-            if (fullstate.Board[(byte) row, (byte) column] == 1)
+            if (fullstate.Board[(byte)row, (byte)column] == 1)
             {
                 SetCellType(CellType.PlayerToken, new Vector2(row, column));
             }
-            if (fullstate.Board[(byte) row, (byte) column] == 2)
+            if (fullstate.Board[(byte)row, (byte)column] == 2)
             {
                 SetCellType(CellType.EnemyToken, new Vector2(row, column));
             }
-            
-            
-            if (fullstate.Board[(byte) row, (byte) column] == 9)
+
+
+            if (fullstate.Board[(byte)row, (byte)column] == 9)
             {
                 SetCellType(CellType.Obstacle, new Vector2(row, column));
             }
 
-            if (fullstate.Board[(byte) row, (byte) column] == 0)
+            if (fullstate.Board[(byte)row, (byte)column] == 0)
             {
                 SetCellType(CellType.Normal, new Vector2(row, column));
             }
 
-            if (fullstate.Board[(byte) row, (byte) column] == 12)
+            if (fullstate.Board[(byte)row, (byte)column] == 12)
             {
                 SetCellType(CellType.EnemyBomb, new Vector2(row, column));
             }
 
-            if (fullstate.Board[(byte) row, (byte) column] == 11)
+            if (fullstate.Board[(byte)row, (byte)column] == 11)
             {
                 SetCellType(CellType.PlayerBomb, new Vector2(row, column));
             }
         }
-        
-        
+
+        public void UpdateCell(Dot4GObj dot4GObj, int row, int column)
+        {
+            var cell = dot4GObj.Board[(byte)row, (byte)column];
+
+            switch (cell.Cell)
+            {
+                case Cell.Stone:
+                    if (NetworkManager.Instance.IsMe(dot4GObj.Players[cell.PlayerIds.First()].Address))
+                    {
+                        SetCellType(CellType.PlayerToken, new Vector2(row, column));
+                    }
+                    else
+                    {
+                        SetCellType(CellType.EnemyToken, new Vector2(row, column));
+                    }
+                    break;
+
+
+                case Cell.Block:
+                    SetCellType(CellType.Obstacle, new Vector2(row, column));
+                    break;
+
+                case Cell.Empty:
+                    SetCellType(CellType.Normal, new Vector2(row, column));
+                    break;
+
+                case Cell.Bomb:
+                    foreach (var playerId in cell.PlayerIds)
+                    {
+                        if (NetworkManager.Instance.IsMe(dot4GObj.Players[playerId].Address))
+                        {
+                            SetCellType(CellType.PlayerBomb, new Vector2(row, column));
+                        }
+                        else
+                        {
+                            SetCellType(CellType.EnemyBomb, new Vector2(row, column));
+                        }
+                    }
+                    break;
+            }
+        }
+
+
         public void SetCellType(CellType cellType, Vector2 pos)
         {
             cellPos = pos;
@@ -93,14 +134,14 @@ namespace Game.Board
                 case CellType.Normal:
                     spriteRenderer.enabled = true;
                     bombSprite.enabled = false;
-                  //  spriteRenderer.color = defaultColor;
+                    //  spriteRenderer.color = defaultColor;
                     // idTxt.enabled = false;
                     idTxt.text = "o";
                     idTxt.color = Color.white;
                     break;
                 case CellType.Obstacle:
                     spriteRenderer.enabled = false;
-                   // bombSprite.enabled = false;
+                    // bombSprite.enabled = false;
                     idTxt.enabled = false;
                     gridTxt.enabled = false;
                     idTxt.text = "0";
@@ -112,19 +153,19 @@ namespace Game.Board
                     idTxt.color = Color.blue;
                     break;
                 case CellType.EnemyBomb:
-                   // bombSprite.enabled = true;
+                    // bombSprite.enabled = true;
                     // idTxt.enabled = true;
                     idTxt.text = "B2";
                     idTxt.color = Color.red;
                     break;
                 case CellType.PlayerToken:
-                   // bombSprite.enabled = false;
+                    // bombSprite.enabled = false;
                     // idTxt.enabled = true;
                     idTxt.text = "P1";
                     idTxt.color = Color.blue;
                     break;
                 case CellType.EnemyToken:
-                   // bombSprite.enabled = false;
+                    // bombSprite.enabled = false;
                     // idTxt.enabled = true;
                     idTxt.text = "P2";
                     idTxt.color = Color.red;
@@ -142,7 +183,7 @@ namespace Game.Board
             spriteRenderer.color = currentPlayerColors;
         }
 
-//should not be toggleable, so use button
+        //should not be toggleable, so use button
         void Selected()
         {
             OnCellSelected?.Invoke(cellPos);
@@ -152,7 +193,7 @@ namespace Game.Board
         {
             spriteRenderer.color = color;
         }
-        public void TurnDefaultColor( )
+        public void TurnDefaultColor()
         {
             spriteRenderer.color = defaultColor;
         }

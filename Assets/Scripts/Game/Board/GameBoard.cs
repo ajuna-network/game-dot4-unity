@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Ajuna.NetApiExt.Model.AjunaWorker.Dot4G;
 using Game.Engine;
 using GameEngine.GravityDot;
 using GameEngine.UnityMock;
@@ -16,6 +17,13 @@ namespace Game.Board
     [ExecuteInEditMode]
     public class GameBoard : MonoBehaviour
     {
+        private bool _iniBoard = true;
+        private bool _boardTaskFlag = false;
+        private Task<Dot4GObj> _boardTask = null;
+        private Dot4GObj _board;
+
+        public NetworkManager Network => NetworkManager.Instance;
+
         [Header("Refrences")] [SerializeField] GameObject cellPrefab;
         [SerializeField] GridLayoutGroup gridLayout;
         [SerializeField] RectTransform boardCellsContainer;
@@ -55,14 +63,14 @@ namespace Game.Board
         {
             SelectionSlider.OnSliderSelected += SetSelectedSide;
             BoardCell.OnCellSelected += SetPlayerBomb;
-            EngineManager.OnRefresh += RefreshCells;
+            //EngineManager.OnRefresh += RefreshCells;
         }
 
         private void OnDisable()
         {
             SelectionSlider.OnSliderSelected -= SetSelectedSide;
             BoardCell.OnCellSelected -= SetPlayerBomb;
-            EngineManager.OnRefresh -= RefreshCells;
+            //EngineManager.OnRefresh -= RefreshCells;
         }
 
         //bomb cell visuals should be done here
@@ -78,39 +86,61 @@ namespace Game.Board
         {
             //this should be in start, but effect should be tested
             LayoutGrid();
+
+            if (!_boardTaskFlag)
+            {
+                _boardTaskFlag = true;
+                _boardTask = Network.Dot4GClient.GetGameBoardAsync();
+            } 
+            else if (_boardTask.IsCompleted)
+            {
+                _board = _boardTask.Result;
+                if (_iniBoard)
+                {
+                    GenerateBoard(_board);
+                    _iniBoard = false;
+                } else
+                {
+                    RefreshCells(_board);
+                }
+                _boardTaskFlag = false;
+            }
         }
 
         #region Board Gen + Layout
 
-        public void GenerateBoard(FullState fullstate)
+
+        public void Clear()
         {
             foreach (Transform child in boardCellsContainer)
             {
                 Destroy(child.gameObject);
                 BoardCells.Clear();
             }
+        }
 
-
-            for (var row = 0; row < fullstate.Board.GetLength(0); row++)
+        public void GenerateBoard(Dot4GObj dot4GObj)
+        {
+            for (var row = 0; row < dot4GObj.Board.GetLength(0); row++)
             {
-                for (int column = 0; column < fullstate.Board.GetLength(1); column++)
+                for (int column = 0; column < dot4GObj.Board.GetLength(1); column++)
                 {
                     var cell = Instantiate(cellPrefab, boardCellsContainer);
                     BoardCells.Add(new Vector2(row, column), cell);
 
-                    cell.GetComponent<BoardCell>().UpdateCell(fullstate, row, column);
+                    cell.GetComponent<BoardCell>().UpdateCell(dot4GObj, row, column);
                 }
             }
         }
 
-        void RefreshCells(FullState fullstate)
+        void RefreshCells(Dot4GObj dot4GObj)
         {
-            for (var row = 0; row < fullstate.Board.GetLength(0); row++)
+            for (var row = 0; row < dot4GObj.Board.GetLength(0); row++)
             {
-                for (int column = 0; column < fullstate.Board.GetLength(1); column++)
+                for (int column = 0; column < dot4GObj.Board.GetLength(1); column++)
                 {
                     BoardCells[new Vector2(row, column)].gameObject.GetComponent<BoardCell>()
-                        .UpdateCell(fullstate, row, column);
+                        .UpdateCell(dot4GObj, row, column);
                 }
             }
         }
