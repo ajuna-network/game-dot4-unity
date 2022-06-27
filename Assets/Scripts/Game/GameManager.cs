@@ -57,15 +57,7 @@ namespace Game
             else if (_boardTask.IsCompleted)
             {
                 Dot4GObj = _boardTask.Result;
-                if (_iniBoard)
-                {
-                    gameBoard.GenerateBoard(Dot4GObj);
-                    _iniBoard = false;
-                }
-                else
-                {
-                    gameBoard.RefreshCells(Dot4GObj);
-                }
+                gameBoard.UpdateBoard(Dot4GObj);
                 _boardTaskFlag = false;
 
                 Debug.Log($"Board updated in {CurrentState.GetType().Name}!");

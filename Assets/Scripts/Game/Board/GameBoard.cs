@@ -59,6 +59,12 @@ namespace Game.Board
         public List<BoardCell> player1BombCells = new List<BoardCell>(2);
         public List<BoardCell> player2BombCells = new List<BoardCell>(2);
 
+        private Dot4GStateHelper _stateHelper;
+
+        private bool _waitAnimation = false;
+
+        public bool IsAnimating => _waitAnimation;
+
         private void OnEnable()
         {
             SelectionSlider.OnSliderSelected += SetSelectedSide;
@@ -79,7 +85,7 @@ namespace Game.Board
         private void Awake()
         {
             ToggleIndicator(false);
-            //DEBUG
+            _stateHelper = new Dot4GStateHelper();
         }
 
         private void Update()
@@ -100,9 +106,23 @@ namespace Game.Board
             }
         }
 
-        public void GenerateBoard(Dot4GObj dot4GObj)
+        public void UpdateBoard(Dot4GObj dot4GObj)
         {
             CurrentBoard = dot4GObj;
+
+            var diff = _stateHelper.NewState(dot4GObj);
+            if (diff is null)
+            {
+                GenerateBoard();
+            } 
+            else
+            {
+                RefreshCells(diff);
+            }
+        }
+
+        public void GenerateBoard()
+        {
 
             for (var row = 0; row < CurrentBoard.Board.GetLength(0); row++)
             {
@@ -111,7 +131,7 @@ namespace Game.Board
                     var cell = Instantiate(cellPrefab, boardCellsContainer);
                     BoardCells.Add(new Vector2(row, column), cell);
 
-                    cell.GetComponent<BoardCell>().UpdateCell(dot4GObj, row, column);
+                    cell.GetComponent<BoardCell>().UpdateCell(CurrentBoard, row, column);
 
                 }
             }
@@ -141,19 +161,22 @@ namespace Game.Board
 
 
 
-        public void RefreshCells(Dot4GObj dot4GObj)
+        public void RefreshCells(Dot4GDiff diff)
         {
-            CurrentBoard = dot4GObj;
+            if (_waitAnimation)
+            {
+                return;
+            }
 
             var tokenList = tokenCells.Keys.ToList();
-            var bombsList = new List<Vector2>(bombs);
 
-            for (var row = 0; row < dot4GObj.Board.GetLength(0); row++)
+            for (var row = 0; row < CurrentBoard.Board.GetLength(0); row++)
             {
-                for (int column = 0; column < dot4GObj.Board.GetLength(1); column++)
+                for (int column = 0; column < CurrentBoard.Board.GetLength(1); column++)
                 {
-                    BoardCells[new Vector2(row, column)].gameObject.GetComponent<BoardCell>()
-                        .UpdateCell(dot4GObj, row, column);
+                    BoardCells[new Vector2(row, column)].gameObject
+                        .GetComponent<BoardCell>()
+                        .UpdateCell(CurrentBoard, row, column);
 
                     var cell = CurrentBoard.Board[row, column];
                     var posVec = new Vector2(row, column);
@@ -170,31 +193,15 @@ namespace Game.Board
 
                         tokenList.Remove(posVec);
                     }
-                    else if (cell.Cell == Cell.Bomb)
-                    {
-                        var posBomb = bombsList.Where(p => p[0] == posVec[0] && p[1] == posVec[1]);
-                        if (posBomb.Any())
-                        {
-                            if (CurrentBoard.GamePhase == GamePhase.Play)
-                            {
-                                bombsList.Remove(bombsList.First());
-                            }
-                        }
-                        else
-                        {
-                            bombs.Add(posVec);
-                        }
-
-                    }
                 }
             }
 
-            if (CurrentBoard.GamePhase == GamePhase.Play)
+            if (CurrentBoard.GamePhase == GamePhase.Play && diff.bombsDiffType == DiffType.Le)
             {
-                bombsList.ForEach(x =>
+                diff.bombsDiff.ForEach(x =>
                 {
-                    bombs.Remove(x);
-                    ExplodeBomb(BoardCells[x].gameObject.GetComponent<BoardCell>());
+                    var posVec = new Vector2(x.Position[0], x.Position[1]);
+                    ExplodeBomb(BoardCells[posVec].gameObject.GetComponent<BoardCell>());
                 });
             }
         }
@@ -308,12 +315,8 @@ namespace Game.Board
 
             SetIndicatorSide(side, row);
 
+            var selection = CurrentBoard.GetRay(side, (int)row);
 
-            HighlightSelection(CurrentBoard.GetRay(side, (int) row), CurrentBoard.Next);
-        }
-
-        void HighlightSelection(List<int[]> selection, int currentPlayer)
-        {
             ClearHighlight();
 
             foreach (var cell in selection)
@@ -321,39 +324,27 @@ namespace Game.Board
                 BoardCell selectedCell = BoardCells[new Vector2(cell[0], cell[1])].gameObject.GetComponent<BoardCell>();
 
                 highlightedCells.Add(selectedCell);
-                selectedCell.HighLight(GetCurrentPlayerColor(currentPlayer));
+                selectedCell.HighLight(GetCurrentPlayerColor(CurrentBoard.Next));
             }
 
-            indicatorSlider.handleRect.GetComponent<Image>().color = GetCurrentPlayerColor(currentPlayer);
-        }
+            indicatorSlider.handleRect.GetComponent<Image>().color = GetCurrentPlayerColor(CurrentBoard.Next);
 
+        }
 
         public void ClearHighlight()
         {
-            if (highlightedCells.Count != 0)
-            {
-                foreach (var cell in highlightedCells)
-                {
-                    cell.DeSelect();
-                }
-
-                highlightedCells.Clear();
-            }
+            highlightedCells.ForEach(p => p.DeSelect());
+            highlightedCells.Clear();
         }
 
         Color GetCurrentPlayerColor(int currentPlayer)
         {
-            switch (currentPlayer)
+            return currentPlayer switch
             {
-                case 0:
-                    return player1Color;
-
-
-                case 1:
-                    return player2Color;
-            }
-
-            throw new Exception("Player Color Not Found");
+                0 => player1Color,
+                1 => player2Color,
+                _ => throw new Exception("Player Color Not Found"),
+            };
         }
 
         #endregion
@@ -413,32 +404,32 @@ namespace Game.Board
 
         public void MakeMove()
         {
+            _waitAnimation = true;
+
             _ = Network.Dot4GClient.StoneAsync(selectedSide, (int)selectedRow);
 
-            // here i can get the target pos
+            targetCell = highlightedCells.Last();
 
-            //if (EngineManager.Fullstate.GroundZero[0] < byte.MaxValue)
-            //{
-            //    print("Bomb In Row");
-            //    shouldExplode = true;
-            //    targetCell =
-            //        BoardCells[
-            //                new Vector2(EngineManager.Fullstate.GroundZero[0], EngineManager.Fullstate.GroundZero[1])]
-            //            .gameObject.GetComponent<BoardCell>();
-            //}
-            //else
-            //{
-            //    shouldExplode = false;
-                targetCell = highlightedCells.Last();
-            //}
+            var key = new Vector2(targetCell.cellPos.x, targetCell.cellPos.y);
+            if (!tokenCells.ContainsKey(key))
+            {
+                tokenCells.Add(new Vector2(targetCell.cellPos.x, targetCell.cellPos.y), currentToken);
+            }
 
-            tokenCells.Add(new Vector2(targetCell.cellPos.x, targetCell.cellPos.y), currentToken);
+            AnimateToken();
         }
 
 
         public async Task AnimateToken()
         {
-            await MoveToken();
+            // do token movement
+            while (currentToken.transform.position != targetCell.transform.position)
+            {
+                currentToken.transform.position = Vector3.MoveTowards(currentToken.transform.position,
+                    targetCell.transform.position,
+                    10 * Time.deltaTime);
+                await Task.Yield();
+            }
 
             ClearHighlight();
             ToggleIndicator(false);
@@ -450,17 +441,8 @@ namespace Game.Board
 
             //used to be on clearhighlight, maybe this shouldnt be a varriable and just be passed in
             targetCell = null;
-        }
 
-        async Task MoveToken()
-        {
-            while (currentToken.transform.position != targetCell.transform.position)
-            {
-                currentToken.transform.position = Vector3.MoveTowards(currentToken.transform.position,
-                    targetCell.transform.position,
-                    10 * Time.deltaTime);
-                await Task.Yield();
-            }
+            _waitAnimation = false;
         }
 
         async Task ExplodeBomb(BoardCell targetCell)

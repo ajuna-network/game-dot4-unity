@@ -46,40 +46,6 @@ namespace Game.Board
 
         }
 
-        public void UpdateCell(FullState fullstate, int row, int column)
-        {
-
-            if (fullstate.Board[(byte)row, (byte)column] == 1)
-            {
-                SetCellType(CellType.PlayerToken, new Vector2(row, column));
-            }
-            if (fullstate.Board[(byte)row, (byte)column] == 2)
-            {
-                SetCellType(CellType.EnemyToken, new Vector2(row, column));
-            }
-
-
-            if (fullstate.Board[(byte)row, (byte)column] == 9)
-            {
-                SetCellType(CellType.Obstacle, new Vector2(row, column));
-            }
-
-            if (fullstate.Board[(byte)row, (byte)column] == 0)
-            {
-                SetCellType(CellType.Normal, new Vector2(row, column));
-            }
-
-            if (fullstate.Board[(byte)row, (byte)column] == 12)
-            {
-                SetCellType(CellType.EnemyBomb, new Vector2(row, column));
-            }
-
-            if (fullstate.Board[(byte)row, (byte)column] == 11)
-            {
-                SetCellType(CellType.PlayerBomb, new Vector2(row, column));
-            }
-        }
-
         public void UpdateCell(Dot4GObj dot4GObj, int row, int column)
         {
             var cell = dot4GObj.Board[(byte)row, (byte)column];
@@ -121,7 +87,6 @@ namespace Game.Board
                     break;
             }
         }
-
 
         public void SetCellType(CellType cellType, Vector2 pos)
         {

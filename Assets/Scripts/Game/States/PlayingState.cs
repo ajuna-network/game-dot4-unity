@@ -18,6 +18,8 @@ namespace Game.States
     {
         public NetworkManager Network => NetworkManager.Instance;
 
+        private int _currentPlayer = -1;
+
         public PlayingState(GameManager stateMachine, InGameUI ui) : base(stateMachine, ui)
         {
         }
@@ -28,12 +30,15 @@ namespace Game.States
 
         public override void Enter()
         {
+            _currentPlayer = StateMachine.Dot4GObj.Next;
+
             StateUI.ShowUI();
             StateUI.inputUI.SetActive(false);
 
 
             StateUI.turnBtn.onClick.AddListener(TurnClicked);
-            StartNextTurn(StateMachine.Dot4GObj.Next);
+
+            StartNextTurn(_currentPlayer);
 
             //state enter and exit would have to be IEnum or bool after its done to wait for anim to play first??
         }
@@ -42,7 +47,12 @@ namespace Game.States
         {
             if (StateMachine.Dot4GObj.Winner != null)
             {
-                StateMachine.CurrentState = new ResultState(StateMachine, StateMachine.resultsUI);
+                StateMachine.CurrentState = new ResultState(StateMachine, StateMachine.Dot4GObj, StateMachine.resultsUI);
+            } 
+            else if (_currentPlayer != -1 && StateMachine.Dot4GObj.Next != _currentPlayer)
+            {
+                _currentPlayer = StateMachine.Dot4GObj.Next;
+                StartNextTurn(_currentPlayer);
             }
         }
 
@@ -123,21 +133,14 @@ namespace Game.States
         //should be on gameboard?
         async void WaitForTokenAnim()
         {
-            // 
-
-            await StateMachine.gameBoard.AnimateToken();
+            while (StateMachine.gameBoard.IsAnimating)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(1));
+            }
 
             Debug.Log("animDone");
-            // StateMachine.gameBoard.ClearHighlight();
 
-
-            //do a waitfor bombs if there are
-
-
-            await Task.Delay(TimeSpan.FromSeconds(2));
-
-            // 
-            StartNextTurn(StateMachine.Dot4GObj.Next);
+            //StartNextTurn(StateMachine.Dot4GObj.Next);
         }
 
         #endregion
