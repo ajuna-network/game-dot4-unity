@@ -1,5 +1,5 @@
-﻿using System;
-using GameEngine.GravityDot;
+﻿using Ajuna.NetApi.Model.Base;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

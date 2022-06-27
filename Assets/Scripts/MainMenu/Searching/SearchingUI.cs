@@ -94,7 +94,7 @@ namespace MainMenu.Searching.UI
             }
 
             // having a runner ID means we have a game to join
-            if (runnerId.Value != 0)
+            if (runnerId != null && runnerId.Value != 0)
             {
                 var runnerState = await Network.Dot4GClient.GetRunnerStateAsync(runnerId);
                 if (runnerState != null && runnerState.Value == RunnerState.Accepted)

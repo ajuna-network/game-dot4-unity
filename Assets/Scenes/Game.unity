@@ -185,7 +185,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 34.491016}
+  m_SizeDelta: {x: 0, y: 37.333332}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &38934470
 MonoBehaviour:
@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 2
   m_StartAxis: 1
-  m_CellSize: {x: 34.491016, y: 34.491016}
+  m_CellSize: {x: 37.333332, y: 37.333332}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 1
   m_ConstraintCount: 10
@@ -1553,7 +1553,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 413.8922, y: 413.8922}
+  m_SizeDelta: {x: 448, y: 448}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191684900
 MonoBehaviour:
@@ -3849,8 +3849,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -103.47305, y: 0}
+  m_AnchoredPosition: {x: 0.0000019073486, y: 0}
+  m_SizeDelta: {x: -112.00001, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &476552147 stripped
 RectTransform:
@@ -6383,7 +6383,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 34.491016, y: 34.491016}
+  m_SizeDelta: {x: 37.333332, y: 37.333332}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &802504412
 MonoBehaviour:
@@ -6473,8 +6473,6 @@ MonoBehaviour:
   setupUI: {fileID: 609187934}
   inGameUI: {fileID: 1040268893}
   gameBoard: {fileID: 1450996240}
-  player1Token: {fileID: 11400000, guid: 6de668fd2d385454197b546f2e7ca3f6, type: 2}
-  player2Token: {fileID: 11400000, guid: 4df89348a9d7b754ab24d2eb4be3b230, type: 2}
   gameSettings: {fileID: 11400000, guid: 808af61bd7c4d90489eaed4e39fa740b, type: 2}
 --- !u!224 &817317568 stripped
 RectTransform:
@@ -11577,6 +11575,8 @@ MonoBehaviour:
   animator: {fileID: 1450996242}
   boardIsland3D: {fileID: 1977206679}
   currentToken: {fileID: 0}
+  player1Token: {fileID: 11400000, guid: 6de668fd2d385454197b546f2e7ca3f6, type: 2}
+  player2Token: {fileID: 11400000, guid: 4df89348a9d7b754ab24d2eb4be3b230, type: 2}
   player1Color: {r: 0.23921569, g: 0.5254902, b: 0.5921569, a: 1}
   player2Color: {r: 0.70980394, g: 0.48235297, b: 0.5647059, a: 1}
   selectedSide: 0
