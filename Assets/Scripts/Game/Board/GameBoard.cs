@@ -24,15 +24,16 @@ namespace Game.Board
 
         public NetworkManager Network => NetworkManager.Instance;
 
-        [Header("Refrences")] [SerializeField] GameObject cellPrefab;
+        [Header("Refrences")] 
+        [SerializeField] GameObject cellPrefab;
         [SerializeField] GridLayoutGroup gridLayout;
         [SerializeField] RectTransform boardCellsContainer;
         [SerializeField] RectTransform indicatorContainer;
         [SerializeField] RectTransform boardContainer;
         public GraphicRaycaster boardRaycaster;
         public Slider indicatorSlider;
-
         public Animator animator;
+        [SerializeField] private GameObject boardIsland3D;
 
         //maybe have this in skinviewer class
         public GameObject currentToken;
@@ -79,14 +80,11 @@ namespace Game.Board
         private void Awake()
         {
             ToggleIndicator(false);
-            //DEBUG
+            LayoutGrid();
         }
 
         private void Update()
         {
-            //this should be in start, but effect should be tested
-            LayoutGrid();
-
             if (!_boardTaskFlag)
             {
                 _boardTaskFlag = true;
@@ -172,6 +170,10 @@ namespace Game.Board
 
             indicatorContainer.offsetMin = new Vector2(cellSize + (cellSize / 2), 0);
             indicatorContainer.offsetMax = new Vector2(-cellSize - (cellSize / 2), 0);
+            
+            var boardSize = cellSize * 10 / 2;
+
+            boardIsland3D.transform.localScale = new Vector3(boardSize, boardSize, boardSize);
         }
 
         #endregion
