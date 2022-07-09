@@ -6467,9 +6467,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010a44eef3b0fc44c952a3e1d93728c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameId: 1234
-  player1ID: 1111
-  player2ID: 2222
   resultsUI: {fileID: 1237475274}
   setupUI: {fileID: 609187934}
   inGameUI: {fileID: 1040268893}
@@ -11571,6 +11568,7 @@ MonoBehaviour:
   boardCellsContainer: {fileID: 157341598}
   indicatorContainer: {fileID: 475373758}
   boardContainer: {fileID: 191684899}
+  boardIsland3D: {fileID: 1977206679}
   boardRaycaster: {fileID: 1450996237}
   indicatorSlider: {fileID: 38934470}
   animator: {fileID: 1450996242}
@@ -11582,8 +11580,10 @@ MonoBehaviour:
   selectedSide: 0
   selectedRow: 0
   highlightedCells: []
+  bombs: []
   player1BombCells: []
   player2BombCells: []
+  _bombsToExploded: []
 --- !u!224 &1450996241
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16319,15 +16319,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a611dbf72c660f04e847e4d82363f4ea, type: 3}
       propertyPath: m_LocalScale.x
-      value: 172.49998
+      value: 186.66666
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a611dbf72c660f04e847e4d82363f4ea, type: 3}
       propertyPath: m_LocalScale.y
-      value: 172.49998
+      value: 186.66666
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a611dbf72c660f04e847e4d82363f4ea, type: 3}
       propertyPath: m_LocalScale.z
-      value: 172.49998
+      value: 186.66666
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a611dbf72c660f04e847e4d82363f4ea, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16399,6 +16399,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 375f1d86450027149a30ec152848f426, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a611dbf72c660f04e847e4d82363f4ea, type: 3}
+--- !u!1 &1977206679 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a611dbf72c660f04e847e4d82363f4ea, type: 3}
+  m_PrefabInstance: {fileID: 1977206678}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1990621728
 PrefabInstance:
   m_ObjectHideFlags: 0

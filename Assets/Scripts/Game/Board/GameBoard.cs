@@ -19,11 +19,25 @@ namespace Game.Board
 
         public Dot4GObj CurrentBoard;
 
-        [Header("Refrences")][SerializeField] GameObject cellPrefab;
-        [SerializeField] GridLayoutGroup gridLayout;
-        [SerializeField] RectTransform boardCellsContainer;
-        [SerializeField] RectTransform indicatorContainer;
-        [SerializeField] RectTransform boardContainer;
+        [Header("Refrences")]
+        [SerializeField]
+        private GameObject cellPrefab;
+
+        [SerializeField]
+        private GridLayoutGroup gridLayout;
+
+        [SerializeField]
+        private RectTransform boardCellsContainer;
+
+        [SerializeField]
+        private RectTransform indicatorContainer;
+
+        [SerializeField]
+        private RectTransform boardContainer;
+
+        [SerializeField] 
+        private GameObject boardIsland3D;
+
         public GraphicRaycaster boardRaycaster;
         public Slider indicatorSlider;
 
@@ -286,6 +300,9 @@ namespace Game.Board
 
             indicatorContainer.offsetMin = new Vector2(cellSize + (cellSize / 2), 0);
             indicatorContainer.offsetMax = new Vector2(-cellSize - (cellSize / 2), 0);
+
+            var boardSize = cellSize * 10 / 2;
+            boardIsland3D.transform.localScale = new Vector3(boardSize, boardSize, boardSize);
         }
 
         #endregion
