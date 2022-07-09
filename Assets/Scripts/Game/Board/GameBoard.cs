@@ -131,15 +131,9 @@ namespace Game.Board
                     var boarCell = Instantiate(cellPrefab, boardCellsContainer);
                     BoardCells.Add(new Vector2(row, column), boarCell);
 
-                    UpdatedBoardCell(CurrentBoard.Board[row, column], row, column);
-                }
-            }
-
-            for (var row = 0; row < CurrentBoard.Board.GetLength(0); row++)
-            {
-                for (int column = 0; column < CurrentBoard.Board.GetLength(1); column++)
-                {
                     var cell = CurrentBoard.Board[row, column];
+                    UpdatedBoardCell(cell, row, column);
+
                     var posVec = new Vector2(row, column);
                     if (cell.Cell == Cell.Stone)
                     {

@@ -114,7 +114,7 @@ namespace Game.Board
             cellPos = pos;
             gridTxt.text = pos.ToString();
             bombSprite.enabled = true;
-            bombSprite.color = color;
+            spriteRenderer.color = color;
             // idTxt.enabled = true;
             idTxt.text = "BO";
             idTxt.color = color;
