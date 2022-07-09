@@ -8,6 +8,4 @@
             public Button readyButton;
             public Timer timer;
         }
-        
-        
     }

@@ -15,24 +15,18 @@ namespace Game
     {
         public NetworkManager Network => NetworkManager.Instance;
 
-        private bool _iniBoard = true;
-        private bool _boardTaskFlag = false;
         private Task<Dot4GObj> _boardTask = null;
+
         public Dot4GObj Dot4GObj;
+        
+        [Header("Refrences")] 
+        public ResultsUI resultsUI;
 
-
-        [Header("Game Session")] public int gameId = 1234;
-        public int player1ID = 1111;
-        public int player2ID = 2222;
-        public PlayerAI playerAI;
-
-
-        [Header("Refrences")] public ResultsUI resultsUI;
         public SetupUI setupUI;
+
         public InGameUI inGameUI;
 
         public GameBoard gameBoard;
-        // public Timer timer;
 
         public GameSettings gameSettings;
 
@@ -45,25 +39,39 @@ namespace Game
         {
             CurrentState = new SetupState(this, setupUI);
 
+            InvokeRepeating("PollGameBoard", 0, 0.6f);
+
         }
 
         private void Update()
         {
-            if (!_boardTaskFlag)
+            CurrentState?.Action();
+        }
+
+        public void PollGameBoard()
+        {
+            if (_boardTask is null)
             {
-                _boardTaskFlag = true;
                 _boardTask = Network.Dot4GClient.GetGameBoardAsync();
+                return;
             }
-            else if (_boardTask.IsCompleted)
+
+            if(_boardTask.IsFaulted)
             {
+                Debug.Log($"Board updated faulted with {_boardTask.Exception}!");
+                _boardTask = null;
+                return;
+            }
+
+            if (_boardTask.IsCompleted) {
+
                 Dot4GObj = _boardTask.Result;
                 gameBoard.UpdateBoard(Dot4GObj);
-                _boardTaskFlag = false;
-
-                Debug.Log($"Board updated in {CurrentState.GetType().Name}!");
-            }
-
-            CurrentState?.Action();
+                _boardTask = null;
+                return;
+            } 
+            
+            Debug.Log($"Timeout next Board update!");
         }
 
     }

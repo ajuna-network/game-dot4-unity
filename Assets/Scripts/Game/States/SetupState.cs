@@ -26,41 +26,21 @@ namespace Game.States
         public override void Enter()
         {
             StateUI.ShowUI();
-
-            //EngineManager.SetupGame(StateMachine.gameId, StateMachine.player1ID, StateMachine.player2ID);
-
             StateMachine.gameBoard.Clear();
-
-            //StateMachine.gameBoard.GenerateBoard(EngineManager.Fullstate);
-
-            //StateUI.timer.StartTimer();
         }
 
         public override void Action()
         {
-            Debug.Log($"Action: SetupState StateMachine.Dot4GObj is null = {StateMachine.Dot4GObj == null}");
-
             if (StateMachine.Dot4GObj != null && StateMachine.Dot4GObj.GamePhase != GamePhase.Bomb)
             {
                 WaitForAnim();
-            }
-            else
-            {
-                if (StateMachine.gameBoard.player1BombCells.Count == 3)
-                {
-                    //StateUI.timer.ForceStopTimer();
-                }
-            }
-
-           
+            }          
         }
 
         public override void Exit()
         {
             StateUI.HideUI();
             StateMachine.gameBoard.boardRaycaster.enabled = false;
-            //StateUI.timer.StopTimer();
-            //StateUI.timer.ResetTimer();
         }
 
 
@@ -78,9 +58,5 @@ namespace Game.States
             StateMachine.CurrentState = new PlayingState(StateMachine, StateMachine.inGameUI);
         }
 
-
-        #region Conditions
-
-        #endregion
     }
 }
