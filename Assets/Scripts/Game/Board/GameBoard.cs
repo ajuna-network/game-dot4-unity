@@ -50,8 +50,8 @@ namespace Game.Board
         [Header("Styling")]
         [SerializeField]
         private Color player1Color;
-        
-        [SerializeField] 
+
+        [SerializeField]
         private Color player2Color;
 
         public Side selectedSide;
@@ -67,7 +67,9 @@ namespace Game.Board
 
         private bool _waitAnimation = false;
 
-        public bool IsAnimating => _waitAnimation;
+        public Task _explodeTask, _tokenTask;
+
+        public List<Vector2> _bombsToExploded;
 
         private void OnEnable()
         {
@@ -107,6 +109,20 @@ namespace Game.Board
 
         public void UpdateBoard(Dot4GObj dot4GObj)
         {
+            // don't update board during bomb exlosion
+            if (_explodeTask != null && !_explodeTask.IsCompleted)
+            {
+                return;
+            }
+            _explodeTask = null;
+
+            // don't update board during token animation
+            if (_tokenTask != null && !_tokenTask.IsCompleted)
+            {
+                return;
+            }
+            _tokenTask = null;
+
             CurrentBoard = dot4GObj;
 
             var diff = _stateHelper.NewState(dot4GObj);
@@ -115,8 +131,8 @@ namespace Game.Board
             if (diff is null)
             {
                 GenerateBoard();
-            } 
-            else
+            }
+            else //if (diff.ChangeFlag)
             {
                 RefreshCells(diff);
             }
@@ -155,12 +171,7 @@ namespace Game.Board
 
         public void RefreshCells(Dot4GDiff diff)
         {
-            if (_waitAnimation)
-            {
-                return;
-            }
-
-            var tokenList = tokenCells.Keys.ToList();
+            var bombsToExplode = new List<Vector2>();
 
             for (var row = 0; row < CurrentBoard.Board.GetLength(0); row++)
             {
@@ -170,30 +181,49 @@ namespace Game.Board
                     UpdatedBoardCell(cell, row, column);
 
                     var posVec = new Vector2(row, column);
-                    if (cell.Cell == Cell.Stone)
+                    switch (cell.Cell)
                     {
-                        if (!tokenCells.ContainsKey(posVec))
-                        {
-                            var token = SpawnToken(cell.PlayerIds[0]);
-                            BoardCell selectedCell = BoardCells[posVec].gameObject.GetComponent<BoardCell>();
-                            token.transform.parent = selectedCell.transform;
-                            token.transform.localPosition = Vector3.zero;
-                            tokenCells.Add(posVec, token);
-                        }
+                        case Cell.Stone:
+                            // create new token played
+                            if (!tokenCells.ContainsKey(posVec))
+                            {
+                                var token = SpawnToken(cell.PlayerIds[0]);
+                                BoardCell selectedCell = BoardCells[posVec].gameObject.GetComponent<BoardCell>();
+                                token.transform.parent = selectedCell.transform;
+                                token.transform.localPosition = Vector3.zero;
+                                tokenCells.Add(posVec, token);
+                            }
+                            break;
 
-                        tokenList.Remove(posVec);
+                        case Cell.Empty:
+                            // remove token destroyed
+                            if (tokenCells.ContainsKey(posVec))
+                            {
+                                //Destroy(tokenCells[posVec].gameObject);
+                                //tokenCells.Remove(posVec);
+                            }
+                            // remove bombs exploded
+                            if (bombs.Contains(posVec))
+                            {
+                                bombsToExplode.Add(posVec);
+                                bombs.Remove(posVec);
+                            }
+                            break;
+                        case Cell.Bomb:
+                            if (!bombs.Contains(posVec))
+                            {
+                                bombs.Add(posVec);
+                            }
+                            break;
                     }
                 }
             }
 
-            if (CurrentBoard.GamePhase == GamePhase.Play && diff.bombsDiffType == DiffType.Le)
+            // execute bomb explosions ...
+            bombsToExplode.ForEach(x =>
             {
-                diff.bombsDiff.ForEach(x =>
-                {
-                    var posVec = new Vector2(x.Position[0], x.Position[1]);
-                    ExplodeBomb(BoardCells[posVec].gameObject.GetComponent<BoardCell>());
-                });
-            }
+                _explodeTask = ExplodeBomb(BoardCells[x].gameObject.GetComponent<BoardCell>());
+            });
         }
 
         private void UpdatedBoardCell(Dot4GCell cell, int row, int column)
@@ -219,7 +249,8 @@ namespace Game.Board
                     if (cell.PlayerIds.Count > 1)
                     {
                         boardCellComponent.SetBomb(Color.yellow, new Vector2(row, column));
-                    } else
+                    }
+                    else
                     {
                         boardCellComponent.SetBomb(GetCurrentPlayerColor(cell.PlayerIds.First()), new Vector2(row, column));
                     }
@@ -421,8 +452,6 @@ namespace Game.Board
 
         public void MakeMove()
         {
-            _waitAnimation = true;
-
             _ = Network.Dot4GClient.StoneAsync(selectedSide, (int)selectedRow);
 
             targetCell = highlightedCells.Last();
@@ -433,7 +462,7 @@ namespace Game.Board
                 tokenCells.Add(new Vector2(targetCell.cellPos.x, targetCell.cellPos.y), currentToken);
             }
 
-            AnimateToken();
+            _tokenTask = AnimateToken();
         }
 
 
@@ -462,19 +491,12 @@ namespace Game.Board
             _waitAnimation = false;
         }
 
-        async Task ExplodeBomb(BoardCell targetCell)
+        private async Task ExplodeBomb(BoardCell targetCell)
         {
-            // yield return new WaitForSeconds(1);
-            //  explosionCells = new List<BoardCell>();
-
             for (int x = (int)targetCell.cellPos.x - 1; x <= targetCell.cellPos.x + 1; x++)
             {
                 for (int y = (int)targetCell.cellPos.y - 1; y <= targetCell.cellPos.y + 1; y++)
                 {
-                    // if (x == (int) targetCell.cellPos.x && y == (int) targetCell.cellPos.y)
-                    //     continue;
-
-
                     if (BoardCells.ContainsKey(new Vector2(x, y)))
                     {
                         explosionCells.Add(BoardCells[new Vector2(x, y)].gameObject.GetComponent<BoardCell>());
@@ -484,9 +506,6 @@ namespace Game.Board
 
             await FlashCells(explosionCells, 0.15f, 3);
 
-            //it doesnt remove the placed token 
-            //maybe flash tokens aswell
-
             foreach (var cell in explosionCells)
             {
                 if (tokenCells.ContainsKey(new Vector2(cell.cellPos.x, cell.cellPos.y)))
@@ -495,10 +514,9 @@ namespace Game.Board
                     tokenCells.Remove(new Vector2(cell.cellPos.x, cell.cellPos.y));
                 }
             }
-
+            
             AudioManager.Instance.PlaySound(Sound.Detonate);
             explosionCells.Clear();
-            // Destroy(currentToken);
         }
 
 
@@ -521,8 +539,6 @@ namespace Game.Board
                 {
                     BoardCells[cell.cellPos].gameObject.GetComponent<BoardCell>().TurnDefaultColor();
                 }
-
-                Task.Yield();
             }
         }
     }
