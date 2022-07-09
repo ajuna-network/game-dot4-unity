@@ -17,6 +17,7 @@ namespace Game.Board
     {
         public NetworkManager Network => NetworkManager.Instance;
 
+
         public Dot4GObj CurrentBoard;
 
         [Header("Refrences")][SerializeField] GameObject cellPrefab;
@@ -26,8 +27,8 @@ namespace Game.Board
         [SerializeField] RectTransform boardContainer;
         public GraphicRaycaster boardRaycaster;
         public Slider indicatorSlider;
-
         public Animator animator;
+        [SerializeField] private GameObject boardIsland3D;
 
         //maybe have this in skinviewer class
         public GameObject currentToken;
@@ -85,13 +86,31 @@ namespace Game.Board
         private void Awake()
         {
             ToggleIndicator(false);
+            LayoutGrid();
+            
             _stateHelper = new Dot4GStateHelper();
         }
 
         private void Update()
         {
-            //this should be in start, but effect should be tested
-            LayoutGrid();
+            if (!_boardTaskFlag)
+            {
+                _boardTaskFlag = true;
+                _boardTask = Network.Dot4GClient.GetGameBoardAsync();
+            } 
+            else if (_boardTask.IsCompleted)
+            {
+                _board = _boardTask.Result;
+                if (_iniBoard)
+                {
+                    GenerateBoard(_board);
+                    _iniBoard = false;
+                } else
+                {
+                    RefreshCells(_board);
+                }
+                _boardTaskFlag = false;
+            }
         }
 
         #region Board Gen + Layout
@@ -236,6 +255,10 @@ namespace Game.Board
 
             indicatorContainer.offsetMin = new Vector2(cellSize + (cellSize / 2), 0);
             indicatorContainer.offsetMax = new Vector2(-cellSize - (cellSize / 2), 0);
+            
+            var boardSize = cellSize * 10 / 2;
+
+            boardIsland3D.transform.localScale = new Vector3(boardSize, boardSize, boardSize);
         }
 
         #endregion
