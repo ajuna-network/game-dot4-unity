@@ -47,8 +47,12 @@ namespace Game.Board
         private bool shouldExplode = false;
 
 
-        [Header("Styling")][SerializeField] private Color player1Color;
-        [SerializeField] private Color player2Color;
+        [Header("Styling")]
+        [SerializeField]
+        private Color player1Color;
+        
+        [SerializeField] 
+        private Color player2Color;
 
         public Side selectedSide;
         public float selectedRow;
@@ -69,18 +73,13 @@ namespace Game.Board
         {
             SelectionSlider.OnSliderSelected += SetSelectedSide;
             BoardCell.OnCellSelected += SetPlayerBomb;
-            //EngineManager.OnRefresh += RefreshCells;
         }
 
         private void OnDisable()
         {
             SelectionSlider.OnSliderSelected -= SetSelectedSide;
             BoardCell.OnCellSelected -= SetPlayerBomb;
-            //EngineManager.OnRefresh -= RefreshCells;
         }
-
-        //bomb cell visuals should be done here
-        //save to a list like highlighting works
 
         private void Awake()
         {
@@ -111,6 +110,8 @@ namespace Game.Board
             CurrentBoard = dot4GObj;
 
             var diff = _stateHelper.NewState(dot4GObj);
+
+            // if diff is null we received first time a state so we generate
             if (diff is null)
             {
                 GenerateBoard();
@@ -123,16 +124,14 @@ namespace Game.Board
 
         public void GenerateBoard()
         {
-
             for (var row = 0; row < CurrentBoard.Board.GetLength(0); row++)
             {
                 for (int column = 0; column < CurrentBoard.Board.GetLength(1); column++)
                 {
-                    var cell = Instantiate(cellPrefab, boardCellsContainer);
-                    BoardCells.Add(new Vector2(row, column), cell);
+                    var boarCell = Instantiate(cellPrefab, boardCellsContainer);
+                    BoardCells.Add(new Vector2(row, column), boarCell);
 
-                    cell.GetComponent<BoardCell>().UpdateCell(CurrentBoard, row, column);
-
+                    UpdatedBoardCell(CurrentBoard.Board[row, column], row, column);
                 }
             }
 
@@ -151,15 +150,14 @@ namespace Game.Board
                         token.transform.localPosition = Vector3.zero;
 
                         tokenCells.Add(posVec, token);
-                    } else if (cell.Cell == Cell.Bomb)
+                    }
+                    else if (cell.Cell == Cell.Bomb)
                     {
                         bombs.Add(posVec);
                     }
                 }
             }
         }
-
-
 
         public void RefreshCells(Dot4GDiff diff)
         {
@@ -174,11 +172,9 @@ namespace Game.Board
             {
                 for (int column = 0; column < CurrentBoard.Board.GetLength(1); column++)
                 {
-                    BoardCells[new Vector2(row, column)].gameObject
-                        .GetComponent<BoardCell>()
-                        .UpdateCell(CurrentBoard, row, column);
-
                     var cell = CurrentBoard.Board[row, column];
+                    UpdatedBoardCell(cell, row, column);
+
                     var posVec = new Vector2(row, column);
                     if (cell.Cell == Cell.Stone)
                     {
@@ -206,8 +202,37 @@ namespace Game.Board
             }
         }
 
+        private void UpdatedBoardCell(Dot4GCell cell, int row, int column)
+        {
+            var boardCellComponent = BoardCells[new Vector2(row, column)].gameObject.GetComponent<BoardCell>();
 
+            switch (cell.Cell)
+            {
+                case Cell.Stone:
+                    boardCellComponent.SetToken(GetCurrentPlayerColor(cell.PlayerIds.First()), new Vector2(row, column));
+                    break;
 
+                case Cell.Block:
+                    boardCellComponent.SetBlock(new Vector2(row, column));
+                    break;
+
+                case Cell.Empty:
+                    boardCellComponent.SetEmpty(new Vector2(row, column));
+                    break;
+
+                case Cell.Bomb:
+
+                    if (cell.PlayerIds.Count > 1)
+                    {
+                        boardCellComponent.SetBomb(Color.yellow, new Vector2(row, column));
+                    } else
+                    {
+                        boardCellComponent.SetBomb(GetCurrentPlayerColor(cell.PlayerIds.First()), new Vector2(row, column));
+                    }
+
+                    break;
+            }
+        }
 
         void LayoutGrid()
         {
@@ -265,9 +290,8 @@ namespace Game.Board
                 return;
             }
 
-            _ = Network.Dot4GClient.BombAsync((int)pos.x, (int)pos.y);
+            var bombTask = Network.Dot4GClient.BombAsync((int)pos.x, (int)pos.y);
         }
-
 
         #region Selection
 
@@ -337,7 +361,7 @@ namespace Game.Board
             highlightedCells.Clear();
         }
 
-        Color GetCurrentPlayerColor(int currentPlayer)
+        public Color GetCurrentPlayerColor(int currentPlayer)
         {
             return currentPlayer switch
             {
@@ -369,7 +393,6 @@ namespace Game.Board
             {
                 return false;
             }
-
 
             return animator.GetCurrentAnimatorStateInfo(0).IsTag("Intro") &&
                    animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1;

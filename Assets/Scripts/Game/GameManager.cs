@@ -66,7 +66,10 @@ namespace Game
             if (_boardTask.IsCompleted) {
 
                 Dot4GObj = _boardTask.Result;
-                gameBoard.UpdateBoard(Dot4GObj);
+                if (Dot4GObj != null)
+                {
+                    gameBoard.UpdateBoard(Dot4GObj);
+                }
                 _boardTask = null;
                 return;
             } 
