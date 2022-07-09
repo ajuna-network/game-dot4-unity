@@ -60,6 +60,8 @@ namespace Init.Authentication
                 return;
             }
 
+            Debug.Log($"My Key: {Network.Wallet.Account.Value}");
+
             //goto next state
             SceneManager.LoadScene("MainMenu");
         }

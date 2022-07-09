@@ -17,7 +17,7 @@ public class NetworkManager : MonoBehaviour
     public string NodeUrl = "ws://127.0.0.1:9944";
 
     [SerializeField]
-    private string workerUrl = "ws://183c-84-75-48-249.ngrok.io";
+    private string workerUrl = "ws://9857-84-75-48-249.ngrok.io";
 
     [SerializeField]
     private string shardHex = "Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi";
