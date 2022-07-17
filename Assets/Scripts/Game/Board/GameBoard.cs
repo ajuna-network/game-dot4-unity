@@ -267,6 +267,14 @@ namespace Game.Board
                     else
                     {
                         boardCellComponent.SetBomb(GetCurrentPlayerColor(cell.PlayerIds.First()), new Vector2(row, column));
+
+                        if (cell.PlayerIds.First() == 0)
+                        {
+                            if (!player1BombCells.Contains(boardCellComponent))
+                            {
+                                player1BombCells.Add(boardCellComponent);
+                            }
+                        }
                     }
 
                     break;
@@ -310,7 +318,6 @@ namespace Game.Board
         //for player input
         void SetPlayerBomb(Vector2 pos)
         {
-            //TODO validation check is done below aswell, not removing the bottom one now to avoid breaking the AI, but should be tested and removed
             if (CurrentBoard.ValidateBomb((int)pos.x, (int)pos.y))
             {
 

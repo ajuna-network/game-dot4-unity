@@ -27,6 +27,7 @@ namespace Game.States
         {
             StateUI.ShowUI();
             StateMachine.gameBoard.Clear();
+           
         }
 
         public override void Action()
@@ -35,6 +36,8 @@ namespace Game.States
             {
                 WaitForAnim();
             }          
+            
+            StateUI.SetPlayerBombCount(StateMachine.gameBoard.player1BombCells.Count);
         }
 
         public override void Exit()
