@@ -9072,7 +9072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 213019389798908340, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 111.99999
+      value: 82
       objectReference: {fileID: 0}
     - target: {fileID: 213019389798908340, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_SizeDelta.y
@@ -9108,7 +9108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 213019389798908340, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 295.99997
+      value: 311
       objectReference: {fileID: 0}
     - target: {fileID: 213019389798908340, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -9129,6 +9129,10 @@ PrefabInstance:
     - target: {fileID: 213019389798908341, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_Name
       value: Btn_Faucet
+      objectReference: {fileID: 0}
+    - target: {fileID: 213019389798908341, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2050385898486915287, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_Sprite
@@ -17557,7 +17561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 213019389798908340, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 56
+      value: 55.999996
       objectReference: {fileID: 0}
     - target: {fileID: 213019389798908340, guid: dcc525c7bba43ce4ba1a2fe25c6a2ac2, type: 3}
       propertyPath: m_AnchoredPosition.y
