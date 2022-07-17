@@ -20,6 +20,7 @@ namespace Init.Authentication
             StateUI.decryptBtn.gameObject.SetActive(false);
             StateUI.inputsCnt.gameObject.SetActive(false);
             StateUI.infoTxt.gameObject.SetActive(false);
+            StateMachine.NetworkInfo.gameObject.SetActive(true);
 
             StateUI.ShowUI();
             //StateUI.CreateWallet();
