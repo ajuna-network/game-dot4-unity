@@ -36,6 +36,8 @@ namespace Game.Board
         [SerializeField] 
         private Color defaultColor;
 
+        [SerializeField] private GameObject Obstacle;
+
         //DEBUG
         public TextMeshProUGUI gridTxt;
         public TextMeshProUGUI idTxt;
@@ -92,6 +94,7 @@ namespace Game.Board
             gridTxt.text = pos.ToString();
             spriteRenderer.enabled = false;
             // bombSprite.enabled = false;
+            Obstacle.SetActive(true);
             idTxt.enabled = false;
             gridTxt.enabled = false;
             idTxt.text = "0";
