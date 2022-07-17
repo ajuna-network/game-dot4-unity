@@ -85,7 +85,7 @@ public class NetworkInfo : MonoBehaviour
     {
         if (NetworkManager.Instance.Wallet.AccountInfo == null)
         {
-            walletTokens.text = null;
+            walletTokens.text = "0" + " AJUN";
             return;
         }
 
