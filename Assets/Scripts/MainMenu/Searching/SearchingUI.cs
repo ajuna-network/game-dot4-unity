@@ -1,4 +1,5 @@
 using Ajuna.NetApi.Model.AjunaCommon;
+using System;
 using System.Collections;
 using System.Linq;
 using System.Threading;
@@ -34,10 +35,10 @@ namespace MainMenu.Searching.UI
             while (searchState != SearchState.MatchFound)
             {
                 searchingText.text = GetSeachingText(searchState);
-                
-                var excuteExtrinsicTask = ExecuteExtrinsic(searchState);
 
                 var searchStateTask = GetSearchState();
+
+                var excuteExtrinsicTask = ExecuteExtrinsic(searchState);
 
                 yield return new WaitForSeconds(1);
 
@@ -56,46 +57,46 @@ namespace MainMenu.Searching.UI
         {
             return searchState switch
             {
-                SearchState.AskBigBag => "find sister bajun big bag first",
-                SearchState.NeedToQueue => "waiting for queue",
-                SearchState.WaitForPlayers => "waiting for players",
-                SearchState.CheckRunnerState => "waiting for runner",
-                SearchState.Extrinsics => "waiting for transaction",
+                SearchState.None => "let's start",
+                SearchState.AskBigBag => "find sister big bag",
+                SearchState.NeedToQueue => "hold the line",
+                SearchState.WaitForPlayers => "seeking new friends",
+                SearchState.CheckRunnerState => "bolt just dropped",
+                SearchState.Extrinsics => "don't stop running system",
                 SearchState.MatchFound => "match found",
-                _ => "searching for a game",
+                _ => "searching",
             };
         }
 
         public async Task<bool> ExecuteExtrinsic(SearchState searchState)
         {
-            if (Network.NodeClient.ExtrinsicManger.Running.Any())
-            {
-                return false;
-            }
-
             if (searchState == SearchState.NeedToQueue)
             {
                 return await Network.NodeClient.QueueAsync(CancellationToken.None);
             }
         
-            return false;
+            return true;
         }
 
         public async Task<SearchState> GetSearchState()
         {
-            var playerQueued = await Network.NodeClient.GetPlayerQueueAsync(CancellationToken.None);
-            
-            var runnerId = await Network.NodeClient.GetRunnerIdAsync(CancellationToken.None);
+            if (Network.NodeClient.ExtrinsicManger.Running.Any())
+            {
+                return SearchState.Extrinsics;
+            }
 
-            if (Network.FreeBalance == null || Network.FreeBalance < 11000000000)
+            if (Network.FreeBalance == null || Network.FreeBalance < 10000000000)
             {
                 return SearchState.AskBigBag;
             }
+
+            var runnerId = await Network.NodeClient.GetRunnerIdAsync(CancellationToken.None);
 
             // having a runner ID means we have a game to join
             if (runnerId != null && runnerId.Value != 0)
             {
                 var runnerState = await Network.NodeClient.GetRunnerStateAsync(runnerId, CancellationToken.None);
+                
                 if (runnerState != null && runnerState.Value == RunnerState.Accepted)
                 {
                     return SearchState.MatchFound;
@@ -103,11 +104,15 @@ namespace MainMenu.Searching.UI
 
                 return SearchState.CheckRunnerState;
             }
-            else if (playerQueued != null && playerQueued.Value > 0)
+
+            var playerQueued = await Network.NodeClient.GetPlayerQueueAsync(CancellationToken.None);
+
+            if (playerQueued != null && playerQueued.Value > 0)
             {
                 return SearchState.WaitForPlayers; 
             }
-            else if (runnerId == null || runnerId.Value == 0)
+            
+            if (runnerId == null || runnerId.Value == 0)
             {
                 return SearchState.NeedToQueue;
             }

@@ -24,9 +24,6 @@ namespace MainMenu.Searching
             StateUI.cancelBtn.onClick.RemoveListener(OnBackClicked);
         }
 
-       
-
-
         #region Conditions
 
         void JoinMatch()
