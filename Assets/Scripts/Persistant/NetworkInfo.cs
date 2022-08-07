@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Ajuna.UnityInterface;
 using MainMenu.Searching.UI;
@@ -12,6 +13,7 @@ using UnityEngine.UI;
 public class NetworkInfo : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI walletTokens;
+    [SerializeField] private TextMeshProUGUI workerTokens;
     [SerializeField] private Image walletConnectionState;
     [SerializeField] private Image teeConnectionState;
 
@@ -28,19 +30,19 @@ public class NetworkInfo : MonoBehaviour
 
     void CheckTeeConnection()
     {
-        if (NetworkManager.Instance.Dot4GClient.HasExtrinsics > 0)
-        {
-            if (!blinking)
-            {
-                blinking = true;
-                StartCoroutine(BlinkLight());
-            }
+        //if (NetworkManager.Instance.NodeClient.ExtrinsicManger.Running.Any())
+        //{
+        //    if (!blinking)
+        //    {
+        //        blinking = true;
+        //        StartCoroutine(BlinkLight());
+        //    }
 
-            return;
-        }
+        //    return;
+        //}
 
-        blinking = false;
-        teeConnectionState.color = NetworkManager.Instance.Dot4GClient.IsTeeConnected ? Color.green : Color.red;
+        //blinking = false;
+        teeConnectionState.color = NetworkManager.Instance.WorkerClient.IsConnected ? Color.green : Color.red;
     }
 
 
@@ -64,7 +66,7 @@ public class NetworkInfo : MonoBehaviour
 
     void CheckWalletConnection()
     {
-        if (NetworkManager.Instance.Wallet != null && NetworkManager.Instance.Wallet.IsConnected)
+        if (NetworkManager.Instance.NodeClient != null && NetworkManager.Instance.NodeClient.IsConnected)
         {
             walletConnectionState.color = Color.yellow;
 
@@ -83,16 +85,11 @@ public class NetworkInfo : MonoBehaviour
 
     void GetWalletTokens()
     {
-        if (NetworkManager.Instance.Wallet.AccountInfo == null)
-        {
-            walletTokens.text = "0" + " AJUN";
-            return;
-        }
-
-        var tokens = NetworkManager.Instance.Wallet.AccountInfo.Data.Free.Value;
-
+        var tokens = NetworkManager.Instance.FreeBalance;
         var total = (double)tokens / Math.Pow(10, 12);
-
         walletTokens.text = total.ToString("0.000") + " AJUN";
+
+        var workers = NetworkManager.Instance.WorkerBalance;
+        workerTokens.text = workers.ToString("0") + " WURM";
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics.SymbolStore;
+using System.Linq;
+using System.Threading;
 using _StateMachine;
 using MainMenu.Faucet;
 using MainMenu.Faucet.UI;
@@ -43,7 +45,7 @@ namespace MainMenu.Faucet
         {
             if (!aliceIsEnabled && EnableFaucet())
             {
-                if (Network.Wallet.AccountInfo != null && Network.Wallet.AccountInfo.Data.Free.Value > 10000000)
+                if (Network.FreeBalance != null && Network.FreeBalance > 10000000)
                 {
                     aliceIsEnabled = true;
                     return;
@@ -107,18 +109,18 @@ namespace MainMenu.Faucet
         void FaucetClicked()
         {
             // don't do as long as there is still an ongoing transaction
-            if (Network.Dot4GClient.HasExtrinsics > 0)
+            if (Network.NodeClient.ExtrinsicManger.Running.Any())
             {
                 return;
             }
 
             // let's leave alice alone
-            if (Network.Wallet.AccountInfo != null && Network.Wallet.AccountInfo.Data.Free.Value > 10000000)
+            if (Network.FreeBalance != null && Network.FreeBalance > 10000000)
             {
                 return;
             }
 
-            _ = Network.Dot4GClient.FaucetAsync();
+            _ = Network.NodeClient.FaucetAsync(CancellationToken.None);
             StateUI.faucetBtn.gameObject.SetActive(false);
         }
 

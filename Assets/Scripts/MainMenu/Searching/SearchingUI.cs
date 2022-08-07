@@ -2,6 +2,7 @@ using Ajuna.NetApi.Model.AjunaCommon;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
@@ -69,14 +70,14 @@ namespace MainMenu.Searching.UI
 
         public async Task<bool> ExecuteExtrinsic(SearchState searchState)
         {
-            if (Network.Dot4GClient.HasExtrinsics > 0)
+            if (Network.NodeClient.ExtrinsicManger.Running.Any())
             {
                 return false;
             }
 
             if (searchState == SearchState.NeedToQueue)
             {
-                return await Network.Dot4GClient.QueueAsync();
+                return await Network.NodeClient.QueueAsync(CancellationToken.None);
             }
         
             return false;
@@ -84,11 +85,11 @@ namespace MainMenu.Searching.UI
 
         public async Task<SearchState> GetSearchState()
         {
-            var playerQueued = await Network.Dot4GClient.GetPlayerQueueAsync();
+            var playerQueued = await Network.NodeClient.GetPlayerQueueAsync(CancellationToken.None);
             
-            var runnerId = await Network.Dot4GClient.GetRunnerIdAsync();
+            var runnerId = await Network.NodeClient.GetRunnerIdAsync(CancellationToken.None);
 
-            if (Network.Wallet.AccountInfo == null)
+            if (Network.FreeBalance == null || Network.FreeBalance < 1000000)
             {
                 return SearchState.AskBigBag;
             }
@@ -96,7 +97,7 @@ namespace MainMenu.Searching.UI
             // having a runner ID means we have a game to join
             if (runnerId != null && runnerId.Value != 0)
             {
-                var runnerState = await Network.Dot4GClient.GetRunnerStateAsync(runnerId);
+                var runnerState = await Network.NodeClient.GetRunnerStateAsync(runnerId, CancellationToken.None);
                 if (runnerState != null && runnerState.Value == RunnerState.Accepted)
                 {
                     return SearchState.MatchFound;
@@ -104,13 +105,13 @@ namespace MainMenu.Searching.UI
 
                 return SearchState.CheckRunnerState;
             }
-            else if (playerQueued.Value == 0)
+            else if (playerQueued != null && playerQueued.Value > 0)
+            {
+                return SearchState.WaitForPlayers; 
+            }
+            else if (runnerId == null || runnerId.Value == 0)
             {
                 return SearchState.NeedToQueue;
-            }
-            else if (playerQueued.Value == 1)
-            {
-                return SearchState.WaitForPlayers;
             }
 
             return SearchState.None;
@@ -127,6 +128,7 @@ namespace MainMenu.Searching.UI
         {
             None,
             Connect,
+            Shield,
             Faucet,
             Game,
             Join,
@@ -161,43 +163,59 @@ namespace MainMenu.Searching.UI
         {
             return workerState switch
             {
-                WorkerState.Connect => "waiting for tea",
-                WorkerState.Faucet => "waiting for sister",
-                WorkerState.Game => "waiting for game",
-                WorkerState.Join => "joining",
+                WorkerState.Connect => "boom me up, scotty",
+                WorkerState.Shield => "bubble please",
+                WorkerState.Faucet => "insert coin, sister",
+                WorkerState.Game => "lfg for mc ",
+                WorkerState.Join => "teleport please",
                 _ => "searching stuff",
             };
         }
 
         public async Task<bool> ExecuteExtrinsic(WorkerState workerState)
         {
+            bool result;
             switch (workerState)
             {
                 case WorkerState.Connect:
-                    return await Network.Dot4GClient.ConnectTeeAsync();
+                    result = await Network.WorkerClient.ConnectAsync(false, false, CancellationToken.None);
+                    break;
+
+                case WorkerState.Shield:
+                    result = await Network.WorkerClient.GetShieldingKeyAsync();
+                    break;
 
                 case WorkerState.Faucet:
-                    return await Network.Dot4GClient.FaucetWorkerAsync();
+                    result = await Network.WorkerClient.FaucetAsync();
+                    break;
 
                 default:
                     return false;
             }
+
+            Debug.Log($"ExecuteExtrinsic {workerState} => {result}");
+            return result;
         }
 
         public async Task<WorkerState> GetWorkerState()
         {
-            if(!Network.Dot4GClient.IsTeeConnected)
+            if(!Network.WorkerClient.IsConnected)
             {
                 return WorkerState.Connect;
             }
 
-            var balance = await Network.Dot4GClient.GetBalanceWorkerAsync();
+            if (!Network.WorkerClient.HasShieldingKey)
+            {
+                return WorkerState.Shield;
+            }
+
+            var balance = await Network.WorkerClient.GetBalanceAsync();
             if (balance == null)
             {
                 return WorkerState.Faucet;
             }
 
-            var gameBoard = await Network.Dot4GClient.GetGameBoardAsync();
+            var gameBoard = await Network.WorkerClient.GetGameBoardAsync();
             if (gameBoard == null)
             {
                 return WorkerState.Game;

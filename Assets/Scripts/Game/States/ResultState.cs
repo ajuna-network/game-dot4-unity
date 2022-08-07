@@ -24,7 +24,7 @@ namespace Game.States
             Dot4GPlayer winner = null;
             if (Dot4GObj.Winner != null)
             {
-                winner = Dot4GObj.Players[(int)Dot4GObj.Winner];
+                winner = Dot4GObj.Players[Dot4GObj.Winner];
             }
 
             StateUI.SetResultHeader(Dot4GObj.GamePhase, winner);

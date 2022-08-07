@@ -52,7 +52,7 @@ namespace Game
         {
             if (_boardTask is null)
             {
-                _boardTask = Network.Dot4GClient.GetGameBoardAsync();
+                _boardTask = Network.WorkerClient.GetGameBoardAsync();
                 return;
             }
 

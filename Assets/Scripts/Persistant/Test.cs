@@ -1,17 +1,11 @@
 ﻿using Ajuna.NetWallet;
-using Ajuna.UnityInterface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using NLog;
-using NLog.Config;
+
 using UnityEngine;
 using System.Security.Cryptography;
 using System.Collections;
-using Ajuna.NetApi;
 using Ajuna.NetApi.Model.AjunaWorker;
+using Ajuna.UnityInterface;
 
 public class Test : MonoBehaviour
 {
@@ -29,7 +23,9 @@ public class Test : MonoBehaviour
     [SerializeField]
     private string mrenclaveHex = "Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi";
 
-    private Dot4GClient dot4GClient;
+    private NodeClient nodeClient;
+
+    private WorkerClient workerClient;
 
     private Task<RSAParameters> shieldingTask;
 
@@ -49,24 +45,21 @@ public class Test : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        LoggingConfiguration config = new LoggingConfiguration();
-        LogManager.Configuration = config;
-
         // initializing standard ajuna wallet
         Wallet = new Wallet();
 
-        dot4GClient = new Dot4GClient(Wallet,
-            "ws://5099-84-75-48-249.ngrok.io",
-            "Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi",
-            "Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi");
+        //dot4GClient = new NodeClient(Wallet,
+        //    "ws://5099-84-75-48-249.ngrok.io",
+        //    "Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi",
+        //    "Fdb2TM3owt4unpvESoSMTpVWPvCiXMzYyb42LzSsmFLi");
 
-        connectTask = dot4GClient.ConnectTeeAsync();
+        //connectTask = dot4GClient.ConnectTeeAsync();
 
-        yield return new WaitUntil(() =>
-            dot4GClient.IsTeeConnected && dot4GClient.WorkerClient.GetJsonRpc() != null
-        );
+        //yield return new WaitUntil(() =>
+        //    dot4GClient.IsTeeConnected && dot4GClient.WorkerClient.GetJsonRpc() != null
+        //);
 
-        shieldingTask = dot4GClient.GetShieldingKeyAsync();
+        //shieldingTask = dot4GClient.GetShieldingKeyAsync();
 
         yield return new WaitUntil(() =>
             shieldingTask.IsCompleted
@@ -106,35 +99,35 @@ public class Test : MonoBehaviour
 
     }
 
-    public void OnClickWorkerFaucet()
-    {
-        if (!dot4GClient.IsTeeConnected || !dot4GClient.HasShieldingKey)
-        {
-            Debug.Log($"IsTeeConnected[{dot4GClient.IsTeeConnected}] || HasShieldingKey[{dot4GClient.HasShieldingKey}]");
-        }
+    //public void OnClickWorkerFaucet()
+    //{
+    //    if (!dot4GClient.IsTeeConnected || !dot4GClient.HasShieldingKey)
+    //    {
+    //        Debug.Log($"IsTeeConnected[{dot4GClient.IsTeeConnected}] || HasShieldingKey[{dot4GClient.HasShieldingKey}]");
+    //    }
 
-        if (faucetTask != null)
-        {
-            Debug.Log("Faucet Task still on going!");
-            return;
-        }
+    //    if (faucetTask != null)
+    //    {
+    //        Debug.Log("Faucet Task still on going!");
+    //        return;
+    //    }
 
-        faucetTask = dot4GClient.FaucetWorkerAsync();
-    }
+    //    faucetTask = dot4GClient.FaucetWorkerAsync();
+    //}
 
-    public void OnClickGetBalance()
-    {
-        if (!dot4GClient.IsTeeConnected || !dot4GClient.HasShieldingKey)
-        {
-            Debug.Log($"IsTeeConnected[{dot4GClient.IsTeeConnected}] || HasShieldingKey[{dot4GClient.HasShieldingKey}]");
-        }
+    //public void OnClickGetBalance()
+    //{
+    //    if (!dot4GClient.IsTeeConnected || !dot4GClient.HasShieldingKey)
+    //    {
+    //        Debug.Log($"IsTeeConnected[{dot4GClient.IsTeeConnected}] || HasShieldingKey[{dot4GClient.HasShieldingKey}]");
+    //    }
 
-        if(balanceTask != null)
-        {
-            Debug.Log("Balance Task still on going!");
-            return;
-        }
+    //    if(balanceTask != null)
+    //    {
+    //        Debug.Log("Balance Task still on going!");
+    //        return;
+    //    }
 
-        balanceTask = dot4GClient.GetBalanceWorkerAsync();
-    }
+    //    balanceTask = dot4GClient.GetBalanceWorkerAsync();
+    //}
 }

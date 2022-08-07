@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using _StateMachine;
 using Ajuna.GenericGameEngine.Enums;
 using Ajuna.NetApi.Model.Base;
+using Ajuna.NetApi.Model.Dot4gravity;
 using Game.Board;
 using Game.Engine;
 using Game.InGame;
@@ -18,7 +19,7 @@ namespace Game.States
     {
         public NetworkManager Network => NetworkManager.Instance;
 
-        private int _currentPlayer = -1;
+        private string _currentPlayer = "";
 
         public PlayingState(GameManager stateMachine, InGameUI ui) : base(stateMachine, ui)
         {
@@ -46,15 +47,16 @@ namespace Game.States
                 StateUI.inputUI.SetActive(false);
 
                 // if it's me then enable UI for input.
-                if (Network.IsMe(StateMachine.Dot4GObj.Players[StateMachine.Dot4GObj.Next].Address))
+                if (Network.IsMe(StateMachine.Dot4GObj.Next))
                 {
+                    
                     StateUI.ShowUI();
                     StateMachine.gameBoard.currentToken = null;
                     StateUI.inputUI.SetActive(true);
                     StateUI.SetGameText("Make your move");
                     StateMachine.gameBoard.SetSelectedSide(Side.North, 0);
                     StateMachine.gameBoard.ToggleIndicator(true);
-                    StateMachine.gameBoard.SpawnSkin(StateMachine.Dot4GObj.Next);
+                    StateMachine.gameBoard.SpawnSkin(StateMachine.Dot4GObj.Players[StateMachine.Dot4GObj.Next].Stone);
                 }
                 else
                 {

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Ajuna.NetApi.Model.Base;
+using Ajuna.NetApi.Model.Dot4gravity;
 using Ajuna.NetApiExt.Model.AjunaWorker.Dot4G;
 using Unity.Mathematics;
 using UnityEngine;
@@ -332,14 +333,14 @@ namespace Game.Board
 
         public void PlaceBomb(Vector2 pos)
         {
-            var me = CurrentBoard.Players.Where(p => Network.IsMe(p.Address)).ToList();
+            var me = CurrentBoard.Players.Values.Where(p => Network.IsMe(p.Address)).ToList();
             if (me.Count == 1 && me[0].Bombs == 0)
             {
                 Debug.Log("No more bombs to place!");
                 return;
             }
 
-            var bombTask = Network.Dot4GClient.BombAsync((int)pos.x, (int)pos.y);
+            var bombTask = Network.WorkerClient.BombAsync((int)pos.x, (int)pos.y);
         }
 
         #region Selection
@@ -392,15 +393,17 @@ namespace Game.Board
 
             ClearHighlight();
 
+            var playerNumber = CurrentBoard.Players[CurrentBoard.Next].Stone;
+
             foreach (var cell in selection)
             {
                 BoardCell selectedCell = BoardCells[new Vector2(cell[0], cell[1])].gameObject.GetComponent<BoardCell>();
 
                 highlightedCells.Add(selectedCell);
-                selectedCell.HighLight(GetCurrentPlayerColor(CurrentBoard.Next));
+                selectedCell.HighLight(GetCurrentPlayerColor(playerNumber));
             }
 
-            indicatorSlider.handleRect.GetComponent<Image>().color = GetCurrentPlayerColor(CurrentBoard.Next);
+            indicatorSlider.handleRect.GetComponent<Image>().color = GetCurrentPlayerColor(playerNumber);
 
         }
 
@@ -476,7 +479,7 @@ namespace Game.Board
 
         public void MakeMove()
         {
-            _ = Network.Dot4GClient.StoneAsync(selectedSide, (int)selectedRow);
+            _ = Network.WorkerClient.StoneAsync(selectedSide, (int)selectedRow);
 
             targetCell = highlightedCells.Last();
 

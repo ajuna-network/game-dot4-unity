@@ -1,6 +1,5 @@
-﻿using System.Threading.Tasks;
-using NLog;
-using NLog.Config;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using Ajuna.NetWallet;
 using TMPro;
 using UnityEngine;
@@ -34,10 +33,10 @@ namespace Init.Authentication
             //do async task for  wallet.Strt
 
             //Connect
-            if (!Network.Wallet.IsConnected)
+            if (!Network.NodeClient.IsConnected)
             {
                 statusTxt.text = "Connecting...";
-                await Network.Wallet.StartAsync(Network.NodeUrl);
+                await Network.NodeClient.ConnectAsync(false, true, CancellationToken.None);
             }
 
             //Load Wallet
@@ -61,6 +60,8 @@ namespace Init.Authentication
             }
 
             Debug.Log($"My Key: {Network.Wallet.Account.Value}");
+
+            Network.SetAccount(Network.Wallet.Account);
 
             //goto next state
             SceneManager.LoadScene("MainMenu");

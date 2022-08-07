@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using _StateMachine;
 using Ajuna.GenericGameEngine.Enums;
 using Ajuna.NetApi.Model.Base;
+using Ajuna.NetApi.Model.Dot4gravity;
 using Game.Board;
 using Game.Engine;
 using Game.GameSetup;
