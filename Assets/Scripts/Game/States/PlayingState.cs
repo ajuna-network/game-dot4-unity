@@ -37,7 +37,7 @@ namespace Game.States
                 StateUI.inputUI.SetActive(false);
 
                 // if it's me then enable UI for input.
-                if (Network.IsMe(StateMachine.Dot4GObj.Next))
+                if (Network.IsMe(_currentPlayer))
                 {
                     
                     StateUI.ShowUI();
@@ -46,7 +46,7 @@ namespace Game.States
                     StateUI.SetGameText("Make your move");
                     StateMachine.gameBoard.SetSelectedSide(Side.North, 0);
                     StateMachine.gameBoard.ToggleIndicator(true);
-                    StateMachine.gameBoard.SpawnSkin(StateMachine.Dot4GObj.Players[StateMachine.Dot4GObj.Next].Stone);
+                    StateMachine.gameBoard.SpawnSkin(StateMachine.Dot4GObj.Players[_currentPlayer].Stone - 1);
                 }
                 else
                 {

@@ -389,17 +389,17 @@ namespace Game.Board
 
             ClearHighlight();
 
-            var playerNumber = CurrentBoard.Players[CurrentBoard.Next].Stone;
+            var playerId = CurrentBoard.Players[CurrentBoard.Next].Stone - 1;
 
             foreach (var cell in selection)
             {
                 BoardCell selectedCell = BoardCells[new Vector2(cell[0], cell[1])].gameObject.GetComponent<BoardCell>();
 
                 highlightedCells.Add(selectedCell);
-                selectedCell.HighLight(GetCurrentPlayerColor(playerNumber));
+                selectedCell.HighLight(GetCurrentPlayerColor(playerId));
             }
 
-            indicatorSlider.handleRect.GetComponent<Image>().color = GetCurrentPlayerColor(playerNumber);
+            indicatorSlider.handleRect.GetComponent<Image>().color = GetCurrentPlayerColor(playerId);
 
         }
 
@@ -415,7 +415,7 @@ namespace Game.Board
             {
                 0 => player1Color,
                 1 => player2Color,
-                _ => throw new Exception("Player Color Not Found"),
+                _ => throw new Exception($"Player Color {currentPlayer} Not Found"),
             };
         }
 

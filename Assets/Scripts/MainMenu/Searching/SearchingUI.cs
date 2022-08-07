@@ -87,7 +87,7 @@ namespace MainMenu.Searching.UI
             
             var runnerId = await Network.NodeClient.GetRunnerIdAsync(CancellationToken.None);
 
-            if (Network.FreeBalance == null || Network.FreeBalance < 1000000)
+            if (Network.FreeBalance == null || Network.FreeBalance < 11000000000)
             {
                 return SearchState.AskBigBag;
             }

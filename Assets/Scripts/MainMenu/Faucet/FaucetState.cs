@@ -113,7 +113,7 @@ namespace MainMenu.Faucet
             }
 
             // let's leave alice alone
-            if (Network.FreeBalance != null && Network.FreeBalance > 10000000)
+            if (Network.FreeBalance != null && Network.FreeBalance > 11000000000)
             {
                 return;
             }
