@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NodeUrl: ws://127.0.0.1:9944
-  workerUrl: ws://d512-84-75-48-249.ngrok.io
+  workerUrl: ws://3e4c-84-75-48-249.ngrok.io
   shardHex: 2WTKarArPH1jxUCCDMbLvmDKG9UiPZxfBrb2eQUWyU3K
   mrenclaveHex: 2WTKarArPH1jxUCCDMbLvmDKG9UiPZxfBrb2eQUWyU3K
   WalletName: dev_wallet

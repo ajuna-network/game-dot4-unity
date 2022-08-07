@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using Ajuna.NetApi.Model.Types;
+using System.Threading;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -30,13 +31,6 @@ namespace Init.Authentication
         public async Task AttemptLogin()
         {
             //do async task for  wallet.Strt
-
-            //Connect
-            if (!Network.NodeClient.IsConnected)
-            {
-                statusTxt.text = "Connecting...";
-                await Network.NodeClient.ConnectAsync(false, true, CancellationToken.None);
-            }
 
             //Load Wallet
             if (!Network.Wallet.Load(Network.WalletName))
@@ -79,7 +73,7 @@ namespace Init.Authentication
                 return;
             }
 
-            if (!Network.Wallet.Create(password, Network.WalletName))
+            if (!Network.Wallet.Create(password, KeyType.Sr25519, Network.WalletName))
             {
                 infoTxt.gameObject.SetActive(true);
                 infoTxt.text = "Failed To Create New Account";

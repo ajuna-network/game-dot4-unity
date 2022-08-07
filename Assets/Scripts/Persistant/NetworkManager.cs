@@ -5,9 +5,14 @@ using Ajuna.NetApi.Model.Types;
 using Ajuna.UnityInterface;
 using System.Threading;
 using System.Numerics;
+using Ajuna.NetApi.Model.FrameSystem;
 
 public class NetworkManager : MonoBehaviour
 {
+    public enum NodeState { None, Connect, Balance }
+
+    public enum WorkerState { None, Connect, Shield, Balance }
+
     public static NetworkManager Instance;
 
     [SerializeField]
@@ -67,9 +72,8 @@ public class NetworkManager : MonoBehaviour
         FreeBalance = new BigInteger(0);
         WorkerBalance = new BigInteger(0);
 
-        InvokeRepeating("PollNode", 0, 2f);
-        InvokeRepeating("PollWorker", 0, 2f);
-
+        InvokeRepeating("PollNode", 0, 1f);
+        InvokeRepeating("PollWorker", 0, 1f);
     }
 
     public void SetAccount(Account account)
@@ -79,9 +83,37 @@ public class NetworkManager : MonoBehaviour
         WorkerClient.Account = account;
     }
 
+    public NodeState GetNodeState()
+    {
+        if (NodeClient == null)
+        {
+            return NodeState.None;
+        }
+
+        if (!NodeClient.IsConnected)
+        {
+            return NodeState.Connect;
+        }
+
+        return NodeState.Balance;
+    }
+
     public async Task PollNode()
     {
-        var accountInfo = await NodeClient.GetBalanceAsync(CancellationToken.None);
+        AccountInfo accountInfo = null;
+        switch (GetNodeState())
+        {
+            case NodeState.None:
+                break;
+
+            case NodeState.Connect:
+                _ = await NodeClient.ConnectAsync(false, true, CancellationToken.None);
+                break;
+
+            case NodeState.Balance:
+                accountInfo = await NodeClient.GetBalanceAsync(CancellationToken.None);
+                break;
+        }
 
         if (accountInfo == null || accountInfo.Data == null || accountInfo.Data.Free.Value == 0)
         {
@@ -90,6 +122,26 @@ public class NetworkManager : MonoBehaviour
         } 
 
         FreeBalance = accountInfo.Data.Free.Value;
+    }
+
+    public WorkerState GetWorkerState()
+    {
+        if (WorkerClient == null)
+        {
+            return WorkerState.None;
+        }
+
+        if (!WorkerClient.IsConnected)
+        {
+            return WorkerState.Connect;
+        }
+
+        if (!WorkerClient.HasShieldingKey)
+        {
+            return WorkerState.Shield;
+        }
+
+        return WorkerState.Balance;
     }
 
     public async Task PollWorker()
