@@ -1,8 +1,6 @@
 using _StateMachine;
 using Ajuna.NetApiExt.Model.AjunaWorker.Dot4G;
-using Game.Engine;
 using Game.GameResults;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Game.States

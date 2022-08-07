@@ -3,11 +3,9 @@
 using MainMenu.Achievements;
 using MainMenu.Faucet;
 using MainMenu.Leaderboard;
-using MainMenu.Setup;
 
 using MainMenu.Landing.UI;
 using MainMenu.Searching;
-using UnityEngine.SceneManagement;
 
 namespace MainMenu.Landing
 {

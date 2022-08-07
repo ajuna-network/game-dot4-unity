@@ -1,7 +1,3 @@
-using Ajuna.NetApiExt.Model.AjunaWorker.Dot4G;
-using System.Collections;
-using System.Threading.Tasks;
-
 namespace _StateMachine
 {
     public interface IState

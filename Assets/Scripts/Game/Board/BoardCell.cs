@@ -1,11 +1,4 @@
 using System;
-using System.Collections;
-using System.Linq;
-using System.Threading.Tasks;
-using Ajuna.NetApi.Model.Base;
-using Ajuna.NetApiExt.Model.AjunaWorker.Dot4G;
-using Game.Engine;
-using GameEngine.UnityMock;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

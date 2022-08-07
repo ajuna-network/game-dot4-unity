@@ -1,8 +1,6 @@
 using _StateMachine;
 using Init.Authentication;
 using Init.Splash;
-using Ajuna.NetWallet;
-using UnityEngine;
 
 public class InitManager : StateMachine
 {

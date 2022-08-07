@@ -1,5 +1,4 @@
 using _StateMachine;
-using Init.Authentication;
 
 namespace Init.Splash
 {

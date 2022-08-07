@@ -1,8 +1,6 @@
-﻿using System.Diagnostics.SymbolStore;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using _StateMachine;
-using MainMenu.Faucet;
 using MainMenu.Faucet.UI;
 using UnityEngine;
 

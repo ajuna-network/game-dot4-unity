@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Ajuna.NetWallet;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;

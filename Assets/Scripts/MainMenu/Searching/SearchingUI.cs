@@ -1,7 +1,5 @@
 using Ajuna.NetApi.Model.AjunaCommon;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -174,27 +172,13 @@ namespace MainMenu.Searching.UI
 
         public async Task<bool> ExecuteExtrinsic(WorkerState workerState)
         {
-            bool result;
-            switch (workerState)
+            return workerState switch
             {
-                case WorkerState.Connect:
-                    result = await Network.WorkerClient.ConnectAsync(false, false, CancellationToken.None);
-                    break;
-
-                case WorkerState.Shield:
-                    result = await Network.WorkerClient.GetShieldingKeyAsync();
-                    break;
-
-                case WorkerState.Faucet:
-                    result = await Network.WorkerClient.FaucetAsync();
-                    break;
-
-                default:
-                    return false;
-            }
-
-            Debug.Log($"ExecuteExtrinsic {workerState} => {result}");
-            return result;
+                WorkerState.Connect => await Network.WorkerClient.ConnectAsync(false, false, CancellationToken.None),
+                WorkerState.Shield => await Network.WorkerClient.GetShieldingKeyAsync(),
+                WorkerState.Faucet => await Network.WorkerClient.FaucetAsync(),
+                _ => false,
+            };
         }
 
         public async Task<WorkerState> GetWorkerState()

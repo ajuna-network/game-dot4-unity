@@ -1,5 +1,4 @@
 ﻿using _StateMachine;
-using MainMenu.Leaderboard;
 using MainMenu.Leaderboard.UI;
 
 namespace MainMenu.Leaderboard

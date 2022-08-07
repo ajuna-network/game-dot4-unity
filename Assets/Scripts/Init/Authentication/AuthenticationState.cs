@@ -1,9 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using _StateMachine;
-using UnityEngine;
-using UnityEngine.Android;
-using UnityEngine.SceneManagement;
+﻿using _StateMachine;
 
 
 namespace Init.Authentication

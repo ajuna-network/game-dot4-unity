@@ -1,12 +1,11 @@
-﻿using Ajuna.NetApi.Model.Base;
-using Ajuna.NetApi.Model.Dot4gravity;
+﻿using Ajuna.NetApi.Model.Dot4gravity;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-    public class SelectionSlider : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class SelectionSlider : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
         public Slider slider;
         public Side side;
