@@ -734,7 +734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NodeUrl: ws://127.0.0.1:9944
-  workerUrl: ws://dcb0-84-75-48-249.ngrok.io
+  workerUrl: ws://d512-84-75-48-249.ngrok.io
   shardHex: 2WTKarArPH1jxUCCDMbLvmDKG9UiPZxfBrb2eQUWyU3K
   mrenclaveHex: 2WTKarArPH1jxUCCDMbLvmDKG9UiPZxfBrb2eQUWyU3K
   WalletName: dev_wallet
@@ -1605,7 +1605,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -226.59003, y: 181}
+  m_AnchoredPosition: {x: -226.58997, y: 181}
   m_SizeDelta: {x: 721.06, y: 721.06}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &810445763
@@ -1682,7 +1682,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 345.00006, y: 0}
+  m_AnchoredPosition: {x: 345, y: 0}
   m_SizeDelta: {x: 761.28, y: 380.64}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &827548887

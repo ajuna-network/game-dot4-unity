@@ -66,7 +66,7 @@ namespace Init.Authentication
             SceneManager.LoadScene("MainMenu");
         }
 
-        public async void OnCreateClicked()
+        public void OnCreateClicked()
         {
             var password = passwordInput.text;
 
@@ -79,7 +79,7 @@ namespace Init.Authentication
                 return;
             }
 
-            if (!await Network.Wallet.CreateAsync(password, Network.WalletName))
+            if (!Network.Wallet.Create(password, Network.WalletName))
             {
                 infoTxt.gameObject.SetActive(true);
                 infoTxt.text = "Failed To Create New Account";
@@ -96,7 +96,7 @@ namespace Init.Authentication
         {
             var password = passwordInput.text;
 
-            if (!await Network.Wallet.UnlockAsync(password))
+            if (!Network.Wallet.Unlock(password))
             {
                 infoTxt.gameObject.SetActive(true);
                 infoTxt.text = "Invalid Password";

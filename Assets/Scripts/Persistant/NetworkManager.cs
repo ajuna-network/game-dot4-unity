@@ -96,8 +96,6 @@ public class NetworkManager : MonoBehaviour
     {
         var balance = await WorkerClient.GetBalanceAsync();
 
-        Debug.Log($"pooling worker here. balance is null? {balance == null}");
-
         if (balance == null || balance.Value == 0)
         {
             WorkerBalance = new BigInteger(0);
