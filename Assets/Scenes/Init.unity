@@ -733,10 +733,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94ecd7792a106d43ae84205917c0195, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NodeUrl: ws://127.0.0.1:9944
-  workerUrl: ws://38f9-102-66-5-19.ngrok.io
-  shardHex: 2WTKarArPH1jxUCCDMbLvmDKG9UiPZxfBrb2eQUWyU3K
-  mrenclaveHex: 2WTKarArPH1jxUCCDMbLvmDKG9UiPZxfBrb2eQUWyU3K
+  NodeUrl: wss://sub0.ajuna.network
+  workerUrl: wss://ajuna-02.cluster.securitee.tech
+  shardHex: BdejaJu3iveGGVWNb2RwxNwzPonzCB6oW5Y8xF9QTHM8
+  mrenclaveHex: BdejaJu3iveGGVWNb2RwxNwzPonzCB6oW5Y8xF9QTHM8
   WalletName: dev_wallet
 --- !u!1 &486867915
 GameObject:
