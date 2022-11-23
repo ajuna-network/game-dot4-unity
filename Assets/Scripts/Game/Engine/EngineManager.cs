@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using GameEngine.GravityDot;
 using GameEngine.UnityMock;
 using UnityEngine;
@@ -58,8 +57,6 @@ namespace Game.Engine
         {
             return MockLogic.GetRay(gameEngine.FullState(currentGameID).Board, side, (int) row,
                 gameEngine.FullState(currentGameID).CurrentPlayer);
-
-            // return MockLogic.GetRay(Fullstate.Board, side, (int) row, Fullstate.CurrentPlayer);
         }
 
         public static bool IsValidMove(Side side, float row)

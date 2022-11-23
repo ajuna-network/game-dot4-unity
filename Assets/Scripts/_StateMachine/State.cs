@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Threading.Tasks;
-
 namespace _StateMachine
 {
     public interface IState

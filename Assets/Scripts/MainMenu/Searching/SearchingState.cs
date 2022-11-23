@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Threading.Tasks;
 using _StateMachine;
 using MainMenu.Searching.UI;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace MainMenu.Searching
@@ -27,9 +23,6 @@ namespace MainMenu.Searching
             StateUI.HideUI();
             StateUI.cancelBtn.onClick.RemoveListener(OnBackClicked);
         }
-
-       
-
 
         #region Conditions
 

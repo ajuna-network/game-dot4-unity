@@ -1,4 +1,4 @@
-using SubstrateNetWallet;
+using Ajuna.NetWallet;
 using System.IO;
 using UnityEngine;
 

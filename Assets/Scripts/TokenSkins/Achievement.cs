@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Achievement_", menuName = "TokenSkin/New Achievement", order = 1)]

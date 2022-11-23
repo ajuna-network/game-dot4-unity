@@ -1,5 +1,4 @@
 ﻿using _StateMachine;
-using MainMenu.Achievements;
 using MainMenu.Achievements.UI;
 
 namespace MainMenu.Achievements

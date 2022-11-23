@@ -1,9 +1,6 @@
 ﻿using _StateMachine;
-using MainMenu.Landing;
 using MainMenu.Searching;
-using MainMenu.Setup;
 using MainMenu.Setup.UI;
-using UnityEngine.SceneManagement;
 
 namespace MainMenu.Setup
 {
