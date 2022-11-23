@@ -16,16 +16,16 @@ public class NetworkManager : MonoBehaviour
     public static NetworkManager Instance;
 
     [SerializeField]
-    public string NodeUrl = "ws://127.0.0.1:9944";
+    public string NodeUrl = "wss://sub0.ajuna.network";
 
     [SerializeField]
-    private string workerUrl = "ws://699f-84-75-48-249.ngrok.io";
+    private string workerUrl = "wss://ajuna-02.cluster.securitee.tech";
 
     [SerializeField]
-    private string shardHex = "2WTKarArPH1jxUCCDMbLvmDKG9UiPZxfBrb2eQUWyU3K";
+    private string shardHex = "BdejaJu3iveGGVWNb2RwxNwzPonzCB6oW5Y8xF9QTHM8";
 
     [SerializeField]
-    private string mrenclaveHex = "2WTKarArPH1jxUCCDMbLvmDKG9UiPZxfBrb2eQUWyU3K";
+    private string mrenclaveHex = "BdejaJu3iveGGVWNb2RwxNwzPonzCB6oW5Y8xF9QTHM8";
 
     [SerializeField]
     public string WalletName = "dev_wallet";
