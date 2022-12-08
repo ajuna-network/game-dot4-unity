@@ -1,15 +1,6 @@
-namespace _StateMachine
+namespace StateLogic
 {
-    public interface IState
-    {
-        public void Enter();
-
-        public void Action();
-
-        public void Exit();
-    }
-
-    public abstract class State<T,U> : IState where T : StateMachine where U : UICanvas
+    public abstract class State<T, U> : IState where T : StateMachine where U : UICanvas
     {
         protected T StateMachine;
         protected U StateUI;
@@ -20,15 +11,12 @@ namespace _StateMachine
             StateUI = ui;
         }
 
-
         public virtual void Enter()
         {
         }
 
-
         public virtual void Action()
         {
-      
         }
 
         public virtual void Exit()

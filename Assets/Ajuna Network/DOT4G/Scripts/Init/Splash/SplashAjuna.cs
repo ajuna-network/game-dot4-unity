@@ -1,4 +1,4 @@
-using _StateMachine;
+using StateLogic;
 
 namespace Init.Splash
 {

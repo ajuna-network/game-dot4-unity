@@ -1,4 +1,4 @@
-using _StateMachine;
+using StateLogic;
 using Ajuna.NetApiExt.Model.AjunaWorker.Dot4G;
 using Game.Board;
 using Game.GameResults;

@@ -1,4 +1,4 @@
-﻿using _StateMachine;
+﻿using StateLogic;
 using MainMenu.Achievements.UI;
 using MainMenu.Faucet.UI;
 using MainMenu.Landing;

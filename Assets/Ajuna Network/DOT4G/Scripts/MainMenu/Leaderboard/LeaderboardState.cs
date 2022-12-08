@@ -1,4 +1,4 @@
-﻿using _StateMachine;
+﻿using StateLogic;
 using MainMenu.Leaderboard.UI;
 
 namespace MainMenu.Leaderboard

@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
-namespace _StateMachine
+namespace StateLogic
 {
     public abstract class StateMachine : MonoBehaviour
     {
         private IState currentState;
         public IState previousState;
-
 
         public IState CurrentState
         {

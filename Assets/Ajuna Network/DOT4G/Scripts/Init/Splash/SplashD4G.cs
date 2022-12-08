@@ -1,4 +1,4 @@
-using _StateMachine;
+using StateLogic;
 using Init.Authentication;
 
 namespace Init.Splash

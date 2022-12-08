@@ -1,4 +1,4 @@
-﻿using _StateMachine;
+﻿using StateLogic;
 using MainMenu.Searching;
 using MainMenu.Setup.UI;
 
