@@ -81,6 +81,7 @@ public class NetworkInfo : MonoBehaviour
             {
                 walletConnectionState.color = Color.green;
                 var total = (double)NetworkManager.Instance.FreeBalance / Math.Pow(10, 12);
+                Debug.Log(total);
                 walletTokens.text = total.ToString("0.000") + " AJUN";
             }
         }

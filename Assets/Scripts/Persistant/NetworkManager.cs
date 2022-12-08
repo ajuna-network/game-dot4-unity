@@ -148,6 +148,8 @@ public class NetworkManager : MonoBehaviour
     {
         var balance = await WorkerClient.GetBalanceAsync();
 
+        Debug.Log(balance);
+
         if (balance == null || balance.Value == 0)
         {
             WorkerBalance = new BigInteger(0);
