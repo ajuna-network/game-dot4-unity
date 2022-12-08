@@ -119,7 +119,7 @@ public class NetworkManager : MonoBehaviour
         {
             FreeBalance = new BigInteger(0);
             return;
-        } 
+        }
 
         FreeBalance = accountInfo.Data.Free.Value;
     }
@@ -147,8 +147,6 @@ public class NetworkManager : MonoBehaviour
     public async Task PollWorker()
     {
         var balance = await WorkerClient.GetBalanceAsync();
-
-        Debug.Log(balance);
 
         if (balance == null || balance.Value == 0)
         {
