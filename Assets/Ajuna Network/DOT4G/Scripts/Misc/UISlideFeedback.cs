@@ -8,12 +8,11 @@ public class UISlideFeedback : MonoBehaviour
     private void Awake()
     {
         slider = gameObject.GetComponent<Slider>();
-        
+
         slider.onValueChanged.AddListener(UIFeedback);
     }
-    
-    
-     void UIFeedback(float value)
+
+    private void UIFeedback(float value)
     {
         AudioManager.Instance.PlaySound(Sound.SliderClick);
     }

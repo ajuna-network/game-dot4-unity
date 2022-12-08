@@ -1,9 +1,8 @@
-using Ajuna.NetApi.Model.AjunaCommon;
-using System;
 using System.Collections;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Ajuna.NetApi.Model.AjunaCommon;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,7 +17,8 @@ namespace MainMenu.Searching.UI
 
         public NetworkManager Network => NetworkManager.Instance;
 
-        public enum SearchState { 
+        public enum SearchState
+        {
             None,
             MatchFound,
             NeedToQueue,
@@ -28,7 +28,7 @@ namespace MainMenu.Searching.UI
             AskBigBag
         }
 
-        IEnumerator Searching()
+        private IEnumerator Searching()
         {
             var searchState = SearchState.None;
 
@@ -45,7 +45,6 @@ namespace MainMenu.Searching.UI
                 while (!searchStateTask.IsCompleted || !excuteExtrinsicTask.IsCompleted)
                 {
                     yield return new WaitForSeconds(1);
-
                 }
                 searchState = searchStateTask.Result;
             }
@@ -74,7 +73,7 @@ namespace MainMenu.Searching.UI
             {
                 return await Network.NodeClient.QueueAsync(CancellationToken.None);
             }
-        
+
             return true;
         }
 
@@ -96,11 +95,11 @@ namespace MainMenu.Searching.UI
             if (runnerId != null && runnerId.Value != 0)
             {
                 var runnerState = await Network.NodeClient.GetRunnerStateAsync(runnerId, CancellationToken.None);
-                
+
                 if (runnerState != null && runnerState.Value == RunnerState.Accepted)
                 {
                     return SearchState.MatchFound;
-                } 
+                }
 
                 return SearchState.CheckRunnerState;
             }
@@ -109,9 +108,9 @@ namespace MainMenu.Searching.UI
 
             if (playerQueued != null && playerQueued.Value > 0)
             {
-                return SearchState.WaitForPlayers; 
+                return SearchState.WaitForPlayers;
             }
-            
+
             if (runnerId == null || runnerId.Value == 0)
             {
                 return SearchState.NeedToQueue;
@@ -120,13 +119,14 @@ namespace MainMenu.Searching.UI
             return SearchState.None;
         }
 
-        IEnumerator MatchFound()
+        private IEnumerator MatchFound()
         {
             searchingText.text = "match found";
             yield return new WaitForSeconds(1);
 
             StartCoroutine(nameof(Joining));
         }
+
         public enum WorkerState
         {
             None,
@@ -137,7 +137,7 @@ namespace MainMenu.Searching.UI
             Join,
         }
 
-        IEnumerator Joining()
+        private IEnumerator Joining()
         {
             var workerState = WorkerState.None;
 
@@ -154,7 +154,6 @@ namespace MainMenu.Searching.UI
                 while (!workerStateTask.IsCompleted || !excuteExtrinsicTask.IsCompleted)
                 {
                     yield return new WaitForSeconds(1);
-
                 }
                 workerState = workerStateTask.Result;
             }
@@ -188,7 +187,7 @@ namespace MainMenu.Searching.UI
 
         public async Task<WorkerState> GetWorkerState()
         {
-            if(!Network.WorkerClient.IsConnected)
+            if (!Network.WorkerClient.IsConnected)
             {
                 return WorkerState.Connect;
             }
@@ -213,7 +212,7 @@ namespace MainMenu.Searching.UI
             return WorkerState.Join;
         }
 
-        void JoinMatch()
+        private void JoinMatch()
         {
             SceneManager.LoadScene("Game");
         }

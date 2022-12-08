@@ -1,18 +1,14 @@
-﻿using Ajuna.NetApi.Model.Types;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Ajuna.NetApi.Model.Types;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
 namespace Init.Authentication
 {
     public class AuthenticationUI : UICanvas
     {
-        #region Old
-
         public TextMeshProUGUI statusTxt;
         public TextMeshProUGUI infoTxt;
         public Button decryptBtn;
@@ -44,7 +40,7 @@ namespace Init.Authentication
             //Unlock Wallet
             if (!Network.Wallet.IsUnlocked)
             {
-                //show decrypt  
+                //show decrypt
                 statusTxt.text = "Enter Your Password";
                 createBtn.gameObject.SetActive(false);
                 inputsCnt.gameObject.SetActive(true);
@@ -64,7 +60,6 @@ namespace Init.Authentication
         {
             var password = passwordInput.text;
 
-
             if (!Network.Wallet.IsValidPassword(password))
             {
                 infoTxt.gameObject.SetActive(true);
@@ -78,15 +73,13 @@ namespace Init.Authentication
                 infoTxt.gameObject.SetActive(true);
                 infoTxt.text = "Failed To Create New Account";
                 AudioManager.Instance.PlaySound(Sound.InvalidMove);
-
             }
-
 
             //  StateUI.infoTxt.text = "New Account Created";
             AttemptLogin();
         }
 
-        async void OnDecryptClicked()
+        private async void OnDecryptClicked()
         {
             var password = passwordInput.text;
 
@@ -98,13 +91,7 @@ namespace Init.Authentication
                 return;
             }
 
-
             AttemptLogin();
         }
-
-        #endregion
-
-
     }
-
 }

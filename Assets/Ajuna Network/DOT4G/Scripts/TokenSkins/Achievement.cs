@@ -13,6 +13,4 @@ public class Achievement : ScriptableObject
     public string skinName;
     
     public GameObject tokenPrefab;
-
-    //needs more logic to check the progress and conditions
 }

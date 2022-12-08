@@ -1,11 +1,11 @@
-using StateLogic;
+using System.Threading.Tasks;
 using Ajuna.NetApiExt.Model.AjunaWorker.Dot4G;
 using Game.Board;
 using Game.GameResults;
 using Game.GameSetup;
 using Game.InGame;
 using Game.States;
-using System.Threading.Tasks;
+using StateLogic;
 using UnityEngine;
 
 namespace Game
@@ -17,8 +17,8 @@ namespace Game
         private Task<Dot4GObj> _boardTask = null;
 
         public Dot4GObj Dot4GObj;
-        
-        [Header("Refrences")] 
+
+        [Header("Refrences")]
         public ResultsUI resultsUI;
 
         public SetupUI setupUI;
@@ -34,12 +34,11 @@ namespace Game
             Screen.orientation = ScreenOrientation.Portrait;
         }
 
-        void Start()
+        private void Start()
         {
             CurrentState = new SetupState(this, setupUI);
 
-            InvokeRepeating("PollGameBoard", 0, 0.6f);
-
+            InvokeRepeating("PollGameBoard", 0, 0.5f);
         }
 
         private void Update()
@@ -55,15 +54,15 @@ namespace Game
                 return;
             }
 
-            if(_boardTask.IsFaulted)
+            if (_boardTask.IsFaulted)
             {
                 Debug.Log($"Board updated faulted with {_boardTask.Exception}!");
                 _boardTask = null;
                 return;
             }
 
-            if (_boardTask.IsCompleted) {
-
+            if (_boardTask.IsCompleted)
+            {
                 Dot4GObj = _boardTask.Result;
                 if (Dot4GObj != null)
                 {
@@ -71,10 +70,9 @@ namespace Game
                 }
                 _boardTask = null;
                 return;
-            } 
-            
+            }
+
             Debug.Log($"Timeout next Board update!");
         }
-
     }
 }

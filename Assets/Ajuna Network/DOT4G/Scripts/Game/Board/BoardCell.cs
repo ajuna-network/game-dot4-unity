@@ -5,34 +5,25 @@ using UnityEngine.UI;
 
 namespace Game.Board
 {
-    public enum CellType
-    {
-        Normal,
-        Obstacle,
-        PlayerBomb,
-        EnemyBomb,
-        PlayerToken,
-        EnemyToken
-    }
-
     public class BoardCell : MonoBehaviour
     {
-        [SerializeField] 
+        [SerializeField]
         private Button toggle;
 
-        [SerializeField] 
+        [SerializeField]
         private Image spriteRenderer;
-        
-        [SerializeField] 
+
+        [SerializeField]
         private Image bombSprite;
-        
-        [SerializeField] 
+
+        [SerializeField]
         private Color defaultColor;
 
         [SerializeField] private GameObject Obstacle;
 
         //DEBUG
         public TextMeshProUGUI gridTxt;
+
         public TextMeshProUGUI idTxt;
 
         private Material[] materials;
@@ -45,8 +36,8 @@ namespace Game.Board
         private void Awake()
         {
             toggle.onClick.AddListener(Selected);
-
         }
+
         public void DeSelect()
         {
             spriteRenderer.color = defaultColor;
@@ -58,7 +49,7 @@ namespace Game.Board
         }
 
         //should not be toggleable, so use button
-        void Selected()
+        private void Selected()
         {
             OnCellSelected?.Invoke(cellPos);
         }
@@ -67,6 +58,7 @@ namespace Game.Board
         {
             spriteRenderer.color = color;
         }
+
         public void TurnDefaultColor()
         {
             spriteRenderer.color = defaultColor;

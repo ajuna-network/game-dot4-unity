@@ -1,5 +1,3 @@
-
-
 namespace MainMenu.Leaderboard
 {
     public static class Leaderboard
@@ -10,8 +8,7 @@ namespace MainMenu.Leaderboard
         {
             get { return leaderboardEntries; }
         }
-    
+
         // void Awake
-    
     }
 }

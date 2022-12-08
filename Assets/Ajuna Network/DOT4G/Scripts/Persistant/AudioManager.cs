@@ -1,12 +1,5 @@
 using UnityEngine;
 
-
-
-// public enum Music
-// {
-//     MainMenu
-// }
-
 public enum Sound
 {
     ButtonDown,
@@ -17,7 +10,6 @@ public enum Sound
     Detonate,
     BombBeep
 }
-
 
 public class AudioManager : MonoBehaviour
 {
@@ -82,16 +74,5 @@ public class AudioManager : MonoBehaviour
         print("Clip Not Found");
         return null;
     }
-    // AudioClip GetMusicClip(Music _sound)
-    // {
-    //     switch (_sound)
-    //     {
-    //         case Music.MainMenu:
-    //             return MainMenu;
-    //     }
-    //     print("Clip Not Found");
-    //     return null;
-    // }
-
 
 }

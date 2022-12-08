@@ -32,7 +32,7 @@ namespace Game.Board
         [SerializeField]
         private RectTransform boardContainer;
 
-        [SerializeField] 
+        [SerializeField]
         private GameObject boardIsland3D;
 
         public GraphicRaycaster boardRaycaster;
@@ -43,12 +43,12 @@ namespace Game.Board
         //maybe have this in skinviewer class
         public GameObject currentToken;
 
-
         [Header("Tokens")]
         public Achievement player1Token;
+
         public Achievement player2Token;
 
-        Dictionary<Vector2, GameObject> BoardCells = new Dictionary<Vector2, GameObject>();
+        private Dictionary<Vector2, GameObject> BoardCells = new Dictionary<Vector2, GameObject>();
         private List<BoardCell> explosionCells = new List<BoardCell>();
         private float cellSize;
         private BoardCell targetCell;
@@ -56,7 +56,6 @@ namespace Game.Board
 
         // private Vector3 targetPos;
         private bool shouldExplode = false;
-
 
         [Header("Styling")]
         [SerializeField]
@@ -107,7 +106,6 @@ namespace Game.Board
         }
 
         #region Board Gen + Layout
-
 
         public void Clear()
         {
@@ -220,6 +218,7 @@ namespace Game.Board
                                 bombs.Remove(posVec);
                             }
                             break;
+
                         case Cell.Bomb:
                             if (!bombs.Contains(posVec))
                             {
@@ -278,10 +277,9 @@ namespace Game.Board
             }
         }
 
-        void LayoutGrid()
+        private void LayoutGrid()
         {
             var canvas = gameObject.GetComponent<RectTransform>();
-
 
             if (canvas.rect.height >= canvas.rect.width)
             {
@@ -296,9 +294,7 @@ namespace Game.Board
 
             cellSize = boardContainerSize / 12;
 
-
             gridLayout.cellSize = new Vector2(cellSize, cellSize);
-
 
             indicatorSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(0, cellSize);
             indicatorSlider.handleRect.sizeDelta = new Vector2(cellSize, cellSize);
@@ -310,14 +306,13 @@ namespace Game.Board
             boardIsland3D.transform.localScale = new Vector3(boardSize, boardSize, boardSize);
         }
 
-        #endregion
+        #endregion Board Gen + Layout
 
         //for player input
-        void SetPlayerBomb(Vector2 pos)
+        private void SetPlayerBomb(Vector2 pos)
         {
             if (CurrentBoard.ValidateBomb((int)pos.x, (int)pos.y))
             {
-
                 PlaceBomb(pos);
                 AudioManager.Instance.PlaySound(Sound.ValidMove);
             }
@@ -341,10 +336,9 @@ namespace Game.Board
 
         #region Selection
 
-        void SetIndicatorSide(Side side, float row)
+        private void SetIndicatorSide(Side side, float row)
         {
             indicatorSlider.value = row;
-
 
             var newRotation = new Vector3();
             var newScale = new Vector3(1, 1, 1);
@@ -355,14 +349,17 @@ namespace Game.Board
                     newRotation.z = 90f;
                     newScale.x = 1;
                     break;
+
                 case Side.East:
                     newRotation.z = 180f;
                     newScale.x = -1;
                     break;
+
                 case Side.North:
                     newRotation.z = 270f;
                     newScale.x = -1;
                     break;
+
                 case Side.West:
                     newRotation.z = 360f;
                     newScale.x = 1;
@@ -400,7 +397,6 @@ namespace Game.Board
             }
 
             indicatorSlider.handleRect.GetComponent<Image>().color = GetCurrentPlayerColor(playerId);
-
         }
 
         public void ClearHighlight()
@@ -419,14 +415,12 @@ namespace Game.Board
             };
         }
 
-        #endregion
-
+        #endregion Selection
 
         public void ToggleIndicator(bool toggle)
         {
             indicatorSlider.gameObject.SetActive(toggle);
         }
-
 
         public void PlayOutro()
         {
@@ -446,12 +440,13 @@ namespace Game.Board
                    animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1;
         }
 
-        GameObject GetCurrentPlayerSkin(int currentPlayer)
+        private GameObject GetCurrentPlayerSkin(int currentPlayer)
         {
             switch (currentPlayer)
             {
                 case 0:
                     return player1Token.tokenPrefab;
+
                 case 1:
                     return player2Token.tokenPrefab;
             }
@@ -487,7 +482,6 @@ namespace Game.Board
 
             _tokenTask = AnimateToken();
         }
-
 
         public async Task AnimateToken()
         {
@@ -537,13 +531,12 @@ namespace Game.Board
                     tokenCells.Remove(new Vector2(cell.cellPos.x, cell.cellPos.y));
                 }
             }
-            
+
             AudioManager.Instance.PlaySound(Sound.Detonate);
             explosionCells.Clear();
         }
 
-
-        async Task FlashCells(List<BoardCell> explosionCells, float speed, int flashes)
+        private async Task FlashCells(List<BoardCell> explosionCells, float speed, int flashes)
         {
             for (int i = 0; i < flashes; i++)
             {

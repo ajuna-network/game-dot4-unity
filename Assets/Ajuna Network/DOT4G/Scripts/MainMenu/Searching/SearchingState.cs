@@ -1,5 +1,5 @@
-using StateLogic;
 using MainMenu.Searching.UI;
+using StateLogic;
 using UnityEngine.SceneManagement;
 
 namespace MainMenu.Searching
@@ -26,17 +26,16 @@ namespace MainMenu.Searching
 
         #region Conditions
 
-        void JoinMatch()
+        private void JoinMatch()
         {
             SceneManager.LoadScene("Game");
         }
 
-        void OnBackClicked()
+        private void OnBackClicked()
         {
             StateMachine.CurrentState = StateMachine.previousState;
         }
 
-        #endregion
+        #endregion Conditions
     }
 }
-

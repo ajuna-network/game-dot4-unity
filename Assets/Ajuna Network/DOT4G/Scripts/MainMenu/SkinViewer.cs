@@ -6,20 +6,27 @@ namespace MainMenu
 {
     public class SkinViewer : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHandler
     {
-        [SerializeField] private Transform objectToRotate;
-        [Range(-1f, 1f)] [SerializeField] private float rotateSpeed = 0.1f;
-        [SerializeField] private bool userIsRotating;
-        [SerializeField] private float grabRotationSpeed;
+        [SerializeField]
+        private Transform objectToRotate;
 
-        [SerializeField] private Quaternion restRotation;
+        [Range(-1f, 1f)]
+        [SerializeField]
+        private float rotateSpeed = 0.1f;
 
-       // [SerializeField] private float timeElapsed;
-        [SerializeField] private float lerpTime;
+        [SerializeField]
+        private bool userIsRotating;
 
+        [SerializeField]
+        private float grabRotationSpeed;
+
+        [SerializeField]
+        private Quaternion restRotation;
+
+        [SerializeField]
+        private float lerpTime;
 
         private void Awake()
         {
-          
         }
 
         private void Update()
@@ -30,18 +37,12 @@ namespace MainMenu
             restRotation = objectToRotate.transform.rotation;
         }
 
-
-        IEnumerator RotateToRest()
+        private IEnumerator RotateToRest()
         {
-           // timeElapsed = 0;
-
             while (objectToRotate.transform.rotation != restRotation)
             {
-                // rotating = true;
-
                 objectToRotate.transform.rotation = Quaternion.RotateTowards(objectToRotate.transform.rotation,
                     restRotation, Time.deltaTime * lerpTime);
-               // timeElapsed += Time.deltaTime;
 
                 yield return null;
             }
@@ -55,7 +56,7 @@ namespace MainMenu
             var mouseYPos = eventData.delta.y * grabRotationSpeed;
 
             var rotation = new Vector3(mouseYPos, -mouseXPos, 0);
-            objectToRotate.transform.Rotate(rotation,Space.World);
+            objectToRotate.transform.Rotate(rotation, Space.World);
         }
 
         public void OnEndDrag(PointerEventData eventData)

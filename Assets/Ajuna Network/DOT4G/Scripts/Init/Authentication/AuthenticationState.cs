@@ -18,7 +18,6 @@ namespace Init.Authentication
             StateMachine.NetworkInfo.gameObject.SetActive(true);
 
             StateUI.ShowUI();
-            //StateUI.CreateWallet();
             StateUI.AttemptLogin();
         }
 
